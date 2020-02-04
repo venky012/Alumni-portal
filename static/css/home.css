@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.img-bar{
+    width: 60%;
+    height: 95px;
+    margin-left:20%;
+    float: left;
+    vertical-align: middle;
+}
+.loginsignup{
+    width: 20%;
+    float: right;
+    font-size: medium;
+    text-align: center;
+    padding-top:2%;
+}
+.loginsignup a{
+    text-align: center;
+    padding-right:4%;
+}
+.navbar{
+    width:100%;
+}
+@media screen and (max-width:600px){
+    .img-bar{
+        width:80%;
+        margin-left:0px;
+        height:31px;
+    }
+    .loginsignup{
+        font-size: 1%;
+        padding-top: 4%;
+    }
+}
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+    margin-top: 1%;
+}
+@media screen and (max-width: 500px){
+    .carousel-caption{
+        font-size: 10px;
+    }
+}
+.navbar{
+    width:100%;
+}
+.navbar-nav li:hover > ul.dropdown-menu {
+    display: block;
+}
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top:-6px;
+}
+.dropdown-menu > li > a:hover:after {
+    text-decoration: underline;
+    transform: rotate(-90deg);
+} 
+.divhover:hover{
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}
+.divhover:hover{
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link:hover {
+    color: grey;
+    background-color: black;
+}
+
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link:hover {
+    background-color: grey;
+    border-radius: 7%;
+    color: black;
+}

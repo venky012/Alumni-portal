@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Contact Form{% endblock %}
+    {% block content %}
+    {% load static %}
+    
+	<div class="container division" style="background-color:white;">
+		<div class="col-lg-6">
+			<form class="form">
+				<br>
+				<br>
+				First Name:<br>
+	  			<input class="fn" type="text" placeholder="First Name"><br>
+	  			Last Name:<br>
+	  			<input class="ln" type="text" placeholder ="Last Name"><br>
+	  			Email:<br>
+	  			<input class="mail" type="Email" placeholder ="Email"><br>
+				Subject:<br>
+				<input class="sub" type="text" placeholder="subject"><br>
+				<br>
+				<input type="text" class="textblock" placeholder="Message"><br>
+				<p><b>Please indicate your query clearly in the subject line for faster processing of your queries. Please refer to our website before forwarding your queries to us.</b></p>
+			</form>
+		</div>
+	</div>
+{% endblock %}
