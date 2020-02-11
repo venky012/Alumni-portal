@@ -64,7 +64,7 @@ protobuf==3.11.2
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.19
-pycryptodome==3.4.3
+pycryptodome==3.6.6
 PyJWT==1.7.1
 pylab==0.0.2
 pyparsing==2.4.6
