@@ -43,6 +43,7 @@ idna==2.8
 itsdangerous==1.1.0
 Jinja2==2.10.3
 jws==0.1.3
+linkedin-api==1.1.0
 lxml==4.4.2
 MarkupSafe==1.1.1
 misaka==2.1.1
@@ -57,11 +58,13 @@ oauthlib==3.1.0
 packaging==20.0
 parsedatetime==2.5
 Pillow==6.2.1
+pout==0.8.13
+pprint==0.1
 protobuf==3.11.2
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.19
-pycryptodome==3.6.6
+pycryptodome==3.4.3
 PyJWT==1.7.1
 pylab==0.0.2
 pyparsing==2.4.6
@@ -75,7 +78,7 @@ pyusb==1.0.2
 PyVirtualDisplay==0.2.5
 PyVISA==1.10.1
 PyVISA-py==0.3.1
-requests==2.20.0
+requests==2.11.1
 requests-oauthlib==1.3.0
 requests-toolbelt==0.7.0
 rsa==4.0
@@ -97,4 +100,5 @@ websockets==8.1
 Werkzeug==0.16.0
 whitenoise==5.0.1
 xvfbwrapper==0.2.9
+yapf==0.29.0
 yarl==1.4.2
