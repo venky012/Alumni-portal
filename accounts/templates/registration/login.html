@@ -1,17 +1,27 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block title %}Log-in{% endblock %}
 {% block content %}
 
+<div class="style-custom container jumbotron">
    {% if form.errors %}Your username and password didn't match. Please try again.{% endif %}
    <form action="{% url 'login' %}" method="post" class="form-signin">
       {% csrf_token %}
-      {{ form.as_p }}     
+      {{ form|crispy }}     
 
       <input type="hidden" name="next" value="{{ next }}" />     
-      <button class="btn btn-block" type="submit" value="login">Login</button> 
+      <button class="btn btn-primary" type="submit" value="login">Login</button> 
    </form>
-   <br>
-   <a href="{% url 'password_reset' %}">Forgot Password</a>
-   <br>
-   <a href="{% url 'register' %}">Sign Up</a>
+   <span> <a href="{% url 'password_reset' %}">Forgot Password</a> &nbsp;&nbsp;&nbsp;<a href="{% url 'register' %}">Sign Up</a></span>
+</div>
+<style>
+.style-custom{
+   margin-top:3%;padding:3%;width:30%;
+}
+@media screen and (max-width:800px){
+   .style-custom{
+      width:80%;
+   }
+}
+</style>
 {% endblock %}

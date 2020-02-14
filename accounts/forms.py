@@ -6,10 +6,10 @@ class RegistrationForm(forms.ModelForm):
     email = forms.EmailField(max_length=200, help_text='Required')
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
-
+    # linkedin_id = forms.CharField(label='Enter your linkedin profile url',help_text='Required')
     class Meta:
         model = User
-        fields = ('username','email','first_name',) 
+        fields = ('username','email','first_name') 
 
     def clean_password2(self):
         cd = self.cleaned_data

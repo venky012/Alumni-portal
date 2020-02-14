@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 from django.views.generic import TemplateView
 from .forms import RegistrationForm
 from .tokens import account_activation_token
-import re
+import re,time
 
 EMAIL_REGEX = re.compile(r'([A-Za-z])\w+.([a-z0-9])\w+@iiits.in')
 
@@ -46,7 +46,8 @@ def accounts_register(request):
                 })
                 # send activation link to the user
                 user.email_user(subject=subject, message=message)
-                return HttpResponse('registered succesfully and activateion sent')   
+                return render(request,'accounts/account_activation_sent.html')
+                # return HttpResponse('registered succesfully and activateion sent')   
     else:
         registerForm = RegistrationForm()
     return render(request, 'accounts/register.html',{'form': registerForm})
@@ -64,7 +65,7 @@ def activate(request, uidb64, token):
         login(request, user)
         return redirect('login')
     else:
+        user.delete()
         return render(request, 'accounts/account_activation_invalid.html')
-
 
 

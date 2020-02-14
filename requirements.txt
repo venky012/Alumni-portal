@@ -64,7 +64,7 @@ protobuf==3.11.2
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.19
-pycryptodome==3.4.3
+pycryptodome==3.6.6
 PyJWT==1.7.1
 pylab==0.0.2
 pyparsing==2.4.6
@@ -78,7 +78,7 @@ pyusb==1.0.2
 PyVirtualDisplay==0.2.5
 PyVISA==1.10.1
 PyVISA-py==0.3.1
-requests==2.11.1
+requests==2.20.0
 requests-oauthlib==1.3.0
 requests-toolbelt==0.7.0
 rsa==4.0

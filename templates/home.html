@@ -53,39 +53,104 @@
           <h2>EVENTS</h2>
         </div>
       </div>
-      <iframe class="jumbotron divhover container-sm" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FIIIT.SriCity%2F&tabs=timeline&width=350&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="350" height="600" style="text-align: center;background-color: transparent;margin-right:0px;border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
       <div class="jumbotron divhover container" data-aos="fade-up" id="recent_events" style="padding:20px;background-color:transparent;border: 1px solid grey;">
         <h2>RECENT EVENTS</h2>
         <div class="row" style="padding:40px;">
-          <div class="pic col-sm-3">
-              <img src="{% static '/img/gallery/b5h4u1kymax11.png' %}" style="height: 185px">
-              <span class="imgtext">
-                <h3 class="image-text">THIS IS A TITLE</h3>
-                <p class="image-text">and this is a description</p>
-              </span>
+          <div class="pic">
+              <img class="image" src="{% static '/img/gallery/b5h4u1kymax11.png' %}" style="height: 185px">
+              <div class="textover">
+                <div class="image-text">
+                  <p>THIS IS A TITLE</p>
+                </div>
+              </div>
           </div>
-          <div class="pic col-sm-3">
-              <img src="{% static '/img/gallery/b5h4u1kymax11.png' %}" style="height: 185px">
-              <span class="imgtext">
-                <h3 class="image-text">THIS IS A TITLE</h3>
-                <p class="image-text">and this is a description</p>
-              </span>
+          <div class="pic">
+              <img class="image" src="{% static '/img/gallery/b5h4u1kymax11.png' %}" style="height: 185px">
+              <div class="textover">
+                <div class="image-text">
+                  <p>THIS IS A TITLE</p>
+                </div>
+              </div>
           </div>
-          <div class="pic col-sm-3">
-              <img src="{% static '/img/gallery/b5h4u1kymax11.png' %}" style="height: 185px">
-              <span class="imgtext">
-                <h3 class="image-text">THIS IS A TITLE</h3>
-                <p class="image-text">and this is a description</p>
-              </span>
+          <div class="pic">
+              <img class="image" src="{% static '/img/gallery/b5h4u1kymax11.png' %}" style="height: 185px">
+              <div class="textover">
+                <div class="image-text">
+                  <p>THIS IS A TITLE</p>
+                </div>
+              </div>
           </div>
-          <div class="pic col-sm-3">
-              <img src="{% static '/img/gallery/b5h4u1kymax11.png' %}" style="height: 185px">
-              <span class="imgtext">
-                <h3 class="image-text">THIS IS A TITLE</h3>
-                <p class="image-text">and this is a description</p>
-              </span>
+          <div class="pic">
+              <img class="image" src="{% static '/img/gallery/b5h4u1kymax11.png' %}" style="height: 185px">
+              <div class="textover">
+                <div class="image-text">
+                  <p>THIS IS A TITLE</p>
+                </div>
+              </div>
           </div>
         </div>
       </div>
+      <iframe class="jumbotron divhover container-sm" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FIIIT.SriCity%2F&tabs=timeline&width=350&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="350" height="600" style="text-align: center;background-color: transparent;margin-right:0px;border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+<style>
+ .pic{
+  position: relative;
+  width: 24%;
+  padding:1%;
+ }
+ 
+ .image{
+  display: block;
+  width: 100%;
+  height: auto;
+ }
 
+ .textover{
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  left: 7px;
+  right: 0;
+  height: 91.5%;
+  width: 92%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: black;
+}
+
+ .pic:hover .textover {
+  opacity: 0.8;
+}
+
+ .image-text{
+  color: white;
+  font-size: 1em;
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+ }
+@media screen and (max-width:900px){
+  .textover{
+    width: 95%;
+    height: 99%;
+    opacity: 0.8;
+    top: 2px;
+    left: 2px;
+  }
+  .image{
+    width:100%;
+  }  
+  .pic{
+    opacity:0.8;
+    width:49%;
+  }
+  .image-text{
+    left:60%;
+  }
+}
+
+</style>
 {% endblock %}
