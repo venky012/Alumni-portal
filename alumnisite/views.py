@@ -6,9 +6,6 @@ from django.views.generic import TemplateView
 class HomePage(TemplateView):
     template_name = 'home.html'
 
-class ContactFormPage(TemplateView):
-    template_name = 'contactform.html'
-
 class ContactPage(TemplateView):
     template_name = 'contact.html'
 

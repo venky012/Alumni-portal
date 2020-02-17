@@ -38,7 +38,7 @@ EMAIL_HOST_PASSWORD='ase@12345'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
 
-DEFAULT_FROM_EMAIL='MARVeL Team'
+DEFAULT_FROM_EMAIL='MARVM Team'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'alumnisite',
     'accounts',
+    'contactform',
     'crispy_forms',
 ]
 
