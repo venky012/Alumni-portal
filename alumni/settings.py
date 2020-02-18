@@ -30,6 +30,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# for recaptcha
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LeO1NkUAAAAAPrW7jvUNBvTTeXTGW9703q15j9c'
+
 # for gmail
 
 EMAIL_HOST=''

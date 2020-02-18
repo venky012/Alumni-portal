@@ -7,13 +7,16 @@
    {% if form.errors %}Your username and password didn't match. Please try again.{% endif %}
    <form action="{% url 'login' %}" method="post" class="form-signin">
       {% csrf_token %}
-      {{ form|crispy }}     
-
-      <input type="hidden" name="next" value="{{ next }}" />     
+      <!---{{ form|crispy }}     
+--->
+      <input type="text" name='username'>
+      <input type="password" name="password">
+      <input type="hidden" name="next" value="{{ next }}" />        
       <button class="btn btn-primary" type="submit" value="login">Login</button> 
    </form>
    <span> <a href="{% url 'password_reset' %}">Forgot Password</a> &nbsp;&nbsp;&nbsp;<a href="{% url 'register' %}">Sign Up</a></span>
 </div>
+
 <style>
 .style-custom{
    margin-top:3%;padding:3%;width:30%;

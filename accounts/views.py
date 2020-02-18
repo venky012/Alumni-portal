@@ -12,6 +12,8 @@ from django.views.generic import TemplateView
 from .forms import RegistrationForm
 from .tokens import account_activation_token
 import re,time
+from django.contrib import messages
+import requests
 
 EMAIL_REGEX = re.compile(r'([A-Za-z])\w+.([a-z0-9])\w+@iiits.in')
 
@@ -27,27 +29,43 @@ def accounts_register(request):
         registerForm = RegistrationForm(request.POST)
         if registerForm.is_valid():
             if EMAIL_REGEX.match(request.POST['email']):
-                user = registerForm.save(commit=False)
-                user.email = registerForm.cleaned_data['email']
-                user.set_password(registerForm.cleaned_data['password'])
-                user.is_active = False
-                # Save the User object
-                user.save()
+                
+                ''' code for recaptcha verification '''
+                recaptcha_response = request.POST.get('g-recaptcha-response')
+                data = {
+                    'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                    'response': recaptcha_response
+                }
+                r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+                result = r.json()
+                ''' End reCAPTCHA validation '''
 
-                # get current site
-                current_site = get_current_site(request)
-                subject = 'Activate your Account'
-                # create Message
-                message = render_to_string('accounts/account_activation_email.html', {
-                    'user': user,
-                    'domain': current_site.domain,
-                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                    'token': account_activation_token.make_token(user),
-                })
-                # send activation link to the user
-                user.email_user(subject=subject, message=message)
-                return render(request,'accounts/account_activation_sent.html')
-                # return HttpResponse('registered succesfully and activateion sent')   
+                if result['success']:
+                    user = registerForm.save(commit=False)
+                    user.email = registerForm.cleaned_data['email']
+                    user.set_password(registerForm.cleaned_data['password'])
+                    user.is_active = False
+                    # Save the User object
+                    user.save()
+
+                    # get current site
+                    current_site = get_current_site(request)
+                    subject = 'Activate your Account'
+                    # create Message
+                    message = render_to_string('accounts/account_activation_email.html', {
+                        'user': user,
+                        'domain': current_site.domain,
+                        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                        'token': account_activation_token.make_token(user),
+                    })
+                    # send activation link to the user
+                    user.email_user(subject=subject, message=message)
+                    return render(request,'accounts/account_activation_sent.html')
+                    # return HttpResponse('registered succesfully and activateion sent')
+                else:
+                    messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+                
+                   
     else:
         registerForm = RegistrationForm()
     return render(request, 'accounts/register.html',{'form': registerForm})
@@ -65,7 +83,6 @@ def activate(request, uidb64, token):
         login(request, user)
         return redirect('login')
     else:
-        user.delete()
         return render(request, 'accounts/account_activation_invalid.html')
 
 
