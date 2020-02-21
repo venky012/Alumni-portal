@@ -53,42 +53,109 @@
           <h2>EVENTS</h2>
         </div>
       </div>
-      <div class="jumbotron divhover container" data-aos="fade-up" id="recent_events" style="padding:20px;background-color:transparent;border: 1px solid grey;">
+      <div class="divhover container-fluid" data-aos="fade-up" id="recent_events" style="padding:20px;background-color:transparent;border: 0px solid grey;">
         <h2>RECENT EVENTS</h2>
-        <div class="row" style="padding:40px;">
-          <div class="pic">
-              <img class="image" src="{% static '/img/gallery/b5h4u1kymax11.png' %}" style="height: 185px">
-              <div class="textover">
-                <div class="image-text">
-                  <p>THIS IS A TITLE</p>
-                </div>
-              </div>
-          </div>
-          <div class="pic">
-              <img class="image" src="{% static '/img/gallery/b5h4u1kymax11.png' %}" style="height: 185px">
-              <div class="textover">
-                <div class="image-text">
-                  <p>THIS IS A TITLE</p>
-                </div>
-              </div>
-          </div>
-          <div class="pic">
-              <img class="image" src="{% static '/img/gallery/b5h4u1kymax11.png' %}" style="height: 185px">
-              <div class="textover">
-                <div class="image-text">
-                  <p>THIS IS A TITLE</p>
-                </div>
-              </div>
-          </div>
-          <div class="pic">
-              <img class="image" src="{% static '/img/gallery/b5h4u1kymax11.png' %}" style="height: 185px">
-              <div class="textover">
-                <div class="image-text">
-                  <p>THIS IS A TITLE</p>
-                </div>
-              </div>
-          </div>
-        </div>
+            <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/hover_css/bootstrap.min.css' %}">
+
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="{% static 'css/hover_css/swiper.min.css' %}">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="{% static 'css/hover_css/style.css' %}">
+        <div class="next-event-slider-wrap">
+            <div class="swiper-container next-event-slider" style="margin-top:10px;">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="next-event-content">
+                            <figure class="featured-image">
+                                <img src="{% static 'img/hover_images/next-event-1.jpg' %}" alt="">
+
+                                <a href="#" class="entry-content flex flex-column justify-content-center align-items-center">
+                                    <h3>Welcoming Party 2018</h3>
+                                    <p>Green Palace, 22 Street, 23-28, Los Angeles California</p>
+                                </a>
+                            </figure><!-- featured-image -->
+                        </div><!-- next-event-content -->
+                    </div><!-- swiper-slide" -->
+
+                    <div class="swiper-slide">
+                        <div class="next-event-content">
+                            <figure class="featured-image">
+                                <img src="{% static 'img/hover_images/next-event-2.jpg' %}" alt="">
+
+                                <a href="#" class="entry-content flex flex-column justify-content-center align-items-center">
+                                    <h3>Welcoming Party 2018</h3>
+                                    <p>Green Palace, 22 Street, 23-28, Los Angeles California</p>
+                                </a>
+                            </figure><!-- featured-image -->
+                        </div><!-- next-event-content -->
+                    </div><!-- swiper-slide" -->
+
+                    <div class="swiper-slide">
+                        <div class="next-event-content">
+                            <figure class="featured-image">
+                                <img src="{% static 'img/hover_images/next-event-3.jpg' %}" alt="">
+
+                                <a href="#" class="entry-content flex flex-column justify-content-center align-items-center">
+                                    <h3>Welcoming Party 2018</h3>
+                                    <p>Green Palace, 22 Street, 23-28, Los Angeles California</p>
+                                </a>
+                            </figure><!-- featured-image -->
+                        </div><!-- next-event-content -->
+                    </div><!-- swiper-slide" -->
+
+                    <div class="swiper-slide">
+                        <div class="next-event-content">
+                            <figure class="featured-image">
+                                <img src="{% static 'img/hover_images/next-event-4.jpg' %}" alt="">
+
+                                <a href="#" class="entry-content flex flex-column justify-content-center align-items-center">
+                                    <h3>Welcoming Party 2018</h3>
+                                    <p>Green Palace, 22 Street, 23-28, Los Angeles California</p>
+                                </a>
+                            </figure><!-- featured-image -->
+                        </div><!-- next-event-content -->
+                    </div><!-- swiper-slide" -->
+
+                    <div class="swiper-slide">
+                        <div class="next-event-content">
+                            <figure class="featured-image">
+                                <img src="{% static 'img/hover_images/next-event-5.jpg' %}" alt="">
+
+                                <a href="#" class="entry-content flex flex-column justify-content-center align-items-center">
+                                    <h3>Welcoming Party 2018</h3>
+                                    <p>Green Palace, 22 Street, 23-28, Los Angeles California</p>
+                                </a>
+                            </figure><!-- featured-image -->
+                        </div><!-- next-event-content -->
+                    </div><!-- swiper-slide" -->
+
+                    <div class="swiper-slide">
+                        <div class="next-event-content">
+                            <figure class="featured-image">
+                                <img src="{% static 'img/hover_images/next-event-6.jpg' %}" alt="">
+
+                                <a href="#" class="entry-content flex flex-column justify-content-center align-items-center">
+                                    <h3>Welcoming Party 2018</h3>
+                                    <p>Green Palace, 22 Street, 23-28, Los Angeles California</p>
+                                </a>
+                            </figure><!-- featured-image -->
+                        </div><!-- next-event-content -->
+                    </div><!-- swiper-slide" -->
+                </div><!-- .swiper-wrapper -->
+            </div><!-- .swiper-container -->
+
+            <div class="swiper-button-next">
+                <img src="{% static 'img/hover_images/button.png' %}" alt="">
+            </div><!-- .slider-button -->
+        </div><!-- .next-event-slider-wrap -->
+
+        <script type='text/javascript' src="{% static 'js/hover_js/jquery.js' %}"></script>
+        <script type='text/javascript' src="{% static 'js/hover_js/swiper.min.js' %}"></script>
+        <script type='text/javascript' src="{% static 'js/hover_js/jquery.countdown.min.js' %}"></script>
+        <script type='text/javascript' src="{% static 'js/hover_js/custom.js' %}"></script>
+
       </div>
       <iframe class="jumbotron divhover container-sm" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FIIIT.SriCity%2F&tabs=timeline&width=350&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="350" height="600" style="text-align: center;background-color: transparent;margin-right:0px;border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 <style>

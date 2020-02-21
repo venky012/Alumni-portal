@@ -8,6 +8,11 @@ from contactform.models import ContactForm_queries
 class HomePage(TemplateView):
     template_name = 'home.html'
 
+class EventsPage(TemplateView):
+    template_name = 'events.html'
+
+class GalleryPage(TemplateView):
+    template_name = 'gallery.html'
 
 @login_required
 def ProfilePage(request):
