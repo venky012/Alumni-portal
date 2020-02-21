@@ -42,7 +42,7 @@ urlpatterns = [
                 template_name='commons/password-reset/password_reset.html',
                 subject_template_name='commons/password-reset/password_reset_subject.txt',
                 email_template_name='commons/password-reset/password_reset_email.html',
-                success_url='/login/'
+                success_url='/password-reset/done/'
             ),
             name='password_reset'),
     path('password-reset/done/',

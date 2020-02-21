@@ -1,30 +1,104 @@
+<!DOCTYPE html>
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block title %}Log-in{% endblock %}
 {% block content %}
+<style type="text/css">
+      .content{
+         height:80vh;
+         width:100%;
+      }
+		.box{
+			width: 300px;
+			padding: 40px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			text-align: center;
+			border-radius: 20px;
+			background-color: black;
+		}
+		@media (max-width: 1209px) {
+			.content{
+				background-image: url("https://images.pexels.com/photos/839465/pexels-photo-839465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+				background-size: cover;
+				width:100%;
+				height:90vh;
+			}
+			.box{
+				padding:10px;
+            border-radius:9px;
+			}
+		}
+		@media (min-width:1209px) {
+		.content{
+				background-image: url("https://images.pexels.com/photos/839465/pexels-photo-839465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+				background-size: cover;
 
-<div class="style-custom container jumbotron">
-   {% if form.errors %}Your username and password didn't match. Please try again.{% endif %}
-   <form action="{% url 'login' %}" method="post" class="form-signin">
-      {% csrf_token %}
-      <!---{{ form|crispy }}     
---->
-      <input type="text" name='username'>
-      <input type="password" name="password">
-      <input type="hidden" name="next" value="{{ next }}" />        
-      <button class="btn btn-primary" type="submit" value="login">Login</button> 
-   </form>
-   <span> <a href="{% url 'password_reset' %}">Forgot Password</a> &nbsp;&nbsp;&nbsp;<a href="{% url 'register' %}">Sign Up</a></span>
-</div>
+			}
+			.box{
+				padding:10px;
+			}
+		}
+		.box .h3heading{
+			color: white;
+			text-transform: uppercase;
+			font-weight: 500;
+		}
+		.box input[type = "text"],.box input[type = "password"]{
+			border: 0;
+			background: none;
+			display: block;
+			margin: 20px auto;
+			text-align: center;
+			border: 2px solid #3498db;
+			padding: 14px 10px;
+			width: 200px;
+			outline: none;
+			color: white;
+			border-radius: 24px;
+			transition: 0.25s;
+		}
+		.box input[type = "text"]:focus,.box input[type = "password"]:focus{
+			width: 280px;
+			border-color: #2ecc71;
+		}
+		.box input[type = "submit"]{
+			border: 0;
+			background: none;
+			display: block;
+			margin: 20px auto;
+			text-align: center;
+			border: 2px solid #2ecc71;
+			padding: 14px 40px;
+			width: 130px;
+			outline: none;
+			color: white;
+			border-radius: 24px;
+			transition: 0.25s;
+			cursor: pointer;
+		}
+		.box input[type = "submit"]:hover{
+			background: #2ecc71;
 
-<style>
-.style-custom{
-   margin-top:3%;padding:3%;width:30%;
-}
-@media screen and (max-width:800px){
-   .style-custom{
-      width:80%;
-   }
-}
-</style>
+		}
+		
+		.links:hover{
+			color:#3498db;
+			text-decoration: none;
+		}
+
+	</style>
+   <div class="content">
+      <form class="box" action="{% url 'login' %}" method="post">
+         <h3 class="h3heading">Login</h3>
+         {% csrf_token %}
+         <input type="text" name="username" placeholder="username">
+         <input type="password" name="password" placeholder="Password">
+         <input type="submit" name="" placeholder="Login">
+         <span> <a class="links" href="{% url 'password_reset' %}">Forgot Password??</a> &nbsp;&nbsp;&nbsp;<a class="links" href="{% url 'register' %}">Sign Up</a></span>
+      </form>
+   </div>
 {% endblock %}
+

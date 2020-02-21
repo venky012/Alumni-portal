@@ -17,13 +17,6 @@ import requests
 
 EMAIL_REGEX = re.compile(r'([A-Za-z])\w+.([a-z0-9])\w+@iiits.in')
 
-
-# def validateEmail(email):
-#     if len(email) > 13 :
-#         if re.match('\b([A-Za-z])\w+.([a-z0-9])\w+@iiits.in\b', email) != None:
-#             return 1
-#     return 0
-
 def accounts_register(request):
     if request.method == 'POST':
         registerForm = RegistrationForm(request.POST)
@@ -60,10 +53,10 @@ def accounts_register(request):
                     })
                     # send activation link to the user
                     user.email_user(subject=subject, message=message)
-                    return render(request,'accounts/account_activation_sent.html')
-                    # return HttpResponse('registered succesfully and activateion sent')
+                    messages.success(request, ' Check your email for activation link')
+                    registerForm = RegistrationForm()
                 else:
-                    messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+                    registerForm.add_error(None, "invalid captcha")
                 
                    
     else:
@@ -84,5 +77,4 @@ def activate(request, uidb64, token):
         return redirect('login')
     else:
         return render(request, 'accounts/account_activation_invalid.html')
-
-
+        

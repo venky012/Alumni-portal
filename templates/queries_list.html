@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+    {% block title %}Queries list{% endblock title %}
+    {% block content %}
+        {% if user.is_superuser %}
+        <h1>List of Queries</h1>
+        <div>
+            {% if queries_list %}
+            <ul>
+                {% for query in queries_list %}
+                <li id="userinfo">User info</li>
+                <ul>
+                    <li>Name : {{ query.name }}</li>
+                    <li>Email ID : {{ query.email }}</li>
+                    <li>Subject : {{ query.subject }}</li>
+                    <li>Message : {{ query.message }}</li>
+                </ul>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <h1>no queries present :) enjoy the day!!</h1>
+            {% endif %}
+        </div>
+        {% else %}
+            
+        {% endif %}
+        
+    {% endblock content %}

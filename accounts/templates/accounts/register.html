@@ -10,13 +10,6 @@
         {{ form|crispy }} 
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <div class="g-recaptcha" data-sitekey="6LeO1NkUAAAAABSyS6RPCK1NpaKHncWb-VSuQSG8"></div>  
-        {% if form.errors %}
-            {% for field in form %}
-                {% for error in field.errors %}
-                    <p> {{ error }} </p>
-                {% endfor %}
-            {% endfor %}
-        {% endif %}
         <button type="submit" class="btn btn-primary">Register Now</button>
     </form>
 </div>

@@ -7,12 +7,12 @@
     <title>{% block title %}Alumni Portal{% endblock title %}</title>
     <!-- Attach the style sheets here -->
     <link rel="shortcut icon" href="{% static '/img/iiits/iiits_logo.png' %}" />
-    <link rel="stylesheet" href="{% static '/css/home.css' %}" />
+   <!--- <link rel="stylesheet" href="{% static '/css/home.css' %}" />
     <link rel="stylesheet" href="{% static '/css/footer.css' %}" />
     <link rel="stylesheet" href="{% static '/css/aos_effect.css' %}" />
     <link rel="stylesheet" href="{% static '/css/contactform.css' %}" />
     <link rel="stylesheet" href="{% static '/css/contact.css' %}" />
-    
+    --->
     
 
     <!-- attach the webstyle sheets ---->
@@ -30,86 +30,191 @@
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <style>
+		 
+		body {
+			margin: 0;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		
+		/* navbar css */
+		.navbar{
+			width:100%;
+		}
+		.navbar{
+			width:100%;
+		}
+		.dropdown-submenu {
+			position:relative;
+		}
+		.dropdown-submenu>.dropdown-menu {
+			top: 0;
+			left: 100%;
+			margin-top:-6px;
+		}
+		.dropdown-menu > li > a:hover:after {
+			text-decoration: underline;
+			transform: rotate(-90deg);
+		}
+      	@media (min-width: 768px) {
+			.navbar-brand.abs
+			{
+				position: absolute;
+				width: 100%;
+				left: 0;
+				text-align: center;
+			}
+     	} 
+		 /* change the color of active or hovered links */
+		.navbar-custom .nav-item.active .nav-link,
+		.navbar-custom .nav-item:hover .nav-link:hover {
+        color:#C46210;
+		}
+
+		.navbar-custom .nav-item.active .nav-link,
+		.navbar-custom .nav-item:hover .nav-link:hover {
+        border-bottom: 3px solid grey;
+		}
+		/* carousel css */
+		.carousel-inner img {
+			width: 100%;
+			height: 100vh;
+		}
+		@media screen and (max-width: 500px){
+			.carousel-caption{
+				font-size: 10px;
+			}
+		}
+    .carousel-item{
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
+    .carousel-caption{
+      top:50%;
+      transform:translateY(-50%);
+      bottom:initial;
+    }
+  
+	  /* footer css */
+		footer {
+			background: #222;
+			color: #aaa;
+			padding-top: 10px;
+		}	
+  
+		footer a {
+			color: #aaa;
+		}
+		
+		footer a:hover {
+			color: #fff;
+		}
+		
+		footer h3 {
+		color: #0894d1;
+			letter-spacing: 1px;
+			margin: 30px 0 20px;
+		}
+		
+		footer .three-column {
+		overflow: hidden;
+		}
+		
+		footer .three-column li{
+		width: 33.3333%;
+			float: left;
+			padding: 5px 0;
+		}
+		
+		footer .socila-list {
+			overflow: hidden;
+			margin: 20px 0 10px;
+		}
+		
+		footer .socila-list li {
+			float: left;
+			margin-right: 3px;
+			opacity: 0.7;
+			overflow: hidden;
+			border-radius: 50%;
+			transition: all 0.3s ease-in-out;
+		}
+		
+		footer .socila-list li:hover {
+			opacity: 1;
+		}
+		
+		footer .img-thumbnail {
+			background: rgba(0, 0, 0, 0.2);
+			border: 1px solid #444;
+			margin-bottom: 5px;
+		}
+		
+		footer .copyright {
+			padding: 15px 0;
+			background: #333;
+			margin-top: 20px;
+			font-size: 15px;
+		}
+		
+		footer .copyright span {
+			color: #0894d1;
+		}
+  
+
+
+    </style>
 </head>
 <body>
-    <div style="width:100%">
-        <div class="img-bar">
-            <img src="{% static '/img/iiits/logo12-new-1.png' %}" class="header-logo" alt="" srcset="{% static '/img/iiits/logo12-new-1.png' %} 799w, {% static '/img/iiits/logo12-new-1-300x35.png' %} 300w, {% static '/img/iiits/logo12-new-1-768x88.png' %} 768w" sizes="(max-width: 799px) 75vw, 799px">
-        </div>            
-        <div class="loginsignup">
-            {% if user.is_authenticated %}
-              Hi, <a href="{% url 'change_password' %}">{{ user.username }}!</a><a href="{% url 'logout' %}">logout</a>
-            {% else %}
-              <a href="{% url 'register' %}">Register</a><a href="{% url 'login' %}">login</a>
-            {% endif %}
-        </div>
-    </div>
-    <!-- navbar -->
-      <nav id="func_navbar" class="navbar navbar-custom navbar-expand-md navbar-dark bg-dark sticky-top" style="position: sticky;">
+      <nav id="func_navbar" class="navbar-custom navbar navbar-expand-md navbar-dark bg-dark sticky-top" style="position: sticky;">
+        <a id="func_logo" class="nav-brand abs" href="{% url 'home' %}"><img src="{% static '/img/iiits/iiits_logo.png' %}" style="width:47px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'home' %}#">News Feed</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'home' %}#recent_events">Recent Events</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Events</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Contact us </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="{% url 'contact' %}" style="color:black">How to reach?</a></li>
+                  <li><a class="dropdown-item" href="{% url 'contactform' %}" style="color:black">Contact Form</a></li>
+                </ul>
+              </li>  
+            </ul>
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a id="func_logo" class="nav-link" href="{% url 'home' %}"><img src="{% static '/img/iiits/iiits_logo.png' %}" style="width:11%;"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">News Feed</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#recent_events">Recent Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Events</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Contact us </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="nav-link dropdown-item" href="{% url 'contact' %}" style="color:black">How to reach?</a></li>
-                    <li><a class="nav-link dropdown-item" href="{% url 'contactform' %}" style="color:black">Contact Form</a></li>
-                  </ul>
-                </li>  
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Google</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Submenu</a></li>
-                                <li><a class="dropdown-item" href="#">Submenu0</a></li>
-                                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Submenu 1</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Subsubmenu1</a></li>
-                                        <li><a class="dropdown-item" href="#">Subsubmenu1</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Submenu 2</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Subsubmenu2</a></li>
-                                        <li><a class="dropdown-item" href="#">Subsubmenu2</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li> -->
+              {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'profile_page' %}">Hi, {{ user.username }}!</a></li><li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">logout</a></li>
+              {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li><li class="nav-item"><a class="nav-link" href="{% url 'login' %}">login</a></li>
+              {% endif %}
             </ul>
         </div>
       </nav>
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+            <div {% if message.tags %} class="alert alert-{{ message.tags }} mx-auto alert-dismissible" {% endif %} style="width: 40%;margin-top: 1%;">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {%if message.tags %} 
+                <strong>{{ message.tags }} !!</strong> {{ message }}
+              {% endif %}
+              </div>
+          {% endfor %}
+      </ul>
+      {% endif %}
 
         {% block content %}
 
