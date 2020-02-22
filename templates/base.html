@@ -173,7 +173,7 @@
 </head>
 
 <body>
-    <nav id="func_navbar" class="navbar-custom navbar navbar-expand-md navbar-dark bg-dark sticky-top" style="position: sticky;">
+    <nav id="func_navbar" class="navbar-custom navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="position: sticky;">
         <a id="func_logo" class="nav-brand abs" href="{% url 'home' %}"><img src="{% static '/img/iiits/iiits_logo.png' %}" style="width:47px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -181,7 +181,10 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}#">News Feed</a>
+                    <a class="nav-link" href="{% url 'home' %}#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}#news_feed">News Feed</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'home' %}#recent_events">Recent Events</a>

@@ -14,6 +14,9 @@ class EventsPage(TemplateView):
 class GalleryPage(TemplateView):
     template_name='gallery.html'
 
+class TimelinePage(TemplateView):
+    template_name='timeline.html'
+    
 @login_required
 def ProfilePage(request):
     return render(request,'profile_page.html')
