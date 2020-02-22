@@ -17,7 +17,7 @@ configparser==4.0.2
 crayons==0.3.0
 decorator==4.4.1
 defusedxml==0.6.0
-discord.py==1.3.0a0
+discord.py==1.3.00
 Django==2.2.10
 django-allauth==0.41.0
 django-bootstrap3==12.0.3
@@ -46,10 +46,11 @@ jws==0.1.3
 linkedin-api==1.1.0
 lxml==4.4.2
 MarkupSafe==1.1.1
+matplotlib==3.1.0
 misaka==2.1.1
-mkl-fft==1.0.15
-mkl-random==1.1.0
-mkl-service==2.3.0
+# mkl-fft==1.0.15   ---> Please install this using conda install -c conda-forge mkl_fft
+# mkl-random==1.1.0  --->Please install this using conda install -c conda-forge mkl_random
+#mkl-service==2.3.0    --->Please install this using conda install -c anaconda mkl-service
 multidict==4.7.4
 networkx==2.4
 numpy==1.17.4
@@ -66,12 +67,11 @@ pyasn1-modules==0.2.8
 pycparser==2.19
 pycryptodome==3.6.6
 PyJWT==1.7.1
-pylab==0.0.2
 pyparsing==2.4.6
 Pyrebase==3.0.27
 python-dateutil==2.8.1
 python-jwt==2.0.1
-python-linkedin==4.2
+python-linkedin-v2
 python3-openid==3.1.0
 pytz==2019.3
 pyusb==1.0.2
