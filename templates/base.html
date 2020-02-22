@@ -1,322 +1,327 @@
-<!DOCTYPE html>
-{% load static %}
+<!DOCTYPE html> {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Alumni Portal{% endblock title %}</title>
     <!-- Attach the style sheets here -->
     <link rel="shortcut icon" href="{% static '/img/iiits/iiits_logo.png' %}" />
-   <!--- <link rel="stylesheet" href="{% static '/css/home.css' %}" />
+    <!--- <link rel="stylesheet" href="{% static '/css/home.css' %}" />
     <link rel="stylesheet" href="{% static '/css/footer.css' %}" />
     <link rel="stylesheet" href="{% static '/css/aos_effect.css' %}" />
     <link rel="stylesheet" href="{% static '/css/contactform.css' %}" />
     <link rel="stylesheet" href="{% static '/css/contact.css' %}" />
     --->
-    
+
 
     <!-- attach the webstyle sheets ---->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-   
+
     <!-- including aos library -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css">
-   
+
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <style>
-		 
-		body {
-			margin: 0;
-			font-family: Arial, Helvetica, sans-serif;
-		}
-		
-		/* navbar css */
-		.navbar{
-			width:100%;
-		}
-		.navbar{
-			width:100%;
-		}
-		.dropdown-submenu {
-			position:relative;
-		}
-		.dropdown-submenu>.dropdown-menu {
-			top: 0;
-			left: 100%;
-			margin-top:-6px;
-		}
-		.dropdown-menu > li > a:hover:after {
-			text-decoration: underline;
-			transform: rotate(-90deg);
-		}
-      	@media (min-width: 768px) {
-			.navbar-brand.abs
-			{
-				position: absolute;
-				width: 100%;
-				left: 0;
-				text-align: center;
-			}
-     	} 
-		 /* change the color of active or hovered links */
-		.navbar-custom .nav-item.active .nav-link,
-		.navbar-custom .nav-item:hover .nav-link:hover {
-        color:#C46210;
-		}
-
-		.navbar-custom .nav-item.active .nav-link,
-		.navbar-custom .nav-item:hover .nav-link:hover {
-        border-bottom: 3px solid grey;
-		}
-		/* carousel css */
-		.carousel-inner img {
-			width: 100%;
-			height: 100vh;
-		}
-		@media screen and (max-width: 500px){
-			.carousel-caption{
-				font-size: 10px;
-			}
-		}
-    .carousel-item{
-      -webkit-transform-style: preserve-3d;
-      -moz-transform-style: preserve-3d;
-      transform-style: preserve-3d;
-    }
-    .carousel-caption{
-      top:50%;
-      transform:translateY(-50%);
-      bottom:initial;
-    }
-  
-	  /* footer css */
-		footer {
-			background: #222;
-			color: #aaa;
-			padding-top: 10px;
-		}	
-  
-		footer a {
-			color: #aaa;
-		}
-		
-		footer a:hover {
-			color: #fff;
-		}
-		
-		footer h3 {
-		color: #0894d1;
-			letter-spacing: 1px;
-			margin: 30px 0 20px;
-		}
-		
-		footer .three-column {
-		overflow: hidden;
-		}
-		
-		footer .three-column li{
-		width: 33.3333%;
-			float: left;
-			padding: 5px 0;
-		}
-		
-		footer .socila-list {
-			overflow: hidden;
-			margin: 20px 0 10px;
-		}
-		
-		footer .socila-list li {
-			float: left;
-			margin-right: 3px;
-			opacity: 0.7;
-			overflow: hidden;
-			border-radius: 50%;
-			transition: all 0.3s ease-in-out;
-		}
-		
-		footer .socila-list li:hover {
-			opacity: 1;
-		}
-		
-		footer .img-thumbnail {
-			background: rgba(0, 0, 0, 0.2);
-			border: 1px solid #444;
-			margin-bottom: 5px;
-		}
-		
-		footer .copyright {
-			padding: 15px 0;
-			background: #333;
-			margin-top: 20px;
-			font-size: 15px;
-		}
-		
-		footer .copyright span {
-			color: #0894d1;
-		}
-  
-
-
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /* navbar css */
+        
+        .navbar {
+            width: 100%;
+        }
+        
+        .navbar {
+            width: 100%;
+        }
+        
+        .dropdown-submenu {
+            position: relative;
+        }
+        
+        .dropdown-submenu>.dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -6px;
+        }
+        
+        .dropdown-menu>li>a:hover:after {
+            text-decoration: underline;
+            transform: rotate(-90deg);
+        }
+        
+        @media (min-width: 768px) {
+            .navbar-brand.abs {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                text-align: center;
+            }
+        }
+        /* change the color of active or hovered links */
+        
+        .navbar-custom .nav-item.active .nav-link,
+        .navbar-custom .nav-item:hover .nav-link:hover {
+            color: #C46210;
+        }
+        
+        .navbar-custom .nav-item.active .nav-link,
+        .navbar-custom .nav-item:hover .nav-link:hover {
+            border-bottom: 3px solid grey;
+        }
+        /* carousel css */
+        
+        .carousel-inner img {
+            width: 100%;
+            height: 100vh;
+        }
+        
+        @media screen and (max-width: 500px) {
+            .carousel-caption {
+                font-size: 10px;
+            }
+        }
+        
+        .carousel-item {
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        
+        .carousel-caption {
+            top: 50%;
+            transform: translateY(-50%);
+            bottom: initial;
+        }
+        /* footer css */
+        
+        footer {
+            background: #222;
+            color: #aaa;
+            padding-top: 10px;
+        }
+        
+        footer a {
+            color: #aaa;
+        }
+        
+        footer a:hover {
+            color: #fff;
+        }
+        
+        footer h3 {
+            color: #0894d1;
+            letter-spacing: 1px;
+            margin: 30px 0 20px;
+        }
+        
+        footer .three-column {
+            overflow: hidden;
+        }
+        
+        footer .three-column li {
+            width: 33.3333%;
+            float: left;
+            padding: 5px 0;
+        }
+        
+        footer .socila-list {
+            overflow: hidden;
+            margin: 20px 0 10px;
+        }
+        
+        footer .socila-list li {
+            float: left;
+            margin-right: 3px;
+            opacity: 0.7;
+            overflow: hidden;
+            border-radius: 50%;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        footer .socila-list li:hover {
+            opacity: 1;
+        }
+        
+        footer .img-thumbnail {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid #444;
+            margin-bottom: 5px;
+        }
+        
+        footer .copyright {
+            padding: 15px 0;
+            background: #333;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+        
+        footer .copyright span {
+            color: #0894d1;
+        }
     </style>
 </head>
+
 <body>
-      <nav id="func_navbar" class="navbar-custom navbar navbar-expand-md navbar-dark bg-dark sticky-top" style="position: sticky;">
+    <nav id="func_navbar" class="navbar-custom navbar navbar-expand-md navbar-dark bg-dark sticky-top" style="position: sticky;">
         <a id="func_logo" class="nav-brand abs" href="{% url 'home' %}"><img src="{% static '/img/iiits/iiits_logo.png' %}" style="width:47px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto">
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'home' %}#">News Feed</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'home' %}#recent_events">Recent Events</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'events' %}">Events</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'contactform' %}">Contact</a>
-              </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}#">News Feed</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}#recent_events">Recent Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'events' %}">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contactform' %}">Contact</a>
+                </li>
             </ul>
             <ul class="navbar-nav">
-              {% if user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'profile_page' %}">Hi, {{ user.username }}!</a></li><li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">logout</a></li>
-              {% else %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li><li class="nav-item"><a class="nav-link" href="{% url 'login' %}">login</a></li>
-              {% endif %}
+                {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'profile_page' %}">Hi, {{ user.username }}!</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">logout</a></li>
+                {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">login</a></li>
+                {% endif %}
             </ul>
         </div>
-      </nav>
-      {% if messages %}
-      <ul class="messages">
-          {% for message in messages %}
-            <div {% if message.tags %} class="alert alert-{{ message.tags }} mx-auto alert-dismissible" {% endif %} style="width: 40%;margin-top: 1%;">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              {%if message.tags %} 
-                <strong>{{ message.tags }} !!</strong> {{ message }}
-              {% endif %}
-              </div>
-          {% endfor %}
-      </ul>
-      {% endif %}
+    </nav>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div {% if message.tags %} class="alert alert-{{ message.tags }} mx-auto alert-dismissible" {% endif %} style="width: 40%;margin-top: 1%;">
+            <button type="button" class="close" data-dismiss="alert">&times;</button> {%if message.tags %}
+            <strong>{{ message.tags }} !!</strong> {{ message }} {% endif %}
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %} {% block content %} {% endblock %}
 
-        {% block content %}
-
-        {% endblock %}
-
-      <footer>  
+    <footer>
         <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-              <h3>Site Map</h3>
-              <ul class="list-unstyled three-column">
-                <li>Home</li>
-                <li>Services</li>
-                <li>About</li>
-                <li>Code</li>
-                <li>Design</li>
-                <li>Host</li>
-                <li>Contact</li>
-                <li>Company</li>
-              </ul>
-              <ul class="list-unstyled socila-list">
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-              </ul>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <h3>Site Map</h3>
+                    <ul class="list-unstyled three-column">
+                        <li>Home</li>
+                        <li>Services</li>
+                        <li>About</li>
+                        <li>Code</li>
+                        <li>Design</li>
+                        <li>Host</li>
+                        <li>Contact</li>
+                        <li>Company</li>
+                    </ul>
+                    <ul class="list-unstyled socila-list">
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3>Site Map</h3>
+                    <ul class="list-unstyled three-column">
+                        <li>Home</li>
+                        <li>Services</li>
+                        <li>About</li>
+                        <li>Code</li>
+                        <li>Design</li>
+                        <li>Host</li>
+                        <li>Contact</li>
+                        <li>Company</li>
+                    </ul>
+                    <ul class="list-unstyled socila-list">
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3>Site Map</h3>
+                    <ul class="list-unstyled three-column">
+                        <li>Home</li>
+                        <li>Services</li>
+                        <li>About</li>
+                        <li>Code</li>
+                        <li>Design</li>
+                        <li>Host</li>
+                        <li>Contact</li>
+                        <li>Company</li>
+                    </ul>
+                    <ul class="list-unstyled socila-list">
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                        <li><img src="http://placehold.it/48x48" alt="" /></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-              <h3>Site Map</h3>
-              <ul class="list-unstyled three-column">
-                <li>Home</li>
-                <li>Services</li>
-                <li>About</li>
-                <li>Code</li>
-                <li>Design</li>
-                <li>Host</li>
-                <li>Contact</li>
-                <li>Company</li>
-              </ul>
-              <ul class="list-unstyled socila-list">
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-              </ul>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <h3>Site Map</h3>
-              <ul class="list-unstyled three-column">
-                <li>Home</li>
-                <li>Services</li>
-                <li>About</li>
-                <li>Code</li>
-                <li>Design</li>
-                <li>Host</li>
-                <li>Contact</li>
-                <li>Company</li>
-              </ul>
-              <ul class="list-unstyled socila-list">
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-                <li><img src="http://placehold.it/48x48" alt="" /></li>
-              </ul>
-            </div>
-          </div>
         </div>
         <div class="copyright text-center">
-          Copyright &copy; 2020 <span>MARVM</span>
+            Copyright &copy; 2020 <span>MARVM</span>
         </div>
-      </footer>
+    </footer>
     <!-- Attach the scripts here -->
     <script>
-      window.onscroll = function() {scrollFunction()};
-  
-      function scrollFunction() {
-        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-          document.getElementById("func_navbar").style.padding = "2px 2px";
-          document.getElementById("func_logo").style.fontSize = "5px";
-        } else {
-          document.getElementById("func_navbar").style.padding = "10px 10px";
-          document.getElementById("func_logo").style.fontSize = "5px";
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                document.getElementById("func_navbar").style.padding = "2px 2px";
+                document.getElementById("func_logo").style.fontSize = "5px";
+            } else {
+                document.getElementById("func_navbar").style.padding = "10px 10px";
+                document.getElementById("func_logo").style.fontSize = "5px";
+            }
         }
-      }
     </script>
     <script>
         function myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "topnav";
-        }
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
         }
     </script>
     <script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
     <script>
-      AOS.init({
-        duration: 1300,
-      })
+        AOS.init({
+            duration: 1300,
+        })
     </script>
 </body>
+
 </html>
