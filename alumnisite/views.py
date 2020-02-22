@@ -12,7 +12,7 @@ class EventsPage(TemplateView):
     template_name = 'events.html'
 
 class GalleryPage(TemplateView):
-    template_name = 'gallery.html'
+    template_name='gallery.html'
 
 @login_required
 def ProfilePage(request):
