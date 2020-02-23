@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Jobs
+{% endblock title %}
+{% block content %}
+    <style>
+        .jobcard{
+            max-width: 400px;
+            border: 1px solid rgba(0,0,0,.125);
+            border-radius: .25rem;
+        }
+        .jobtitle{
+          padding-right: 10px;
+            padding-left: 10px;
+            font-weight: bold;
+            font-size: 1.4rem;
+            font-style: oblique;
+            color: #5d5d5d;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-rendering: optimizeLegibility;
+            line-height: 1.6;
+            margin-bottom: 0.2rem;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .categories{
+          padding-right: 10px;
+            padding-left: 10px;
+            margin-bottom: 1.4rem;
+            font-size: 0.8rem;
+        }
+        .tag{
+          padding-right: 10px;
+            padding-left: 10px;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+        .deadline{
+          padding-right: 10px;
+            padding-left: 10px;
+        }
+        .bottom{
+          padding-right: 10px;
+            padding-left: 10px;
+            font-size: 0.9rem;
+          font-style: italic;
+        }
+        .job_img_cont{
+          padding: 0px;
+          margin-left: -0.1%;
+        }
+        .jobpost{
+          text-align: center;
+          margin-top: 65px;
+          max-height: 200px;
+        }
+        .jobslist{
+          padding-top: 3%;
+        }
+        .jobpostbut{
+          max-width: 180px;
+        }
+        @media screen and (max-width : 900px) {
+            .jobpost{
+              max-height: 180px;
+            }
+        }
+        @media screen and (max-width : 760px) {
+            .jobpostbut{
+              max-width: 150px;
+            }
+            .jobpost{
+              max-height: 160px;
+            }
+        }
+        @media screen and (max-width : 560px) {
+            .jobpostbut{
+              max-width: 120px;
+            }
+            .jobpost{
+              max-height: 110px;
+            }
+        }
+    </style>
+    <div class="jobpost jumbotron">
+      <h3>Jobs</h3>
+      <a href="#"><img class="jobpostbut" src="{% static 'assets/jobs_images/post-a-job.png' %}" alt=""></a>
+    </div>
+    <div class="jobslist">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-8 col-lg-4">
+              <div class="jobcard mb-4 box-shadow">         
+                    <div class="job_img_cont" >
+                        <img class="img-fluid" src="{% static 'assets/jobs_images/img1.jpg' %}" style="max-width: 100%; height:auto; padding-bottom: 3%;" alt="#">
+                    </div>    
+                    <div class="deadline">
+                        <p class="deadline text-right"><span style="font-size: 0.8rem;color:#2184ed; font-style: italic;font-weight: bold;">Apply before </span><span>10 Mar 2020</span></p>
+                    </div>   
+                          
+                    <p class="jobtitle">Digital Manager, Group</p>
+                    <p class="categories">Technology</p>
+                    
+                    <p class="tag">Pay not specified</p>
+                    
+                    <p class="tag">Experience not specified</p>
+                    
+                    <div class="bottom">
+                      <p class="company text-right"><span class="highlight">Emaar Properties</span>, <span>Dubai, United Arab Emirates</span></p>
+                    </div>
+                    <a class="hyperlink" href="#"></a>
+                  
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-8 col-lg-4">
+              <div class="jobcard mb-4 box-shadow">         
+                    <div class="job_img_cont" >
+                        <img class="img-fluid" src="{% static 'assets/jobs_images/img1.jpg' %}" style="max-width: 100%; height:auto; padding-bottom: 3%;" alt="#">
+                    </div>    
+                    <div class="deadline">
+                        <p class="deadline text-right"><span style="font-size: 0.8rem;color:#2184ed; font-style: italic;font-weight: bold;">Apply before </span><span>10 Mar 2020</span></p>
+                    </div>    
+                        
+                    <p class="jobtitle">Digital Manager, Group</p>
+                    <p class="categories">Technology</p>
+                    
+                    <p class="tag">Pay not specified</p>
+                    
+                    <p class="tag">Experience not specified</p>
+                    
+                    <div class="bottom">
+                      <p class="company text-right"><span class="highlight">Emaar Properties</span>, <span>Dubai, United Arab Emirates</span></p>
+                    </div>
+                    <a class="hyperlink" href="#"></a>
+                  
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-8 col-lg-4">
+              <div class="jobcard mb-4 box-shadow">         
+                    <div class="job_img_cont" >
+                        <img class="img-fluid" src="{% static 'assets/jobs_images/img1.jpg' %}" style="max-width: 100%; height:auto; padding-bottom: 3%;" alt="#">
+                    </div>    
+                    <div class="deadline">
+                        <p class="deadline text-right"><span style="font-size: 0.8rem;color:#2184ed; font-style: italic;font-weight: bold;">Apply before </span><span>10 Mar 2020</span></p>
+                    </div>   
+                          
+                    <p class="jobtitle">Digital Manager, Group</p>
+                    <p class="categories">Technology</p>
+                    
+                    <p class="tag">Pay not specified</p>
+                    
+                    <p class="tag">Experience not specified</p>
+                    
+                    <div class="bottom">
+                      <p class="company text-right"><span class="highlight">Emaar Properties</span>, <span>Dubai, United Arab Emirates</span></p>
+                    </div>
+                    <a class="hyperlink" href="#"></a>
+                  
+              </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock content %}
