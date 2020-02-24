@@ -16,6 +16,12 @@ class GalleryPage(TemplateView):
 
 class TimelinePage(TemplateView):
     template_name='timeline.html'
+
+class JobsPage(TemplateView):
+    template_name='jobs.html'
+
+class NewsroomPage(TemplateView):
+    template_name='newsroom.html'
     
 @login_required
 def ProfilePage(request):
