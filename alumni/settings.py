@@ -46,6 +46,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ALLOW_PARALLEL_RUNS = True
+
+CRON_CLASSES = [
+    "alumni.cron.EmailUsercountCronJob",
+]
 
 # Application definition
 
@@ -60,6 +66,7 @@ INSTALLED_APPS = [
     'accounts',
     'contactform',
     'crispy_forms',
+    'django_cron',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
