@@ -3,21 +3,56 @@
 {% load static %}
     {% block title %}Queries list{% endblock title %}
     {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <div class="container">
         {% if user.is_superuser %}
-        <h1>List of Queries</h1>
+        <h1 style="padding:5px;text-align:center;">List of Queries</h1>
         <div>
             {% if queries_list %}
-            <ul>
-                {% for query in queries_list %}
-                <li id="userinfo">User info</li>
-                <ul>
-                    <li>Name : {{ query.name }}</li>
-                    <li>Email ID : {{ query.email }}</li>
-                    <li>Subject : {{ query.subject }}</li>
-                    <li>Message : {{ query.message }}</li>
-                </ul>
-                {% endfor %}
-            </ul>
+                <table class="table table-hover" style="text-align:center;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Message</th>
+                            <th scope="col">Reply box</th>
+                        </tr>
+                    </thead>
+                    {% for query in queries_list %}
+                        <tbody>
+                            <tr>
+                                <td scope="row">{{ query.name }}</td>
+                                <td>{{ query.email }}</td>
+                                <td>{{ query.subject }}</td>
+                                <td>{{ query.message }}</td>
+                                <td>    
+                                    <form method="post">
+                                    {% csrf_token %}
+                                        <input type="hidden" name="name" value="{{ query.name }}">
+                                        <input type="hidden" name="email" value="{{ query.email }}">
+                                        <input type="hidden" name="subject" value="{{ query.subject }}">
+                                        <input type="hidden" name="message" value="{{ query.message }}">
+                                        <div class="wrap-input100 validate-input" data-validate = "Message is required">
+                                            <span class="label-input100">Message</span>
+                                            <textarea class="input100" name="reply_message" placeholder="Your message here..."></textarea>
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                        <div class="form-actions container-contact100-form-btn">
+                                            <button type="submit" class="contact100-form-btn">
+                                                <span>
+                                                    Submit
+                                                    <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
             {% else %}
             <h1>no queries present :) enjoy the day!!</h1>
             {% endif %}
@@ -25,5 +60,5 @@
         {% else %}
             
         {% endif %}
-        
+    </div>        
     {% endblock content %}

@@ -2,10 +2,12 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 from django.shortcuts import render, redirect
-from .forms import ContactForm
+from .forms import ContactForm, ReplyForm
 import requests
+from django.contrib.auth.decorators import login_required
+
 # for contact form queries
-from contactform.models import ContactForm_queries
+from contactform.models import ContactForm_queries,ReplyForm_queries
 
 def emailView(request):
     if request.method == 'GET':
@@ -42,3 +44,24 @@ def emailView(request):
 
 def successView(request):
     return render(request,'thanks_for_message.html')
+
+@login_required
+def queriesList(request):
+    if request.method == 'GET':
+        form = ReplyForm()
+    else :
+        form = ReplyForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            subject = form.cleaned_data['subject']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            replymessage = form.cleaned_data['reply_message']
+            try:
+                replyformqueries = ReplyForm_queries.objects.get_or_create(name=name,email=email,subject=subject,message=message,reply_message = replymessage)
+                send_mail('Reg : '+subject,'Dear Sir/Madam,\nThanks for your query.\n'+replymessage, 'poojariv53@gmail.com', [email])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+    queries_list=ContactForm_queries.objects.order_by('email')
+    my_queries={'queries_list':queries_list}
+    return render(request,'queries_list.html',context=my_queries)    

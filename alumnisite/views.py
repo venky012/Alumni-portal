@@ -30,8 +30,3 @@ class NewsroomPage(TemplateView):
 def ProfilePage(request):
     return render(request,'profile_page.html')
 
-@login_required
-def queriesList(request):
-    queries_list=ContactForm_queries.objects.order_by('email')
-    my_queries={'queries_list':queries_list}
-    return render(request,'queries_list.html',context=my_queries)
