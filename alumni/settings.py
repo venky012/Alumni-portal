@@ -50,7 +50,7 @@ EMAIL_USE_TLS = True
 ALLOW_PARALLEL_RUNS = True
 
 CRON_CLASSES = [
-    "alumni.cron.EmailUsercountCronJob",
+    "alumni.cron.DeleteInactiveUsers",
 ]
 
 # Application definition

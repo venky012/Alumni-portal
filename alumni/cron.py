@@ -5,7 +5,7 @@ from django_common.helper import send_mail
 from django_cron import CronJobBase, Schedule
 
 
-class EmailUsercountCronJob(CronJobBase):
+class DeleteInactiveUsers(CronJobBase):
     """
     Send an email with the user count.
     """
@@ -14,13 +14,14 @@ class EmailUsercountCronJob(CronJobBase):
 
 
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS, retry_after_failure_mins=RETRY_AFTER_FAILURE_MINS)
-    code = 'cron.EmailUsercountCronJob'
+    code = 'cron.DeleteInactiveUsers'
 
     def do(self):
         users = User.objects.all()
         for user in users:
             if user.is_active == False:
                 print("inactiive user")
+                user.delete()
         message = 'Active users: %d' % User.objects.count()
         print(message)
         # send_mail(
