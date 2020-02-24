@@ -46,12 +46,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-ALLOW_PARALLEL_RUNS = True
+# ALLOW_PARALLEL_RUNS = True
 
-CRON_CLASSES = [
-    "alumni.cron.DeleteInactiveUsers",
-]
+# CRON_CLASSES = [
+#     "alumni.cron.DeleteInactiveUsers",
+# ]
 
 # Application definition
 
@@ -140,6 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'accounts.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

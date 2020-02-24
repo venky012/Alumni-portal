@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from contactform.models import ContactForm_queries
 
+from accounts.decorators import email_confirmation_required
+
 # Create your views here.
 
 class HomePage(TemplateView):
@@ -24,6 +26,7 @@ class NewsroomPage(TemplateView):
     template_name='newsroom.html'
     
 @login_required
+@email_confirmation_required
 def ProfilePage(request):
     return render(request,'profile_page.html')
 

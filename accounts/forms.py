@@ -1,6 +1,5 @@
 from django import forms
-from django.contrib.auth.models import User
-
+from accounts.models import User
 
 class RegistrationForm(forms.ModelForm):
     email = forms.EmailField(max_length=200, help_text='Required')
@@ -9,7 +8,7 @@ class RegistrationForm(forms.ModelForm):
     # linkedin_id = forms.CharField(label='Enter your linkedin profile url',help_text='Required')
     class Meta:
         model = User
-        fields = ('username','email','first_name') 
+        fields = ('username','email','first_name','last_name') 
 
     def clean_password2(self):
         cd = self.cleaned_data
