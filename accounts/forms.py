@@ -8,7 +8,7 @@ class RegistrationForm(forms.ModelForm):
     # linkedin_id = forms.CharField(label='Enter your linkedin profile url',help_text='Required')
     class Meta:
         model = User
-        fields = ('username','email','first_name','last_name') 
+        fields = ('username','email','first_name','last_name','password') 
 
     def clean_password2(self):
         cd = self.cleaned_data
