@@ -8,6 +8,6 @@ urlpatterns = [
     path('gallery/',views.GalleryPage.as_view(),name='gallery'),
     path('timeline/',views.TimelinePage.as_view(),name='timeline'),
     path('newsroom/',views.NewsroomPage.as_view(),name='newsroom'),
-    path('profile_page/',views.ProfilePage,name='profile_page'),
+    # path('profile_page/',views.ProfilePage,name='profile_page'),
     path('jobs/',views.JobsPage.as_view(),name='jobs'),
 ]

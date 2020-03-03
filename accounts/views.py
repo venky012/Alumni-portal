@@ -14,6 +14,9 @@ from .tokens import account_activation_token
 import re,time
 from django.contrib import messages
 import requests
+from django.contrib.auth.decorators import login_required
+from accounts.decorators import email_confirmation_required
+
 
 EMAIL_REGEX = re.compile(r'([A-Za-z])\w+.([a-z0-9])\w+@iiits.in')
 
@@ -78,3 +81,14 @@ def activate(request, uidb64, token):
         return redirect('home')
     else:
         return render(request, 'accounts/account_activation_invalid.html')
+
+@login_required
+@email_confirmation_required
+def user_profile(request, username):
+    get_user = User.objects.get(username=username)
+    context = {
+       "get_user": get_user
+    }
+
+
+    return render(request, 'profile_page.html', context)
