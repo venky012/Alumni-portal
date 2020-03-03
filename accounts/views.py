@@ -56,11 +56,10 @@ def accounts_register(request):
                     })
                     # send activation link to the user
                     user.email_user(subject=subject, message=message)
-                    messages.success(request, ' Check your email for activation link')
-                    registerForm = RegistrationForm()
+                    return render(request, 'accounts/account_activation_sent.html')
                 else:
                     registerForm.add_error(None, "invalid captcha")
-                
+
                    
     else:
         registerForm = RegistrationForm()
