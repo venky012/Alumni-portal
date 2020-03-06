@@ -62,6 +62,14 @@ Jobs
           min-height:300px;
           max-height: 500px;
         }
+        .layer{
+          background-color: rgba(0,0,0,0.7);
+          position: absolute;
+          top: 80px;
+          left: 0;
+          width: -webkit-fill-available;
+          height: 300px;
+        }
         .jobpostbut{
           max-width: 180px;
         }
@@ -70,18 +78,26 @@ Jobs
           font-weight: bolder;
           color: white; 
           padding-bottom: 10px;
-          margin-top: -35px;
+          margin-top: 34px;
         }
         @media screen and (max-width : 900px) {
             .jobpost{
               max-height: 240px;
+            }
+            .layer{
+              background-color: rgba(0,0,0,0.7);
+              position: absolute;
+              top: 80px;
+              left: 0;
+              width: -webkit-fill-available;
+              height: 300px;
             }
             .jobs_h3{
               font-size: 30px;font-family: 'Times New Roman', Times, serif;
               font-weight: bolder;
               color: white; 
               padding-bottom: 20px;
-              margin-top: -35px;
+              margin-top: 34px;
             }
         }
         @media screen and (max-width : 760px) {
@@ -91,12 +107,21 @@ Jobs
             .jobpost{
               max-height: 280px;
             }
+            .layer{
+              background-color: rgba(0,0,0,0.7);
+              position: absolute;
+              top: 80px;
+              left: 0;
+              width: -webkit-fill-available;
+              height: 300px;
+            }
             .jobs_h3{
-              font-size: 30px;font-family: 'Times New Roman', Times, serif;
+              font-size: 30px;
+              font-family: 'Times New Roman', Times, serif;
               font-weight: bolder;
-              color: white; 
+              color: white;
               padding-bottom: 20px;
-              margin-top: -35px;
+              margin-top: 38px;
             }
         }
         @media screen and (max-width : 560px) {
@@ -106,12 +131,21 @@ Jobs
             .jobpost{
               max-height: 300px;
             }
+            .layer{
+              background-color: rgba(0,0,0,0.7);
+              position: absolute;
+              top: 80px;
+              left: 0;
+              width: -webkit-fill-available;
+              height: 300px;
+            }
             .jobs_h3{
-              font-size: 30px;font-family: 'Times New Roman', Times, serif;
+              font-size: 30px;
+              font-family: 'Times New Roman', Times, serif;
               font-weight: bolder;
-              color: white; 
+              color: white;
               padding-bottom: 20px;
-              margin-top: -10px;
+              margin-top: 38px;
             }
         }
         .Postedby{
@@ -121,15 +155,17 @@ Jobs
         }
     </style>
     <div class="jobpost jumbotron">
-      <h3 class="jobs_h3">Jobs</h3>
-      <a href="#joblistid"><img class="jobpostbut" src="{% static 'assets/jobs_images/post-a-job.png' %}" alt="" style="padding-top: 30px;margin-top: 100px;"></a>
+      <div class="layer">
+        <h3 class="jobs_h3">Jobs</h3>
+        <a href="#joblistid"><img class="jobpostbut" src="{% static 'assets/jobs_images/post-a-job.png' %}" alt="" style="padding-top: 30px;margin-top: 100px;"></a>
+      </div>
     </div>
     <div id="joblistid" class="jobslist">
         <div class="container">
           <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-8 col-lg-4">
               <div class="jobcard mb-4 box-shadow">         
-                    <div class="job_img_cont" >
+                    <div class="job_img_cont">
                         <img class="img-fluid" src="{% static 'assets/jobs_images/img1.jpg' %}" style="max-width: 100%; height:auto; padding-bottom: 3%;" alt="#">
                     </div>    
                     <div class="deadline">

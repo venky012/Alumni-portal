@@ -59,6 +59,8 @@ def accounts_register(request):
                     return render(request, 'accounts/account_activation_sent.html')
                 else:
                     registerForm.add_error(None, "invalid captcha")
+            else:
+                registerForm.add_error(None,'Use IIITS mail only')
 
                    
     else:

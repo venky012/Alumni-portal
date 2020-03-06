@@ -1,108 +1,170 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
 {% block title %}Log-in{% endblock %}
 {% block content %}
-<style type="text/css">
-      .content{
-         height:80vh;
-         width:100%;
-      }
-		.box{
-			width: 300px;
-			padding: 40px;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%,-50%);
-			text-align: center;
-			border-radius: 20px;
-			background-color: black;
-		}
-		@media (max-width: 1209px) {
-			.content{
-				background-image: url("https://images.pexels.com/photos/839465/pexels-photo-839465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-				background-size: cover;
-				width:100%;
-				height:90vh;
-			}
-			.box{
-				padding:10px;
-            	border-radius:9px;
-				padding-top: 15px;
-				padding-bottom: 15px;
-			}
-		}
-		@media (min-width:1209px) {
-		.content{
-				background-image: url("https://images.pexels.com/photos/839465/pexels-photo-839465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-				background-size: cover;
+<style>
+    .register{
+        background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+        margin-top: 3%;
+        padding: 3%;
+    }
+    .register-left{
+        text-align: center;
+        color: #fff;
+        margin-top: 13%;
+    }
+    .register-left input{
+        border: none;
+        border-radius: 1.5rem;
+        padding: 2%;
+        width: 60%;
+        background: #f8f9fa;
+        font-weight: bold;
+        color: #383d41;
+        margin-top: 30%;
+        margin-bottom: 3%;
+        cursor: pointer;
+    }
+    .register-right{
+        background: #f8f9fa;
+        border-top-left-radius: 10% 50%;
+        border-bottom-left-radius: 10% 50%;
+    }
+    .register-left img{
+        margin-top: 15%;
+        margin-bottom: 5%;
+        width: 25%;
+        -webkit-animation: mover 2s infinite  alternate;
+        animation: mover 1s infinite  alternate;
+    }
+    @-webkit-keyframes mover {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
+    }
+    @keyframes mover {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
+    }
+    .register .register-form{
+        padding: 8%;
+        margin-top: 22%;
+    }
+    .btnRegister{
+        float: right;
+        margin-top: 10%;
+        border: none;
+        border-radius: 1.5rem;
+        padding: 2%;
+        background: #0062cc;
+        color: #fff;
+        font-weight: 600;
+        width: 50%;
+        cursor: pointer;
+    }
+    .register .nav-tabs{
+        margin-top: 3%;
+        border: none;
+        background: #0062cc;
+        border-radius: 1.5rem;
+        width: 28%;
+        float: right;
+    }
+    .register .nav-tabs .nav-link{
+        padding: 2%;
+        height: 34px;
+        font-weight: 600;
+        color: #fff;
+        border-top-right-radius: 1.5rem;
+        border-bottom-right-radius: 1.5rem;
+    }
+    .register .nav-tabs .nav-link:hover{
+        border: none;
+    }
+    .register .nav-tabs .nav-link.active{
+        width: 117px;
+        color: #0062cc;
+        border: 2px solid #0062cc;
+        border-top-left-radius: 1.5rem;
+        border-bottom-left-radius: 1.5rem;
+    }
 
-			}
-			.box{
-				padding:10px;
-				padding-top: 17px;
-				padding-bottom: 17px;
-			}
-		}
-		.box .h3heading{
-			color: white;
-			text-transform: uppercase;
-			font-weight: 500;
-		}
-		.box input[type = "text"],.box input[type = "password"]{
-			border: 0;
-			background: none;
-			display: block;
-			margin: 20px auto;
-			text-align: center;
-			border: 2.5px solid #3498db;
-			padding: 14px 10px;
-			width: 200px;
-			outline: none;
-			color: white;
-			border-radius: 24px;
-			transition: 0.25s;
-		}
-		.box input[type = "text"]:focus,.box input[type = "password"]:focus{
-			width: 280px;
-			border-color: #2ecc71;
-		}
-		.box input[type = "submit"]{
-			border: 0;
-			background: none;
-			display: block;
-			margin: 20px auto;
-			text-align: center;
-			border: 2px solid #2ecc71;
-			padding: 14px 40px;
-			width: 130px;
-			outline: none;
-			color: white;
-			border-radius: 24px;
-			transition: 0.25s;
-			cursor: pointer;
-		}
-		.box input[type = "submit"]:hover{
-			background: #2ecc71;
+    @media screen and (max-width:600px){
+        .register .nav-tabs .nav-link.active{
+            width:100px;
+        }
+    }
 
-		}
-		
-		.links:hover{
-			color:#2ecc71;
-			text-decoration: none;
-		}
+    .register-heading{
+        text-align: center;
+        margin-top: 14%;
+        margin-bottom: -23%;
+        color: #495057;
+    }
+    .btnLgn{
+        /*float: right;*/
+        margin-left: 25%;
+        border: none;
+        border-radius: 1.5rem;
+        padding: 2%;
+        background: #0062cc;
+        color: #fff;
+        font-weight: 600;
+        width: 50%;
+        cursor: pointer;
+        
+    }
+</style>
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="container register">
+            <div class="row">
+                <div class="col-md-3 register-left">
+                    <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                    <h3>Welcome</h3>
+                </div>
+                <div class="col-md-9 register-right">
+                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}" aria-selected="false">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'login' %}" aria-selected="true">Login</a>
+                        </li>
+                    </ul>
+                    <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <h3  class="register-heading">Login</h3>
+                            <div class="row register-form">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                <form action="{% url 'login' %}" method="post">
+                                {% csrf_token %}
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="username" placeholder="Username *" value="" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" name="password" placeholder="Password*" value="" required>
+                                        </div>
+                                        <input type="submit" class="btnLgn"  value="Login"/>
+                                        <br>
+                                        <span> <a class="links" href="{% url 'password_reset' %}">Forgot Password??</a> &nbsp;&nbsp;&nbsp;<a class="links" href="{% url 'register' %}">Sign Up</a></span>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-	</style>
-   <div class="content">
-      <form class="box" action="{% url 'login' %}" method="post">
-         <h3 class="h3heading">Login</h3>
-         {% csrf_token %}
-         <input type="text" name="username" placeholder="username">
-         <input type="password" name="password" placeholder="Password">
-         <input type="submit" name="" placeholder="Login">
-         <span> <a class="links" href="{% url 'password_reset' %}">Forgot Password??</a> &nbsp;&nbsp;&nbsp;<a class="links" href="{% url 'register' %}">Sign Up</a></span>
-      </form>
-   </div>
 {% endblock %}
-
