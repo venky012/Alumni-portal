@@ -89,8 +89,18 @@
     }
 
     @media screen and (max-width:600px){
-        .register .nav-tabs .nav-link.active{
+        .register  .nav-tabs .nav-link.active .nav-link{
             width:100px;
+        }
+    }
+    @media screen and (min-width:360px){
+        .recaptcharegister{
+            padding-left: 60px;
+        }
+    }
+    @media screen and (max-width:360px){
+        .form-group{
+            width:230px;
         }
     }
 
@@ -113,6 +123,7 @@
         cursor: pointer;
         
     }
+
 </style>
         {% if form.errors %}
             {% for field in form %}
@@ -153,7 +164,7 @@
                             <h3 class="register-heading">Register</h3>
 
                             <div class="row register-form">
-                                <div class="col-md-6">
+                                <div class="col-md-6 ">
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Username*" name="username" required>
                                     </div>
@@ -184,13 +195,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="recaptcharegister">
                         <script src='https://www.google.com/recaptcha/api.js'></script>
                         <div class="g-recaptcha" data-sitekey="6LeO1NkUAAAAABSyS6RPCK1NpaKHncWb-VSuQSG8"></div>
-                        <button type="submit" class="btnRegister" style="width:200px">Register</button>
+                        <button type="submit" class="btnRegister" style="width:200px;margin-bottom: 15px;">Register</button>
+                        </div>
                     </div>
                     </form>
                 </div>
             </div>
             </div>
+            
 
 {% endblock %}
