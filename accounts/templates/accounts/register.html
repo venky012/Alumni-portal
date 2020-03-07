@@ -1,19 +1,196 @@
+<!DOCTYPE html>
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
-{% block title %}Register{% endblock %}
+{% block title %}Log-in{% endblock %}
 {% block content %}
+<style>
+    .register{
+        background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+        margin-top: 3%;
+        padding: 3%;
+    }
+    .register-left{
+        text-align: center;
+        color: #fff;
+        margin-top: 13%;
+    }
+    .register-left input{
+        border: none;
+        border-radius: 1.5rem;
+        padding: 2%;
+        width: 60%;
+        background: #f8f9fa;
+        font-weight: bold;
+        color: #383d41;
+        margin-top: 30%;
+        margin-bottom: 3%;
+        cursor: pointer;
+    }
+    .register-right{
+        background: #f8f9fa;
+        border-top-left-radius: 10% 50%;
+        border-bottom-left-radius: 10% 50%;
+    }
+    .register-left img{
+        margin-top: 15%;
+        margin-bottom: 5%;
+        width: 25%;
+        -webkit-animation: mover 2s infinite  alternate;
+        animation: mover 1s infinite  alternate;
+    }
+    @-webkit-keyframes mover {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
+    }
+    @keyframes mover {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
+    }
+    .register .register-form{
+        padding: 8%;
+        margin-top: 22%;
+    }
+    .btnRegister{
+        float: right;
+        margin-top: 10%;
+        border: none;
+        border-radius: 1.5rem;
+        padding: 2%;
+        background: #0062cc;
+        color: #fff;
+        font-weight: 600;
+        width: 50%;
+        cursor: pointer;
+    }
+    .register .nav-tabs{
+        margin-top: 3%;
+        border: none;
+        background: #0062cc;
+        border-radius: 1.5rem;
+        width: 28%;
+        float: right;
+    }
+    .register .nav-tabs .nav-link{
+        padding: 2%;
+        height: 34px;
+        font-weight: 600;
+        color: #fff;
+        border-top-right-radius: 1.5rem;
+        border-bottom-right-radius: 1.5rem;
+    }
+    .register .nav-tabs .nav-link:hover{
+        border: none;
+    }
+    .register .nav-tabs .nav-link.active{
+        width: 117px;
+        color: #0062cc;
+        border: 2px solid #0062cc;
+        border-top-left-radius: 1.5rem;
+        border-bottom-left-radius: 1.5rem;
+    }
 
-<div class="container jumbotron" style="margin-top:1%;padding:1%">
-   {% if form.errors %}Your username and password didn't match. Please try again.{% endif %}
-   <form action="." method="post">{% csrf_token %}
-        <p class="hint-text">Create your account. It's free and only takes a minute.</p>
-        {{ form|crispy }} 
-        <script src='https://www.google.com/recaptcha/api.js'></script>
-        <div class="g-recaptcha" data-sitekey="6LeO1NkUAAAAABSyS6RPCK1NpaKHncWb-VSuQSG8"></div>  
-        <button type="submit" class="btn btn-primary">Register Now</button>
-    </form>
-</div>
+    @media screen and (max-width:600px){
+        .register .nav-tabs .nav-link.active{
+            width:100px;
+        }
+    }
+
+    .register-heading{
+        text-align: center;
+        margin-top: 14%;
+        margin-bottom: -23%;
+        color: #495057;
+    }
+    .btnLgn{
+        /*float: right;*/
+        margin-left: 25%;
+        border: none;
+        border-radius: 1.5rem;
+        padding: 2%;
+        background: #0062cc;
+        color: #fff;
+        font-weight: 600;
+        width: 50%;
+        cursor: pointer;
+        
+    }
+</style>
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="container register">
+
+            <div class="row">
+                <div class="col-md-3 register-left">
+                    <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                    <h3>Welcome</h3>
+                </div>
+
+                <div class="col-md-9 register-right">
+                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'register' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                    </ul>
+                    <form action="." method="post">
+                    {% csrf_token %}
+                        <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" role="tabpanel">
+                            <h3 class="register-heading">Register</h3>
+
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Username*" name="username" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Email*" name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="First-Name" name="first_name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"  placeholder="Last-Name" name="last_name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="password*" name="password" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Repeat Password*" name="password2" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="url" class="form-control" placeholder="LinkedIn Profile URL" value="" >
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Mobile number" value="" />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <script src='https://www.google.com/recaptcha/api.js'></script>
+                        <div class="g-recaptcha" data-sitekey="6LeO1NkUAAAAABSyS6RPCK1NpaKHncWb-VSuQSG8"></div>
+                        <button type="submit" class="btnRegister" style="width:200px">Register</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+
 {% endblock %}
-
-
-

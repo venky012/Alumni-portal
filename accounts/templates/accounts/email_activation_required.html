@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
+{% block title %}verify your email!!{% endblock title %}
 {% block content %}
 
-{% block title %}verify your email{% endblock title %}
-  <h2>you don't have access to view this page. Please activate your account check your mail for activation.</h2>
+	 <div class="container jumbotron thank_you" style="margin-top:4%;margin-bottom:4%;text-align:center;background-color: #bbf0a3;">
+        <h1>Account Activation Required</h1>
+        <p><strong>Your acccount needs to be activated</p></strong></p>
+        <hr>
+        <p>Having trouble? <a href="{% url 'contactform' %}">Contact us</a></p>
+    </div>
 {% endblock %}

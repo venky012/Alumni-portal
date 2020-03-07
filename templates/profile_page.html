@@ -120,9 +120,6 @@
                 </div>
                 <div class="col-md-6">
                     <div class="profile-head">
-                                <h5>
-                                    {{ get_user.first_name }} {{ get_user.last_name }}
-                                </h5>
                                 <h6>user ID : {{ get_user.username }}</h6>
                                 <h6>
                                     Web Developer and Designer
@@ -167,18 +164,10 @@
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>User Id</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>Kshiti123</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
                                             <label>Name</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>Kshiti Ghelani</p>
+                                            <p>{{ get_user.first_name }} {{ get_user.last_name }}</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -186,7 +175,7 @@
                                             <label>Email</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>kshitighelani@gmail.com</p>
+                                            <p>{{ get_user.email }}</p>
                                         </div>
                                     </div>
                                     <div class="row">

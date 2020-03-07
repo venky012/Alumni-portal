@@ -34,6 +34,7 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
+            overflow-x:hidden;
         }
         /* navbar css */
         
@@ -169,6 +170,15 @@
         footer .copyright span {
             color: #0894d1;
         }
+        .custom-img{
+            padding-left:16%;
+        }
+        @media (min-width: 768px) {
+            .custom-img{
+                padding-left:30%;
+                margin-top:2%;
+            }
+        }
     </style>
 </head>
 
@@ -217,7 +227,7 @@
             </ul>
         </div>
     </nav>
-    {% if messages %}
+    {% comment %} {% if messages %}
     <ul class="messages">
         {% for message in messages %}
         <div {% if message.tags %} class="alert alert-{{ message.tags }} mx-auto alert-dismissible" {% endif %} style="width: 40%;margin-top: 1%;">
@@ -226,14 +236,15 @@
         </div>
         {% endfor %}
     </ul>
-    {% endif %} {% block content %} {% endblock %}
+    {% endif %}  {% endcomment %}
+    {% block content %} {% endblock %}
 
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                 <h3>Contact Us</h3>
-                <ul class="list-unstyled three-column">
+                <ul class="list-unstyled three-column" style="padding-left:10%;">
                     <b>Connect to us</b><br>   
                     <b>Email:</b>
                     <a href="mailto: contact@iiits.in">contact@iiits.in</a>
@@ -242,19 +253,19 @@
                     <a href="tel:+91 95503 80002">+91 95503 80002</a>
                 </ul>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-6 col-md-6">
                 <ul class="list-unstyled three-column">
-                    <img src="{% static '/img/iiits/iiits_logo.png' %}">
+                    <img class="custom-img" src="{% static '/img/iiits/iiits_logo.png' %}">
                 </ul>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                <h3>EXTERNAL LINKS</h3>
-                <ul class="list-unstyled three-column">
-                    <a href="http://www.iiits.ac.in/"> IIIT Sricity</a><br>
-                    <a href="">Gallery</a><br>
-                    <a href="">Events</a><br>
-                    <a href="">Jobs </a><br>
-                    <a href="">Contact</a><br>
+                <div class="col-lg-3 col-md-6">
+                <h3>External links</h3>
+                <ul class="list-unstyled three-column" style="padding-left:10%;">
+                    <a href="{% url 'home' %}#"> IIIT Sricity</a><br>
+                    <a href="{% url 'gallery' %}">Gallery</a><br>
+                    <a href="{% url 'events' %}">Events</a><br>
+                    <a href="{% url 'jobs' %}">Jobs </a><br>
+                    <a href="{% url 'contactform' %}">Contact Form</a><br>
                 </ul>
                 </div>
             </div>

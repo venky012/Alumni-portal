@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
-
-
 {% block title %}check your email{% endblock title %}
 {% block content %}
-<div class="container jumbotron" style="height:10%;padding:50%">
-  <h2>Check your email an activation link was sent!!</h2>
-</div>
-{% endblock %}
+  {% load static %}
+    <div class="container jumbotron thank_you" style="margin-top:4%;margin-bottom:4%;text-align:center;background-color: #bbf0a3;">
+        <h1>Thank You!</h1>
+        <p><strong>Please check your email</strong> for further instructions on how to complete your account setup.</p>
+        <hr>
+        <p>Having trouble? <a href="{% url 'contactform' %}">Contact us</a></p>
+    </div>
+{% endblock content %}
