@@ -7,6 +7,7 @@
         background: -webkit-linear-gradient(left, #3931af, #00c6ff);
         margin-top: 3%;
         padding: 3%;
+        margin-bottom: 3%;
     }
     .register-left{
         text-align: center;
@@ -143,7 +144,7 @@
                             <a class="nav-link active" href="{% url 'register' %}">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                            <a class="nav-link" href="{% url 'login' %}?next={{ request.path }}">Login</a>
                         </li>
                     </ul>
                     <form action="." method="post">

@@ -23,6 +23,7 @@ urlpatterns = [
     path('',include('alumnisite.urls')),
     path('',include('accounts.urls')),
     path('',include('contactform.urls')),
+    path('',include('jobs.urls')),
     path('', include('django.contrib.auth.urls')),
 
 

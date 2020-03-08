@@ -28,7 +28,7 @@ SECRET_KEY = ')n0b4z-*37d-px(6wj@&vmtz20#xl)-f8s9k6!z&j8@s9##hi9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 # for recaptcha
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LeO1NkUAAAAAPrW7jvUNBvTTeXTGW9703q15j9c'
@@ -66,7 +66,16 @@ INSTALLED_APPS = [
     'contactform',
     'crispy_forms',
     'django_cron',
+    'jobs',
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+)
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -164,5 +173,4 @@ STATICFILES_DIR = [os.path.join(BASE_DIR,'static')]
 
 LOGIN_URL = 'login'
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = 'home'

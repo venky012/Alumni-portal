@@ -12,17 +12,17 @@ Jobs
         }
         .jobtitle{
           padding-right: 10px;
-            padding-left: 10px;
-            font-weight: bold;
-            font-size: 1.4rem;
-            font-style: oblique;
-            color: #5d5d5d;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            text-rendering: optimizeLegibility;
-            line-height: 1.6;
-            margin-bottom: 0.2rem;
-            font-family: Arial, Helvetica, sans-serif;
+          padding-left: 10px;
+          font-weight: bold;
+          font-size: 1.4rem;
+          font-style: oblique;
+          color: #5d5d5d;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          text-rendering: optimizeLegibility;
+          line-height: 1.6;
+          margin-bottom: 0.2rem;
+          font-family: Arial, Helvetica, sans-serif;
         }
         .categories{
           padding-right: 10px;
@@ -68,6 +68,7 @@ Jobs
           top: 80px;
           left: 0;
           width: -webkit-fill-available;
+          width:-moz-available;
           height: 300px;
         }
         .jobpostbut{
@@ -90,6 +91,7 @@ Jobs
               top: 80px;
               left: 0;
               width: -webkit-fill-available;
+              width:-moz-available;
               height: 300px;
             }
             .jobs_h3{
@@ -113,6 +115,7 @@ Jobs
               top: 80px;
               left: 0;
               width: -webkit-fill-available;
+              width:-moz-available;
               height: 300px;
             }
             .jobs_h3{
@@ -137,6 +140,7 @@ Jobs
               top: 80px;
               left: 0;
               width: -webkit-fill-available;
+              width:-moz-available;
               height: 300px;
             }
             .jobs_h3{
@@ -157,7 +161,7 @@ Jobs
     <div class="jobpost jumbotron">
       <div class="layer">
         <h3 class="jobs_h3">Jobs</h3>
-        <a href="#joblistid"><img class="jobpostbut" src="{% static 'assets/jobs_images/post-a-job.png' %}" alt="" style="padding-top: 30px;margin-top: 100px;"></a>
+        <a href="{% url 'post_job' %}"><img class="jobpostbut" src="{% static 'assets/jobs_images/post-a-job.png' %}" alt="" style="padding-top: 30px;margin-top: 100px;"></a>
       </div>
     </div>
     <div id="joblistid" class="jobslist">
@@ -181,9 +185,8 @@ Jobs
                     
                     <div class="bottom">
                       <p class="company text-right"><span class="highlight">Emaar Properties</span>, <span>Dubai, United Arab Emirates</span></p>
-                      <p class="Postedby">Posted by:<a href="#" style="color:blue">venkatesh</a></p>
+                      <p class="Postedby">Posted by:<a href="{% url 'profile_page' username='venky' %}" style="color:blue">venky</a></p>
                     </div>
-                    <a class="hyperlink" href="#"></a>
               </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-8 col-lg-4">
@@ -204,9 +207,8 @@ Jobs
                     
                     <div class="bottom">
                       <p class="company text-right"><span class="highlight">Emaar Properties</span>, <span>Dubai, United Arab Emirates</span></p>
-                      <p class="Postedby">Posted by:<a href="#" style="color:blue">venkatesh</a></p>
+                      <p class="Postedby">Posted by:<a href="{% url 'profile_page' username='venkatesh' %}" style="color:blue">venkatesh</a></p>
                     </div>
-                    <a class="hyperlink" href="#"></a>
               </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-8 col-lg-4">
@@ -227,9 +229,8 @@ Jobs
                     
                     <div class="bottom">
                       <p class="company text-right"><span class="highlight">Emaar Properties</span>, <span>Dubai, United Arab Emirates</span></p>
-                      <p class="Postedby">Posted by:<a href="#" style="color:blue">venkatesh</a></p>
+                      <p class="Postedby">Posted by:<a href="{% url 'profile_page' username='venkatesh' %}" style="color:blue">venkatesh</a></p>
                     </div>
-                    <a class="hyperlink" href="#"></a>
               </div>
             </div>
         </div>

@@ -17,23 +17,20 @@
                             <th scope="col">Email</th>
                             <th scope="col">Subject</th>
                             <th scope="col">Message</th>
-                            <th scope="col">Reply box</th>
                         </tr>
                     </thead>
                     {% for query in queries_list %}
                         <tbody>
                             <tr>
                                 <td scope="row">{{ query.name }}</td>
-                                <td>{{ query.email }}</td>
+                                <td><a href="mailto:{{ query.email }}">{{ query.email }}</td>
                                 <td>{{ query.subject }}</td>
                                 <td>{{ query.message }}</td>
                                 <td>    
                                     <form method="post">
                                     {% csrf_token %}
-                                        <input type="hidden" name="name" value="{{ query.name }}">
                                         <input type="hidden" name="email" value="{{ query.email }}">
                                         <input type="hidden" name="subject" value="{{ query.subject }}">
-                                        <input type="hidden" name="message" value="{{ query.message }}">
                                         <div class="wrap-input100 validate-input" data-validate = "Message is required">
                                             <span class="label-input100">Message</span>
                                             <textarea class="input100" name="reply_message" placeholder="Your message here..."></textarea>

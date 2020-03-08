@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from contactform.models import ContactForm_queries
 
 # from django.contrib.auth.decorators import login_required
 # from accounts.decorators import email_confirmation_required
@@ -26,3 +25,8 @@ class NewsroomPage(TemplateView):
     template_name='newsroom.html'
 
 
+def handler404(request,exception):
+    return render(request, '404.html', status=404)
+
+def handler500(request):
+    return render(request, '500.html', status=500)

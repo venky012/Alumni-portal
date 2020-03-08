@@ -12,3 +12,4 @@ class User(AbstractUser):
     """
 
     email_confirmed = models.BooleanField(default=False)
+

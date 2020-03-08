@@ -11,11 +11,10 @@ class ContactForm_queries(models.Model):
         return str(self.email)
 
 class ReplyForm_queries(models.Model):
-    name=models.CharField(max_length=50,default = "name+default")
-    email=models.EmailField(max_length=54,default = "email+default")
-    subject=models.CharField(max_length=54,default = "subject+default")
-    message = models.CharField(max_length=1154,default = "message+default")
+    query_user = models.ForeignKey(ContactForm_queries, on_delete=models.CASCADE)
+    email = models.EmailField(max_length = 54)
+    subject = models.CharField(max_length = 54)
     reply_message = models.CharField(max_length=1154)
 
     def __str__(self):
-        return str(self.reply_message)
+        return self.query_user.email

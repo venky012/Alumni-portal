@@ -7,7 +7,7 @@ import requests
 from django.contrib.auth.decorators import login_required
 
 # for contact form queries
-from contactform.models import ContactForm_queries,ReplyForm_queries
+from contactform.models import ContactForm_queries, ReplyForm_queries
 
 def emailView(request):
     if request.method == 'GET':
@@ -45,6 +45,12 @@ def emailView(request):
 def successView(request):
     return render(request,'thanks_for_message.html')
 
+# @login_required
+# def queriesList(request):  
+#     queries_list = ContactForm_queries.objects.order_by('email')
+#     my_queries={'queries_list':queries_list}
+#     return render(request,'queries_list.html',context=my_queries)    
+
 @login_required
 def queriesList(request):
     if request.method == 'GET':
@@ -52,16 +58,26 @@ def queriesList(request):
     else :
         form = ReplyForm(request.POST)
         if form.is_valid():
-            name = form.cleaned_data['name']
-            subject = form.cleaned_data['subject']
-            email = form.cleaned_data['email']
-            message = form.cleaned_data['message']
+            reply = ReplyForm_queries()
+
+            query = ContactForm_queries.objects.get(email = form.cleaned_data['email'],subject = form.cleaned_data['subject'])
+
+            print("__________________________________")
+            print(query)
+            print("__________________________________")
+
+            reply.query_user = query
+            reply.email = form.cleaned_data['email']
+            reply.subject = form.cleaned_data['subject']
             replymessage = form.cleaned_data['reply_message']
+            reply.reply_message = replymessage
+            reply.save()
+
             try:
-                replyformqueries = ReplyForm_queries.objects.get_or_create(name=name,email=email,subject=subject,message=message,reply_message = replymessage)
-                send_mail('Reg : '+subject,'Dear Sir/Madam,\nThanks for your query.\n'+replymessage, 'poojariv53@gmail.com', [email])
+                send_mail('Reg : '+query.subject,'Dear Sir/Madam,\nThanks for your query.\n'+replymessage, 'poojariv53@gmail.com', [query.email])
+                print("message sent------------------------------------------------")
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-    queries_list=ContactForm_queries.objects.order_by('email')
+    queries_list=ContactForm_queries.objects.all()
     my_queries={'queries_list':queries_list}
-    return render(request,'queries_list.html',context=my_queries)    
+    return render(request,'queries_list.html',context=my_queries)
