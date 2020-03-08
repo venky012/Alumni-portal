@@ -183,7 +183,7 @@
 </head>
 
 <body>
-    <nav id="func_navbar" class="navbar-custom navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="position: inherit;padding: 10px;">
+    <nav id="func_navbar" class="navbar-custom navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="padding: 10px;">
         <a id="func_logo" class="nav-brand abs" href="{% url 'home' %}"><img src="{% static '/img/iiits/iiits_logo.png' %}" style="width:47px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -237,6 +237,7 @@
         {% endfor %}
     </ul>
     {% endif %}  {% endcomment %}
+    <div class="container-fluid py-4"></div>
     {% block content %} {% endblock %}
 
     <footer>

@@ -12,8 +12,6 @@ class ContactForm_queries(models.Model):
 
 class ReplyForm_queries(models.Model):
     query_user = models.ForeignKey(ContactForm_queries, on_delete=models.CASCADE)
-    email = models.EmailField(max_length = 54)
-    subject = models.CharField(max_length = 54)
     reply_message = models.CharField(max_length=1154)
 
     def __str__(self):

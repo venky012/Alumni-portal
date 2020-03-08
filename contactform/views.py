@@ -58,26 +58,20 @@ def queriesList(request):
     else :
         form = ReplyForm(request.POST)
         if form.is_valid():
-            reply = ReplyForm_queries()
-
+            
             query = ContactForm_queries.objects.get(email = form.cleaned_data['email'],subject = form.cleaned_data['subject'])
-
-            print("__________________________________")
-            print(query)
-            print("__________________________________")
-
-            reply.query_user = query
-            reply.email = form.cleaned_data['email']
-            reply.subject = form.cleaned_data['subject']
+    
             replymessage = form.cleaned_data['reply_message']
-            reply.reply_message = replymessage
-            reply.save()
 
             try:
+                replyformqueries = ReplyForm_queries.objects.get_or_create(query_user = query,reply_message = replymessage)
                 send_mail('Reg : '+query.subject,'Dear Sir/Madam,\nThanks for your query.\n'+replymessage, 'poojariv53@gmail.com', [query.email])
                 print("message sent------------------------------------------------")
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
+    
     queries_list=ContactForm_queries.objects.all()
     my_queries={'queries_list':queries_list}
     return render(request,'queries_list.html',context=my_queries)
+
+
