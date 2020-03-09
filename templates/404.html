@@ -1,33 +1,41 @@
-<!DOCTYPE html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-</head>
-
-<body>
-<pre>
-        \            SORRY              /
-         \                             /
-          \      This page does       /
-           ]     not exist yet.      [    ,'|
-           ]                         [   /  |
-           ]___                   ___[ ,'   |
-           ]  ]\                 /[  [ |:   |
-           ]  ] \               / [  [ |:   |
-           ]  ]  ]             [  [  [ |:   |
-           ]  ]  ]__         __[  [  [ |:   |
-           ]  ]  ] ]\   _   /[ [  [  [ |:   |
-           ]  ]  ] ]   (#)   [ [  [  [ :===='
-           ]  ]  ]_]  .nHn.  [_[  [  [
-           ]  ]  ]    HHHHH.   [  [  [
-           ]  ] /     `HH("N    \ [  [
-           ]__]/       HHH  "    \[__[
-           ]           NNN           [
-           ]           N/"           [
-           ]           N H           [
-          /            N              \
-         /             q,              \
-        /                               \
-</pre>
-</body>
-
-</html>
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Post a Job{% endblock %}
+{% block content %}
+  <div style="text-align:center;">
+        <pre>
+              \                               /
+                \                             /
+                \                           /
+                        ]                         [    ,'| 
+                      ]                         [   /  |
+                      ]___                   ___[ ,'   |
+                      ]  ]\                 /[  [ |:   |
+                      ]  ] \               / [  [ |:   |
+                      ]  ]  ]             [  [  [ |:   |
+                      ]  ]  ]__         __[  [  [ |:   |
+                      ]  ]  ] ]\   _   /[ [  [  [ |:   |
+                      ]  ]  ] ]   (#)   [ [  [  [ :===='
+                ]  ]  ]_]  .nHn.  [_[  [  [
+                ]  ]  ]    HHHHH.   [  [  [
+                ]  ] /     `HH("N    \ [  [
+                ]__]/       HHH  "    \[__[
+                ]           NNN           [
+                ]           N/"           [
+                ]           N H           [
+                /            N             \
+                /            q,              \
+                /                              \
+          </pre>
+        <h5>404 - PAGE NOT FOUND</h5> 
+        <p>Sorry, an error occured, Requested page not found!</p>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <button><a href="">Take Me Home</a></button>
+              <button><a href="">Contact Support</a></button>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}                     
