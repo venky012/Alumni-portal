@@ -12,7 +12,7 @@ urlpatterns = [
     path('timeline/',views.TimelinePage.as_view(),name='timeline'),
     path('newsroom/',views.NewsroomPage.as_view(),name='newsroom'),
     # path('profile_page/',views.ProfilePage,name='profile_page'),
-    path('jobs/',views.JobsPage.as_view(),name='jobs'),
+    #path('jobs/',views.JobsPage.as_view(),name='jobs'),
 ]
 
 

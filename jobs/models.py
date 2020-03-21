@@ -6,12 +6,13 @@ from accounts.models import User
 
 class Jobs_details(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-
+    job_title = models.CharField(max_length=50)
     last_date = models.DateField()
     company = models.CharField(max_length=50)
     place = models.CharField(max_length= 50)
     experience = models.CharField(max_length = 50)
     salary = models.CharField(max_length = 20)
+    category=models.CharField(max_length=50)
 
     def __str__(self):
         return self.user.username

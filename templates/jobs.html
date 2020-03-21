@@ -167,72 +167,30 @@ Jobs
     <div id="joblistid" class="jobslist">
         <div class="container">
           <div class="row">
+            {% for jobs in jobslist %}
             <div class="col-md-6 col-sm-6 col-xs-8 col-lg-4">
               <div class="jobcard mb-4 box-shadow">         
                     <div class="job_img_cont">
                         <img class="img-fluid" src="{% static 'assets/jobs_images/img1.jpg' %}" style="max-width: 100%; height:auto; padding-bottom: 3%;" alt="#">
                     </div>    
                     <div class="deadline">
-                        <p class="deadline text-right"><span style="font-size: 0.8rem;color:#2184ed; font-style: italic;font-weight: bold;">Apply before </span><span>10 Mar 2020</span></p>
+                        <p class="deadline text-right"><span style="font-size: 0.8rem;color:#2184ed; font-style: italic;font-weight: bold;">Apply before </span><span>{{jobs.last_date}}</span></p>
                     </div>   
                           
-                    <p class="jobtitle">Digital Manager, Group</p>
-                    <p class="categories">Technology</p>
+                    <p class="jobtitle">{{jobs.job_title}}</p>
+                    <p class="categories">{{jobs.category}}</p>
                     
-                    <p class="tag">Pay not specified</p>
+                    <p class="tag"><em><span>Salary: </span></em>{{jobs.salary}}</p>
                     
-                    <p class="tag">Experience not specified</p>
+                    <p class="tag"><em><span>Experience: </span></em>{{jobs.experience}}</p>
                     
                     <div class="bottom">
-                      <p class="company text-right"><span class="highlight">Emaar Properties</span>, <span>Dubai, United Arab Emirates</span></p>
-                      <p class="Postedby">Posted by:<a href="{% url 'profile_page' username='venky' %}" style="color:blue">venky</a></p>
+                      <p class="company text-right"><span class="highlight">{{jobs.company}}</span>, <span>{{jobs.place}}</span></p>
+                      <p class="Postedby">Posted by:<a href="{% url 'profile_page' username='venky' %}" style="color:blue">{{jobs.user.username}}</a></p>
                     </div>
               </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-xs-8 col-lg-4">
-              <div class="jobcard mb-4 box-shadow">         
-                    <div class="job_img_cont" >
-                        <img class="img-fluid" src="{% static 'assets/jobs_images/img2.jpg' %}" style="max-width: 100%; height:auto; padding-bottom: 3%;" alt="#">
-                    </div>    
-                    <div class="deadline">
-                        <p class="deadline text-right"><span style="font-size: 0.8rem;color:#2184ed; font-style: italic;font-weight: bold;">Apply before </span><span>10 Mar 2020</span></p>
-                    </div>    
-                        
-                    <p class="jobtitle">Digital Manager, Group</p>
-                    <p class="categories">Technology</p>
-                    
-                    <p class="tag">Pay not specified</p>
-                    
-                    <p class="tag">Experience not specified</p>
-                    
-                    <div class="bottom">
-                      <p class="company text-right"><span class="highlight">Emaar Properties</span>, <span>Dubai, United Arab Emirates</span></p>
-                      <p class="Postedby">Posted by:<a href="{% url 'profile_page' username='venkatesh' %}" style="color:blue">venkatesh</a></p>
-                    </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-8 col-lg-4">
-              <div class="jobcard mb-4 box-shadow">         
-                    <div class="job_img_cont" >
-                        <img class="img-fluid" src="{% static 'assets/jobs_images/img3.jpg' %}" style="max-width: 100%; height:auto; padding-bottom: 3%;" alt="#">
-                    </div>    
-                    <div class="deadline">
-                        <p class="deadline text-right"><span style="font-size: 0.8rem;color:#2184ed; font-style: italic;font-weight: bold;">Apply before </span><span>10 Mar 2020</span></p>
-                    </div>   
-                          
-                    <p class="jobtitle">Digital Manager, Group</p>
-                    <p class="categories">Technology</p>
-                    
-                    <p class="tag">Pay not specified</p>
-                    
-                    <p class="tag">Experience not specified</p>
-                    
-                    <div class="bottom">
-                      <p class="company text-right"><span class="highlight">Emaar Properties</span>, <span>Dubai, United Arab Emirates</span></p>
-                      <p class="Postedby">Posted by:<a href="{% url 'profile_page' username='venkatesh' %}" style="color:blue">venkatesh</a></p>
-                    </div>
-              </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
     </div>
