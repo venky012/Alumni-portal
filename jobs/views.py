@@ -7,7 +7,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import PostJobForm
 from accounts.models import User
 from .models import Jobs_details
+from django.views.decorators.cache import cache_control
 
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required
 def PostJobView(request):
     if request.method == 'GET':
@@ -23,7 +26,14 @@ def PostJobView(request):
             job.place = form.cleaned_data['place']
             job.experience = form.cleaned_data['experience']
             job.salary = form.cleaned_data['salary']
+            job.job_title=form.cleaned_data['job_title']
+            job.category=form.cleaned_data['category']
             job.save()
+            return redirect('/jobs/')
             
             
-    return render(request, "post_job.html", {'form': form})
+    return render(request, "post_job11.html", {'form': form})
+
+def JobsView(request):
+    jobslist=Jobs_details.objects.all()
+    return render(request,'jobs.html',{"jobslist":jobslist})

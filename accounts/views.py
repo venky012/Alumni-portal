@@ -16,7 +16,7 @@ from django.contrib import messages
 import requests
 from django.contrib.auth.decorators import login_required
 from accounts.decorators import email_confirmation_required
-
+from django.views.decorators.cache import cache_control
 
 EMAIL_REGEX = re.compile(r'([A-Za-z])\w+.([a-z0-9])\w+@iiits.in')
 
@@ -83,6 +83,8 @@ def activate(request, uidb64, token):
     else:
         return render(request, 'accounts/account_activation_invalid.html')
 
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required
 @email_confirmation_required
 def user_profile(request, username):

@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 
 # for contact form queries
 from contactform.models import ContactForm_queries, ReplyForm_queries
+from django.views.decorators.cache import cache_control
+
 
 def emailView(request):
     if request.method == 'GET':
@@ -51,6 +53,7 @@ def successView(request):
 #     my_queries={'queries_list':queries_list}
 #     return render(request,'queries_list.html',context=my_queries)    
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required
 def queriesList(request):
     if request.method == 'GET':

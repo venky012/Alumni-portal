@@ -2,6 +2,8 @@ from django import forms
 
 class PostJobForm(forms.Form):
     last_date = forms.DateField(required = True)
+    job_title = forms.CharField(max_length=50,required=True)
+    category=forms.CharField(max_length=50,required=True)
     company = forms.CharField(max_length=50,required = True)
     place = forms.CharField(max_length= 50,required = True)
     experience = forms.CharField(max_length = 50,required = True)
