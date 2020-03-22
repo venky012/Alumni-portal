@@ -84,7 +84,7 @@
 
 					<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<span class="label-input100">Email</span>
-						<input class="input100" type="text" name="email" placeholder="Enter your email addess">
+						<input class="input100" type="email" name="email" placeholder="Enter your email addess">
 						<span class="focus-input100"></span>
 					</div>
 					<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
@@ -109,9 +109,6 @@
 					</div>
 				</form>
 
-				<span class="contact100-more">
-					For any question contact our 24/7 call center: <span class="contact100-more-highlight">+001 345 6889</span>
-				</span>
 			</div>
 		</div>
 
@@ -126,16 +123,5 @@
 	<script src="{% static 'js/map-custom.js' %}"></script>
 <!--===============================================================================================-->
 	<script src="{% static 'js/main.js' %}"></script>
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-23581568-13');
-</script>
 
 {% endblock content %}
