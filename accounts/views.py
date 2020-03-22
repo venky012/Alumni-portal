@@ -21,6 +21,14 @@ from django.views.decorators.cache import cache_control
 EMAIL_REGEX = re.compile(r'([A-Za-z])\w+.([a-z0-9])\w+@iiits.in')
 
 def accounts_register(request):
+    if request.method == "GET":
+        p = request.GET.copy()
+        if 'username' in p:         
+            name = p['username']
+            if User.objects.filter(username__iexact=name):
+                return HttpResponse(False)
+            else:
+                return HttpResponse(True)
     if request.method == 'POST':
         registerForm = RegistrationForm(request.POST)
         if registerForm.is_valid():

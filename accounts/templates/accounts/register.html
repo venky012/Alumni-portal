@@ -176,7 +176,8 @@
                             <div class="row register-form" style="padding-bottom:0px;">
                                 <div class="col-md-6 ">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Username*" name="username" required>
+                                        <input type="text" class="form-control" id="id" placeholder="Username*" name="username" required>
+                                        <p id="idval"></p>
                                     </div>
                                     <div class="form-group">
                                         <input type="email" class="form-control" placeholder="Email*" name="email" required>
@@ -215,6 +216,33 @@
                 </div>
             </div>
             </div>
-            
+<script>
+    function CheckId() {
+        $.get('/register/', {username: $('#id').val()},
+            function(data){
+                if(data == "True"){
+                    $('#idval').html("username is available.");
+                    $('#idval').css({
+                        "color" : "green"
+                    });
+                    $('#id').css({
+                        "color" : "green"
+                    });
+                } else {
+                    $('#idval').html("username is already taken.");
+                    $('#idval').css({
+                        "color" : "red"
+                    });
+                    $('#id').css({
+                        "color" : "red"
+                    });
+                }
+        });
+    }
+    function onChange(){
+        $("#id").change( function() {CheckId()});
+    }
+    $(document).ready(onChange);
+</script>       
 
 {% endblock %}
