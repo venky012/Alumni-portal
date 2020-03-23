@@ -13,6 +13,7 @@ class Jobs_details(models.Model):
     experience = models.CharField(max_length = 50)
     salary = models.CharField(max_length = 20)
     category=models.CharField(max_length=50)
+    imgSrc=models.CharField(max_length=50)
 
     def __str__(self):
         return self.user.username

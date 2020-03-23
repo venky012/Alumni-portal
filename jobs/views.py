@@ -8,6 +8,7 @@ from .forms import PostJobForm
 from accounts.models import User
 from .models import Jobs_details
 from django.views.decorators.cache import cache_control
+import random
 
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
@@ -28,6 +29,7 @@ def PostJobView(request):
             job.salary = form.cleaned_data['salary']
             job.job_title=form.cleaned_data['job_title']
             job.category=form.cleaned_data['category']
+            job.imgSrc="assets/jobs_images/img"+str(random.choice([i for i in range(1,4)]))+".jpg"
             job.save()
             return redirect('/jobs/')
             
