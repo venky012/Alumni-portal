@@ -68,7 +68,7 @@
 			width: 280px;
 			border-color: #2ecc71;
 		}
-		.box input[type = "submit"]{
+		.box button[type = "submit"]{
 			border: 0;
 			background: none;
 			display: block;
@@ -83,7 +83,7 @@
 			transition: 0.25s;
 			cursor: pointer;
 		}
-		.box input[type = "submit"]:hover{
+		.box button[type = "submit"]:hover{
 			background: #2ecc71;
 
 		}
@@ -95,13 +95,15 @@
 
 	</style>
    <div class="content">
-      <form class="box" action="{% url 'login' %}" method="post">
+      <form class="box" method="post">
          <h3 class="h3heading">Login</h3>
          {% csrf_token %}
          <input type="text" name="username" placeholder="username">
          <input type="password" name="password" placeholder="Password">
-         <input type="submit" name="" placeholder="Login">
-         <span> <a class="links" href="{% url 'password_reset' %}">Forgot Password??</a> &nbsp;&nbsp;&nbsp;<a class="links" href="{% url 'register' %}">Sign Up</a></span>
+         {% comment %} <input type="submit" name="" placeholder=""> {% endcomment %}
+         <button type="submit">Log in</button>
+                        
+		 <span> <a class="links" href="{% url 'password_reset' %}">Forgot Password??</a> &nbsp;&nbsp;&nbsp;<a class="links" href="{% url 'register' %}">Sign Up</a></span>
       </form>
    </div>
 {% endblock %}

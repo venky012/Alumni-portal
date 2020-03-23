@@ -25,10 +25,14 @@ def accounts_register(request):
         p = request.GET.copy()
         if 'username' in p:         
             name = p['username']
-            if User.objects.filter(username__iexact=name):
-                return HttpResponse(False)
+            if len(name)!=0:
+                if User.objects.filter(username__iexact=name):
+                    return HttpResponse(False)
+                else:
+                    return HttpResponse(True)
             else:
-                return HttpResponse(True)
+                return 1;
+
     if request.method == 'POST':
         registerForm = RegistrationForm(request.POST)
         if registerForm.is_valid():

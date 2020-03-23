@@ -1,56 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Post a Job{% endblock %}
+{% block content %}
 
-  <div class="jumbotron" style="text-align:center;">
-   <h1>Post A Job</h1>
-   <style type="text/css">
-   	body{
-   		background-image: url('https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-   		background-size: cover;
-   	} 
-   </style>
+<div class="container jumbotron" style="margin-top:1%;padding:1%">
+   <form action="." method="post">{% csrf_token %}
+        {{ form|crispy }} 
+        <button type="submit" class="btn btn-primary"> post -> </button>
+    </form>
 </div>
-</div>
-</head>
-<body>
-    <!-- forms -->
-   <forms action="process.php" method="POST" >
-   <div class="container" style="margin-top:4%;margin-bottom:4%;text-align:center;background-color:#f2f2f2""width:200px;">
-   	<br>
-   	<h4><strong>Getting Started</strong></h4>
-   	<br>
-   <div>
-   	<input  size="19" type="text" name="Company"placeholder="Company">
-   </div>
-    <br>
-   <div>
-   	<input  size="19" type="text" name="Place"placeholder="Place">
-   </div>
-    <br>
-    <div>
-   	<input size="19" type="date" name="Last Date"placeholder="Last Date">
-   </div>
-    <br>
-    <div>
-   	<input size="19" type="text" name="Salary"placeholder="Salary">
-   </div>
-    <br>
-     <div>
-   	<input size="19" type="text" name="Experience"placeholder="Experience">
-   </div>
-    <br>
-   <div>
-  <strong><button style="background-color:#2bb32b;">JOB POST NOW</button></strong>
-   </div>
-   <br>
-   <br>
-   </div>
-   </forms>
-  </body>
-  </html>
+{% endblock %}
 
 
- 
+

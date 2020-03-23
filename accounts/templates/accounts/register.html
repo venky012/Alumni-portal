@@ -219,7 +219,7 @@
 <script>
     function CheckId() {
         $.get('/register/', {username: $('#id').val()},
-            function(data){
+        function(data){
                 if(data == "True"){
                     $('#idval').html("username is available.");
                     $('#idval').css({

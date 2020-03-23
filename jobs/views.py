@@ -29,12 +29,12 @@ def PostJobView(request):
             job.salary = form.cleaned_data['salary']
             job.job_title=form.cleaned_data['job_title']
             job.category=form.cleaned_data['category']
-            job.imgSrc="assets/jobs_images/img"+str(random.choice([i for i in range(1,4)]))+".jpg"
+            job.imgSrc="assets/jobs_images/img"+str(random.choice([i for i in range(1,8)]))+".jpg"
             job.save()
             return redirect('/jobs/')
             
             
-    return render(request, "post_job11.html", {'form': form})
+    return render(request, "post_job.html", {'form': form})
 
 def JobsView(request):
     jobslist=Jobs_details.objects.all()
