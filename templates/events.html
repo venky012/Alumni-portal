@@ -1,16 +1,20 @@
-<!DOCTYPE html> {% extends "base.html" %} {% block title %}Events{% endblock %} {% block content %} {% load static %}
-<link rel="stylesheet" href="{% static 'assets/events_web/assets/icons2/mobirise2.css' %}">
+<!DOCTYPE html> 
+{% extends "base.html" %} 
+{% block title %}Events{% endblock %} 
+{% block content %} 
+{% load static %}
+      <link rel="stylesheet" href="{% static 'assets/events_web/assets/icons2/mobirise2.css' %}">
       <link rel="stylesheet" href="{% static 'assets/events_web/assets/icons/mobirise-icons.css' %}">
       <link rel="stylesheet" href="{% static 'assets/events_bootstrap/css/bootstrap.min.css' %}">
       <link rel="stylesheet" href="{% static 'assets/events_bootstrap/css/bootstrap-grid.min.css' %}">
       <link rel="stylesheet" href="{% static 'assets/events_bootstrap/css/bootstrap-reboot.min.css' %}">
       <link rel="stylesheet" href="{% static 'assets/events_theme/css/style.css' %}">
-      <link rel="stylesheet" href="{% static 'assets/events_others/css/mbr-additional.css' %}" type="text/css">
+      <link rel="stylesheet" href="{% static 'assets/events_others/css/mbr-additional.css' %}">
 
       <section class="header12 cid-rR33eaau0X mbr-fullscreen mbr-parallax-background" id="header12-8">
         <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);">
         </div>
-        <div class="container  ">
+        <div class="container">
            <div class="media-container">
               <div class="col-md-12 align-center">
                  <h1 class="mbr-section-title pb-3 mbr-white mbr-bold mbr-fonts-style display-1">Alumni Events</h1>
@@ -18,7 +22,7 @@
                  <div class="icons-media-container mbr-white">
                     <div class="card col-12 col-md-6">
                        <div class="icon-block">
-                          <a href="#content4-b">
+                          <a class="yoImSource1" href="#upcoming-events">
                           <span class="mbr-iconfont mobi-mbri-flag mobi-mbri"></span>
                           </a>
                        </div>
@@ -26,7 +30,7 @@
                     </div>
                     <div class="card col-12 col-md-6">
                        <div class="icon-block">
-                          <a href="#testimonials1-l">
+                          <a class="yoImSource2" href="#testimonials1-l">
                           <span class="mbr-iconfont mbri-chat"></span>
                           </a>
                        </div>
@@ -42,7 +46,7 @@
            </a>
         </div>
      </section>
-     <section class="mbr-section content4 cid-rR39hxR62O" id="content4-b">
+     <section id="upcoming-events" class="mbr-section content4 cid-rR39hxR62O yoImTarget1">
         <div class="container">
            <div class="media-container-row">
               <div class="title col-12 col-md-8">
@@ -69,7 +73,7 @@
         </div>
      </section>
      <section class="countdown1 cid-rSCSCC4FKf" id="countdown1-j">
-        <div class="container ">
+        <div class="container">
         </div>
         <div class="container countdown-cont align-center">
            <div class="daysCountdown" title="Days"></div>
@@ -265,7 +269,7 @@
            </div>
         </div>
      </section>
-     <section class="testimonials1 cid-rSCTe2RCI4" data-bg-video="http://www.youtube.com/watch?v=uNCr7NdOJgw" id="testimonials1-l">
+     <section class="testimonials1 cid-rSCTe2RCI4 yoImTarget2" id="testimonials1-l">
         <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(239, 239, 239);">
         </div>
         <div id="testimonials1-l" class="container">
@@ -328,15 +332,10 @@
            </div>
         </div>
      </section>
-     <!-- <script src="{% static 'assets/events_popper/popper.min.js"></script> -->
-     <script src="{% static 'assets/events_web/assets/jquery/jquery.min.js"></script>
-     <!-- <script src="{% static 'assets/events_bootstrap/js/bootstrap.min.js"></script> -->
-     <!-- <script src="{% static 'assets/events_smoothscroll/smooth-scroll.js"></script> -->
-     <script src="{% static 'assets/events_parallax/jarallax.min.js"></script>
-     <script src="{% static 'assets/events_countdown/jquery.countdown.min.js"></script>
-     <script src="{% static 'assets/events_ytplayer/jquery.mb.ytplayer.min.js"></script>
-     <!-- <script src="{% static 'assets/events_tether/tether.min.js"></script> -->
-     <script src="{% static 'assets/events_vimeoplayer/jquery.mb.vimeo_player.js"></script>
-     <script src="{% static 'assets/events_theme/js/script.js"></script>
+     <script src="{% static 'assets/events_web/assets/jquery/jquery.min.js' %}"></script>
+     <script src="{% static 'assets/events_parallax/jarallax.min.js' %}"></script>
+     <script src="{% static 'assets/events_countdown/jquery.countdown.min.js' %}"></script>
+     <script src="{% static 'assets/events_theme/js/script.js' %}"></script>
+     <script src="{% static 'assets/events_theme/js/scroll.js' %}"></script>
 
 {% endblock content %}
