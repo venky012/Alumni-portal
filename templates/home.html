@@ -84,9 +84,9 @@
     </div>
 
 </div>
-
+<div class="timerBackground">
 <div class="container timer">
-    <p id="timer_heading" style="text-align: center;">Upcoming Event Countdown</p>
+    
     <div id="countdown" style="position:inherit">
         <div id='tiles'></div>
         <div class="labels">
@@ -96,6 +96,12 @@
           <li>Secs</li>
         </div>
       </div>
+      <p id="timer_heading" style="text-align: center;">Abhisarga 2020</p>
+      <p style="text-align: center; font-style: italic; margin:-10px; font-weight: 500;">30<sup>TH</sup> March, 2020 in SriCity</p>
+      <div style="text-align: center;margin-top: 25px; ">
+        <a href="{% url 'events' %}" style="text-decoration: none; color: black;border-top-right-radius: 50px;border-bottom-right-radius: 50px;border-top-left-radius: 50px;border-bottom-left-radius: 50px; background:linear-gradient(to right,#102baf 0%,#1664ff 50%,#102baf 100%);padding: 5px;padding-left: 15px;padding-right: 15px;">Know More</a>
+      </div>
+</div>
 </div>
 
     <div id="news_feed" class="container-fluid" style="padding-left:0px; background: background: #2193b0;  /* fallback for old browsers */
@@ -568,7 +574,9 @@ background: linear-gradient(to top, #b91d73, #f953c6); /* W3C, IE 10+/ Edge, Fir
             position: relative;
             z-index: 1;
         }
-
+        .timerBackground{
+            background-color: #f47321;
+        }
         #countdown #tiles > span{
             width: 92px;
             max-width: 92px;
@@ -716,7 +724,7 @@ background: linear-gradient(to top, #b91d73, #f953c6); /* W3C, IE 10+/ Edge, Fir
         }
     </style>
     <script>
-        var target_date = new Date().getTime() + (1000*3600*36); // set the countdown date (milliseconds * no of seconds in minutes * no of hours )
+        var target_date = new Date("2020-03-30").getTime() // set the countdown date (milliseconds * no of seconds in minutes * no of hours )
         var days, hours, minutes, seconds; // variables for time units
 
         var countdown = document.getElementById("tiles"); // get tag element
