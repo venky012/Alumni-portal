@@ -220,7 +220,12 @@
     function CheckId() {
         $.get('/register/', {username: $('#id').val()},
         function(data){
-                if(data == "True"){
+                if(data == '0') {
+                    $('#idval').html("enter username");
+                    $('#idval').css({
+                        "color" : "red"
+                    });
+                } else if(data == "True"){
                     $('#idval').html("username is available.");
                     $('#idval').css({
                         "color" : "green"
@@ -237,6 +242,7 @@
                         "color" : "red"
                     });
                 }
+
         });
     }
     function onChange(){
