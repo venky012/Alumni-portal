@@ -14,4 +14,5 @@ update the username and password here after you add an user
 -	Alumni:
 		username: venkatesh
 		password: testpassword
+		
 </pre>
