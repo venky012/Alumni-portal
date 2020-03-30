@@ -65,8 +65,12 @@ INSTALLED_APPS = [
     'accounts',
     'contactform',
     'crispy_forms',
-    'django_cron',
     'jobs',
+    'django_cron',
+]
+
+CRON_CLASSES = [
+    "alumni.cron.MyCronJob",
 ]
 
 TEMPLATE_CONTEXT_PROCESSORS = (
