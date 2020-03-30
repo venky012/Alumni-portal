@@ -28,10 +28,10 @@ SECRET_KEY = ')n0b4z-*37d-px(6wj@&vmtz20#xl)-f8s9k6!z&j8@s9##hi9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','venky6888.pythonanywhere.com']
 
 # for recaptcha
-GOOGLE_RECAPTCHA_SECRET_KEY = '6LeO1NkUAAAAAPrW7jvUNBvTTeXTGW9703q15j9c'
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LdiIuUUAAAAAMCcKAFGLbT_fpcVDpheR5iL8-k-'
 
 # for gmail
 
