@@ -46,11 +46,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 
-# ALLOW_PARALLEL_RUNS = True
+ALLOW_PARALLEL_RUNS = True
 
-# CRON_CLASSES = [
-#     "alumni.cron.DeleteInactiveUsers",
-# ]
+CRON_CLASSES = [
+    "alumni.cron.MyCronJob",
+]
 
 # Application definition
 

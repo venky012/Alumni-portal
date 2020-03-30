@@ -33,8 +33,8 @@ class MyCronJob(CronJobBase):
         #     'poojariv53@gmail.com', ['poojariv53@gmail.com']
         # )
         
-        profile_link = 'https://www.linkedin.com/in/venkatesh-poojari-984007181/'
-        profile_link = profile_link.replace('https://www.linkedin.com/in/','').replace('/','')
-        print(profile_link)
+        # profile_link = 'https://www.linkedin.com/in/venkatesh-poojari-984007181/'
+        # profile_link = profile_link.replace('https://www.linkedin.com/in/','').replace('/','')
+        # print(profile_link)
         
-        getProfile(profile_link)
+        # getProfile(profile_link)
