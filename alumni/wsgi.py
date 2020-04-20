@@ -13,7 +13,7 @@ from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'alumni.settings')
 
-application = get_wsgi_application()
+# from django.core.management import call_command
+# call_command('runcrons')
 
-from django.core.management import call_command
-call_command('runcrons')
+application = get_wsgi_application()

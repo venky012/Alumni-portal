@@ -33,17 +33,19 @@ ALLOWED_HOSTS = ['127.0.0.1','localhost','venky6888.pythonanywhere.com']
 # for recaptcha
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LdiIuUUAAAAAMCcKAFGLbT_fpcVDpheR5iL8-k-'
 
-# for gmail
+import socket
 
-EMAIL_HOST=''
+# for gmail
+# EMAIL_HOST=''
 EMAIL_HOST_USER='poojariv53@gmail.com'
-EMAIL_HOST_PASSWORD='ase@12345'
+EMAIL_HOST_PASSWORD='rpoqumxjkvzfqhbh'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
 
 DEFAULT_FROM_EMAIL='MARVM Team'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = socket.gethostbyname('smtp.gmail.com')
+# EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 
 ALLOW_PARALLEL_RUNS = True
@@ -68,6 +70,8 @@ INSTALLED_APPS = [
     'jobs',
     'django_cron',
 ]
+
+ALLOW_PARALLEL_RUNS = True
 
 CRON_CLASSES = [
     "alumni.cron.MyCronJob",
