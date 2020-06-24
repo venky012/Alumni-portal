@@ -44,8 +44,7 @@ EMAIL_USE_TLS=True
 
 DEFAULT_FROM_EMAIL='MARVM Team'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = socket.gethostbyname('smtp.gmail.com')
-# EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 
 ALLOW_PARALLEL_RUNS = True
