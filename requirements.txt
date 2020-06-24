@@ -36,7 +36,7 @@ gcloud==0.17.0
 GDAL==3.0.2
 gmane==0.1.dev25
 googleapis-common-protos==1.51.0
-httplib2==0.16.0
+httplib2==0.18.0
 idna==2.8
 itsdangerous==1.1.0
 Jinja2==2.10.3
