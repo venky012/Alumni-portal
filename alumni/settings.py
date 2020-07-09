@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'contactform',
     'crispy_forms',
     'jobs',
+    'django_cleanup.apps.CleanupConfig',        # to clean the user profile photo and update new photo
     'django_cron',
 ]
 
@@ -177,6 +178,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIR = [os.path.join(BASE_DIR,'static')]
+
+MEDIA_DIR = os.path.join(BASE_DIR,'media')
+
+MEDIA_ROOT = MEDIA_DIR
+
+MEDIA_URL = '/media/'
 
 LOGIN_URL = 'login'
 

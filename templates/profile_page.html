@@ -4,22 +4,177 @@
     {% block content %}
     {% load static %}
     <style>
+
+
     body{
         background: #F0F2F0;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to top, #000C40, #F0F2F0);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to top, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     }
+    .jobcard{
+            max-width: 400px;
+            border: 1px solid rgba(0,0,0,.125);
+            border-radius: .25rem;
+        }
+        .jobtitle{
+          padding-right: 10px;
+          padding-left: 10px;
+          font-weight: bold;
+          font-size: 1.4rem;
+          font-style: oblique;
+          color: #5d5d5d;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          text-rendering: optimizeLegibility;
+          line-height: 1.6;
+          margin-bottom: 0.2rem;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        .categories{
+          padding-right: 10px;
+            padding-left: 10px;
+            margin-bottom: 1.4rem;
+            font-size: 0.8rem;
+        }
+        .tag{
+          padding-right: 10px;
+            padding-left: 10px;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+        .deadline{
+          padding-right: 10px;
+            padding-left: 10px;
+        }
+        .bottom{
+          padding-right: 10px;
+            padding-left: 10px;
+            font-size: 0.9rem;
+          font-style: italic;
+        }
+        .job_img_cont{
+          padding: 0px;
+          margin-left: -0.1%;
+        }
+        .jobslist{
+          padding-top: 3%;
+        }
+        .jobpost{
+          background-image: url("{% static 'assets/jobs_images/jobspage.jpg' %}");
+          background-size:100% 100%;
+          text-align: center;
+          margin-top: 32px;
+          min-height:300px;
+          max-height: 500px;
+        }
+        .layer{
+          background-color: rgba(0,0,0,0.7);
+          position: absolute;
+          top: 80px;
+          left: 0;
+          width: -webkit-fill-available;
+          width:-moz-available;
+          height: 300px;
+        }
+        .jobpostbut{
+          max-width: 180px;
+        }
+        .jobs_h3{
+          font-size: 30px;font-family: 'Times New Roman', Times, serif;
+          font-weight: bolder;
+          color: white; 
+          padding-bottom: 10px;
+          margin-top: 34px;
+        }
+        @media screen and (max-width : 900px) {
+            .jobpost{
+              max-height: 240px;
+            }
+            .layer{
+              background-color: rgba(0,0,0,0.7);
+              position: absolute;
+              top: 80px;
+              left: 0;
+              width: -webkit-fill-available;
+              width:-moz-available;
+              height: 300px;
+            }
+            .jobs_h3{
+              font-size: 30px;font-family: 'Times New Roman', Times, serif;
+              font-weight: bolder;
+              color: white; 
+              padding-bottom: 20px;
+              margin-top: 34px;
+            }
+        }
+        @media screen and (max-width : 760px) {
+            .jobpostbut{
+              max-width: 150px;
+            }
+            .jobpost{
+              max-height: 280px;
+            }
+            .layer{
+              background-color: rgba(0,0,0,0.7);
+              position: absolute;
+              top: 80px;
+              left: 0;
+              width: -webkit-fill-available;
+              width:-moz-available;
+              height: 300px;
+            }
+            .jobs_h3{
+              font-size: 30px;
+              font-family: 'Times New Roman', Times, serif;
+              font-weight: bolder;
+              color: white;
+              padding-bottom: 20px;
+              margin-top: 38px;
+            }
+        }
+        @media screen and (max-width : 560px) {
+            .jobpostbut{
+              max-width: 140px;
+            }
+            .jobpost{
+              max-height: 300px;
+            }
+            .layer{
+              background-color: rgba(0,0,0,0.7);
+              position: absolute;
+              top: 80px;
+              left: 0;
+              width: -webkit-fill-available;
+              width:-moz-available;
+              height: 300px;
+            }
+            .jobs_h3{
+              font-size: 30px;
+              font-family: 'Times New Roman', Times, serif;
+              font-weight: bolder;
+              color: white;
+              padding-bottom: 20px;
+              margin-top: 38px;
+            }
+        }
+        .Postedby{
+          font-size: 15px;
+          float: right;
+          color: grey;
+        }
+
     .emp-profile{
         padding: 3%;
-        margin-top: 7%;
+        margin-top: 4%;
         margin-bottom: 3%;
         border-radius: 0.5rem;
         background: #fff;
     }
     @media (max-width: 768px) {
         .emp-profile{
-            margin-top:30%;
+            margin-top:9%;
         }
     }
     .profile-img{
@@ -244,20 +399,19 @@ background: linear-gradient(to top, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Fir
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-img">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                        <div class="file btn btn-lg btn-primary">
-                            Change Photo
-                            <input type="file" name="file"/>
-                        </div>
+                        {% if get_user.avatar %}
+                            <img src="{{ get_user.avatar.url }}" style="height:150px;width:150px;border-radius:50%;">
+                        {% else %}
+                            <img src="{% static 'profile/default_symbol.png' %}" style="height:150px;width:150px;border-radius:50%;">
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="profile-head">
-                                <h6>user ID : {{ get_user.username }}</h6>
-                                <h6>
-                                    Web Developer and Designer
-                                </h6>
-                                <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                        <h3>
+                            {{ get_user.summary }}
+                        </h3>
+                        <h6>@{{ get_user.username }}</h6>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -265,26 +419,29 @@ background: linear-gradient(to top, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Fir
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
                             </li>
+                            <div class="nav-item">
+                                <a href="#" class="btn btn-primary" style="border-radius:50%"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            </div>
                         </ul>
                     </div>
-                </div>
-                <div class="col-md-2">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-work">
                         <p>WORK LINK</p>
-                        <a href="">Linkedin Profile Url</a><br/>
-                        <a href="">github Profile Url</a><br/>
-                        <p>SKILLS</p>
-                        <a href="">Web Designer</a><br/>
-                        <a href="">Web Developer</a><br/>
-                        <a href="">WordPress</a><br/>
-                        <a href="">WooCommerce</a><br/>
-                        <a href="">PHP, .Net</a><br/>
-                        <br>
+                        {% if get_user.linkedin_url %}
+                            <a href="{{ get_user.linkedin_url }}" target="blank"><i class="fa fa-linkedin" style="font-size:24px"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {% else %}
+                        {% endif %}
+                        {% if get_user.github_url %}
+                            <a href="{{ get_user.github_url }}"><i class="fa fa-github" style="font-size:24px"></i></a><br/>
+                        {% else %}
+                        {% endif %}
+                        {% if get_user.webpage_url %}
+                            <a href="{{ get_user.webpage_url }}">Portfolio</a><br/>
+                        {% else %}
+                        {% endif %}
                         <p>Features</p>
                         <a href="{% url 'change_password' %}">change password</a><br>
                         {% if user.is_superuser %}
@@ -305,7 +462,7 @@ background: linear-gradient(to top, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Fir
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Email</label>
+                                            <label>Email Id</label>
                                         </div>
                                         <div class="col-md-6">
                                             <p>{{ get_user.email }}</p>
@@ -313,75 +470,84 @@ background: linear-gradient(to top, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Fir
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Phone</label>
+                                            <label>Phone no.</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>123 456 7890</p>
+                                            <p>{{ get_user.phone_number }}</p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Profession</label>
+                                            <label>Company</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>Web Developer and Designer</p>
+                                            <p>{{ get_user.company }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Place</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{ get_user.place }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Passed out year</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>{{ get_user.passout_year }}</p>
                                         </div>
                                     </div>
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Experience</label>
+                            <label>Jobs Posted</label>
+                            <div id="joblistid" class="jobslist">
+                                <div class="container">
+                                    <div class="row ">
+                                    {% if jobslist %}
+                                        {% for jobs in jobslist %}
+                                        <div class="col-md-6 col-sm-6 col-xs-8 col-lg-4">
+                                        <div class="jobcard mb-4 box-shadow">         
+                                                <div class="job_img_cont">
+                                                    <img class="img-fluid" src="{% static jobs.imgSrc %}" style="max-width: 100%; height:auto; padding-bottom: 3%;" alt="#">
+                                                </div>    
+                                                <div class="deadline">
+                                                    <p class="deadline text-right"><span style="font-size: 0.8rem;color:#2184ed; font-style: italic;font-weight: bold;">Apply before </span><span>{{jobs.last_date}}</span></p>
+                                                </div>   
+                                                    
+                                                <p class="jobtitle">{{jobs.job_title}}</p>
+                                                <p class="categories">{{jobs.category}}</p>
+                                                
+                                                <p class="tag"><em><span>Salary: </span></em>{{jobs.salary}}</p>
+                                                
+                                                <p class="tag"><em><span>Experience: </span></em>{{jobs.experience}}</p>
+                                                
+                                                <div class="bottom">
+                                                <p class="company text-right"><span class="highlight">{{jobs.company}}</span>, <span>{{jobs.place}}</span></p>
+                                                <p class="Postedby">Posted by:<a href="{% url 'profile_page' username=jobs.user.username %}" style="color:blue">{{jobs.user.username}}</a></p>
+                                                </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <p>Expert</p>
                                         </div>
+                                        {% endfor %}
+                                    {% else %}
+                                        <div class="container jumbotron thank_you" style="margin-top:4%;margin-bottom:4%;text-align:center;background-color: #bbf0a3;">
+                                            <h1>No jobs are posted by alumni</h1>
+                                            <p><strong>Have a tea</strong> and visit again :)</p>
+                                            <hr>
+                                            <p>Having trouble? <a href="{% url 'contactform' %}">Contact us</a></p>
+                                        </div>
+                                    {% endif %}
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Hourly Rate</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>10$/hr</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Total Projects</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>230</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>English Level</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>Expert</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Availability</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>6 months</p>
-                                        </div>
-                                    </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>Your Bio</label><br/>
-                                    <p>Your detail description</p>
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </form>           
-    </div>
-    <div id="particles-js">
     </div>
 
 {% endblock content %}
