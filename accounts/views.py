@@ -18,6 +18,8 @@ from django.contrib.auth.decorators import login_required
 from accounts.decorators import email_confirmation_required
 from django.views.decorators.cache import cache_control
 
+from .filters import UserFilter 
+
 EMAIL_REGEX = re.compile(r'([A-Za-z])\w+.([a-z0-9])\w+@iiits.in')
 
 def accounts_register(request):
@@ -108,3 +110,13 @@ def user_profile(request, username):
 
 
     return render(request, 'profile_page.html', context)
+
+
+def SearchPage(request):
+    get_user = User.objects.all()
+    context = {
+       "get_user": get_user
+    }
+
+
+    return render(request, 'search_mail.html', context)

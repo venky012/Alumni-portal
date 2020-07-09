@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'jobs',
     'django_cron',
+    'django_filters',
 ]
 
 ALLOW_PARALLEL_RUNS = True
