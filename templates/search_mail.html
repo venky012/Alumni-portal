@@ -13,8 +13,10 @@ Search
 	<!-- <link rel="stylesheet" type="text/css" href="{% static 'searchpage/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}"> -->
 
 <body>
-    <section class="prob-statement-panel">
-        <div class="container">
+    {% if request.user.is_superuser %}
+    <!-- <section class="prob-statement-panel"> -->
+        <div class="container" style="margin-top: 30px;">
+            
                 <form method="GET" class="search">
                     <div class="row catBox">
                     <div class="col-md-4">
@@ -60,6 +62,7 @@ Search
                     <button value="Submit" name="search" style="background-color: #4CAF50; border: none; color: white; padding: 5px 75px; border-radius: 2px; text-decoration: none; margin-left: 15px; margin-top: 30px; cursor: pointer;"  type="submit">Search</button>
                     </div>
                 </form>
+                
         </div>
 
 
@@ -137,7 +140,7 @@ Search
         </div>
 </form>    
 </div>
-
+{% endif %}
 
 
     <script>

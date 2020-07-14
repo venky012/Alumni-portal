@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.core.mail import send_mail, BadHeaderError,EmailMessage
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -125,14 +126,15 @@ def user_profile(request, username):
 
     return render(request, 'profile_page.html', context)
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def SearchPage(request):
     get_user = User.objects.filter(is_staff=False)
     myFilter = UserFilter(request.GET,queryset=get_user)
     context = {
        "get_user": get_user,
-       "myFilter": myFilter
-
+       "myFilter": myFilter,
+        "user" : request.user
     }
     if "sendMail" in request.GET:
         queryDict = request.GET.copy()
@@ -140,5 +142,7 @@ def SearchPage(request):
         for i in queryDict.keys():
             if queryDict[i] == "on":
                 mailList.append(i)
-        print(mailList)
+        email = EmailMessage(queryDict['subject'],queryDict['message'],'poojariv53@gmail.com',['poojariv53@gmail.com'],bcc=mailList)
+        email.send()
+
     return render(request, 'search_mail.html', context)
