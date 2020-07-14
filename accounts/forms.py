@@ -1,14 +1,28 @@
 from django import forms
 from accounts.models import User
 
+class ImageUploadForm(forms.Form):
+    profile_photo = forms.ImageField()
+
 class RegistrationForm(forms.ModelForm):
-    email = forms.EmailField(max_length=200, help_text='Required')
+    username = forms.CharField(max_length=50,required=True)
+    email = forms.EmailField(max_length=200)
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
-    # linkedin_id = forms.CharField(label='Enter your linkedin profile url',help_text='Required')
+    phone_number = forms.CharField()
+    linkedin_url = forms.CharField()
+    github_url = forms.CharField()
+    webpage_url = forms.CharField()
+    passout_year = forms.CharField()
+    company = forms.CharField()
+    summary = forms.CharField()
+    place = forms.CharField()
+    conditions = forms.BooleanField()
+
     class Meta:
         model = User
-        fields = ('username','email','first_name','last_name','password') 
+        fields = ('username', 'email', 'first_name', 'last_name', 'password', 'phone_number',
+                  'linkedin_url', 'github_url', 'webpage_url', 'passout_year', 'company', 'place', 'conditions','summary')
 
     def clean_password2(self):
         cd = self.cleaned_data
@@ -19,8 +33,6 @@ class RegistrationForm(forms.ModelForm):
     def clean_email(self):
         email = self.cleaned_data['email']
         if User.objects.filter(email=email).exists():
-            raise forms.ValidationError('Please use another Email,that is already taken')
+            raise forms.ValidationError(
+                'Please use another Email,that is already taken')
         return email
-
-
-

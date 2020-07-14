@@ -7,173 +7,135 @@ Search
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="{% static 'searchpage/css/style_new123.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'searchpage/css/style_new12.css' %}" rel="stylesheet" type="text/css">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'searchpage/css/util.css' %}"> -->
+	<link rel="stylesheet" type="text/css" href="{% static 'searchpage/css/main1.css' %}">
+	<!-- <link rel="stylesheet" type="text/css" href="{% static 'searchpage/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}"> -->
 
 <body>
     <section class="prob-statement-panel">
         <div class="container">
-            <div class="row catBox">
-                <div class="col-md-4">
-                    <div class="labelBox">
-                        <label>Technology Bucket</label>
+                <form method="GET" class="search">
+                    <div class="row catBox">
+                    <div class="col-md-4">
+                        <div class="labelBox">
+                            <label>First Name</label>
+                        </div>
+                        <div class="short-by-box">
+                                {{myFilter.form.first_name}}
+                        </div>
                     </div>
-                    <div class="short-by-box">
-                        <select name="sort-by" id="technology" class="sortByPS">
-                        <option value="QWxs" selected>All</option>
-                                                    <option value="MQ==" >Agriculture and Rural Development</option>
-                                                    <option value="Mg==" >Clean Water</option>
-                        </select>
+                    <div class="col-md-4">
+                        <div class="labelBox">
+                            <label>Last Name</label>
+                        </div>
+                        <div class="short-by-box">
+                                {{myFilter.form.last_name}}
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="labelBox">
-                        <label>Category</label>
+                    <div class="col-md-4">
+                        <div class="labelBox">
+                            <label>Email</label>
+                        </div>
+                        <div class="short-by-box">
+                                {{myFilter.form.email}}
+                        </div>
                     </div>
-                    <div class="short-by-box">
-                        <select name="sort-by" id="category" class="sortByPS">
-                        <option value="QWxs"  selected>All</option>
-                        <!-- <option value="U29mdHdhcmU="  >Software</option> -->
-                        <option value="SGFyZHdhcmU="  >Hardware</option>
-                    </select>
+                    <div class="col-md-4">
+                        <div class="labelBox">
+                            <label>Pass Out Year</label>
+                        </div>
+                        <div class="short-by-box">
+                                {{myFilter.form.passout_year}}
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="labelBox">
-                        <label>Organization</label>
+                    <div class="col-md-4">
+                        <div class="labelBox">
+                            <label>Company</label>
+                        </div>
+                        <div class="short-by-box">
+                                {{myFilter.form.company}}
+                        </div>
                     </div>
-                    <div class="short-by-box">
-                        <select name="sort-by" id="organization" data-live-search="true" data-live-search-style="startsWith" class="sortByPS">
-                        <option value="QWxs"  selected>All</option>
-                        <option value="QWRhbmkgUG9ydCBhbmQgU0VaIEx0ZA==" >Adani Port and SEZ Ltd</option>
-                        </select>
+                    <button value="Submit" name="search" style="background-color: #4CAF50; border: none; color: white; padding: 5px 75px; border-radius: 2px; text-decoration: none; margin-left: 15px; margin-top: 30px; cursor: pointer;"  type="submit">Search</button>
                     </div>
-                </div>
-            </div>
-            <div class="row catBox1">
-                <div class="col mx-1">
-                    <div class="radioButPS">
-                        <label><input type="radio" name="organization_type" value="QWxs" checked> <span class="Filter_label">All</span></label>
-                    </div>
-                </div>
-                <div class="col mx-1">
-                    <div class="radioButPS">
-                        <label><input type="radio" name="organization_type" value="U3RhdGVfTWluaXN0cnk="  > <span class="Filter_label">State Government</span></label>
-                    </div>
-                </div>
-            </div>
+                </form>
         </div>
-
-
-
-
-
-
-
-
 
 
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+        <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
-<div class="container">
+<div class="mailclass">
+    <form method="GET" class=" validate-form">
+    <!-- {% csrf_token %}     -->
+    <div class="container" style="margin: auto;">
 	<div class="row">
-		
-        
         <div class="col-md-12">
-        <h4>Bootstrap Snipp for Datatable</h4>
         <div class="table-responsive">
 
-                
               <table id="mytable" class="table table-bordred table-striped">
                    
-                   <thead>
+                    <thead>
                    
-                   <th><input type="checkbox" id="checkall" /></th>
-                   <th>First Name</th>
+                    <th><input type="checkbox" id="checkall" /></th>
+                    <th>First Name</th>
                     <th>Last Name</th>
-                     <th>Address</th>
-                     <th>Email</th>
-                     <th>Contact</th>
-                      <th>Edit</th>
-                      
-                       <th>Delete</th>
-                   </thead>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Company</th>
+                    <th>Pass Out Year</th>
+                    </thead>
     <tbody>
-    
+    {% for myuser in myFilter.qs %}
     <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td>isometric.mohsin@gmail.com</td>
-    <td>+923335586757</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    <td><input type="checkbox" name="{{ myuser.email }}" class="checkthis" /></td>
+    <td>{{myuser.first_name}}</td>
+    <td>{{myuser.last_name}}</td>
+    <td>{{myuser.email}}</td>
+    <td>{{myuser.phone_number}}</td>
+    <td>{{myuser.company}}</td>
+    <td>{{myuser.passout_year}}</td>
     </tr>
-    
- <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td>isometric.mohsin@gmail.com</td>
-    <td>+923335586757</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-    
-    
- <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td>isometric.mohsin@gmail.com</td>
-    <td>+923335586757</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-    
-    
-    
- <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td>isometric.mohsin@gmail.com</td>
-    <td>+923335586757</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-    
-    
- <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td>isometric.mohsin@gmail.com</td>
-    <td>+923335586757</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-    
-   
-    
-   
-    
+    {% endfor %}
     </tbody>
-        
 </table>
-
-<div class="clearfix"></div>
                 
             </div>
-            
         </div>
-	</div>
+        </div>
+    </div>
+    <div class="container" style="margin: auto; margin-top: 30px;" >
+        <div class="row">
+            <div class="col-md-6">
+        <div class="contact1-pic js-tilt" data-tilt>
+            <img src="{% static 'searchpage/images/img-01.png' %}" alt="IMG">
+        </div>
+            </div>
+            <div class="col-md-6">
+        <div class="wrap-input1 validate-input" data-validate = "Subject is required">
+            <input class="input1" type="text" name="subject" placeholder="Subject">
+            <span class="shadow-input1"></span>
+        </div>
+
+        <div class="wrap-input1 validate-input" data-validate = "Message is required">
+            <textarea class="input1" name="message" placeholder="Message"></textarea>
+            <span class="shadow-input1"></span>
+        </div>
+
+        <div class="container-contact1-form-btn">
+            <button name="sendMail" class="contact1-form-btn">
+                <span>
+                    Send Email
+                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+            </div>
+        </div>
+        </div>
+</form>    
 </div>
 
 
@@ -198,14 +160,12 @@ $("#mytable #checkall").click(function () {
 
     </script>
 
-
-
-
-
-
-
-
-
+<script >
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+</script>
+<script src="{% static 'searchpage/js/mail_main.js' %}"></script>
 
 
 

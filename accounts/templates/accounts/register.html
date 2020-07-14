@@ -133,8 +133,12 @@
         cursor: pointer;
 
     }
+    .invalid-feedback {
+        display: initial;
+    }
 
 </style>
+        <div style="margin-top:27px"></div>
         {% if form.errors %}
             {% for field in form %}
                 {% for error in field.errors %}
@@ -167,8 +171,9 @@
                             <a class="nav-link" href="{% url 'login' %}?next={{ request.path }}">Login</a>
                         </li>
                     </ul>
-                    <form action="." method="post">
+                    <form action="." method="post" onsubmit="return checkForm(this);">
                     {% csrf_token %}
+                    {{ form.non_field_errors }}
                         <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" role="tabpanel">
                             <h3 class="register-heading">Register</h3>
@@ -188,6 +193,12 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control"  placeholder="Last-Name" name="last_name" required>
                                     </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"  placeholder="Company" name="company" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"  placeholder="Place" name="place" required>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -197,25 +208,73 @@
                                         <input type="password" class="form-control" placeholder="Repeat Password*" name="password2" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="url" class="form-control" placeholder="LinkedIn Profile URL" value="" >
+                                        <input type="url" class="form-control" placeholder="LinkedIn Profile URL" name="linkedin_url" value="" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Mobile number" value="" />
+                                        <input type="url" class="form-control" placeholder="Github Profile URL" name="github_url" value="" required>
                                     </div>
-
+                                    <div class="form-group">
+                                        <input type="url" class="form-control" placeholder="Portfolio URL" name="webpage_url" value="" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" minlength="10" maxlength="17" id="phone_number" name="phone_number" class="form-control" placeholder="Mobile number in format '+99999'" value="" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <input type="text" minlength="10" maxlength="17" id="summary" name="summary" class="form-control" placeholder="Headline eg: I'm a web developer" value="" required/>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    Passedout Year <select id="ddlYears" name="passout_year"></select>
                                 </div>
                             </div>
                         </div>
                         <div class="recaptcharegister">
-                        <script src='https://www.google.com/recaptcha/api.js'></script>
-                        <div class="g-recaptcha" data-sitekey="6LdiIuUUAAAAAF553fy7yFnfHmdQNJCAC5gTHK2O"></div>
-                        <button type="submit" class="btnRegister" style="width:200px;margin-bottom: 15px;margin-top:3px;">Register</button>
+                            <script src='https://www.google.com/recaptcha/api.js'></script>
+                            <div class="g-recaptcha" data-sitekey="6LdiIuUUAAAAAF553fy7yFnfHmdQNJCAC5gTHK2O"></div>
                         </div>
+                        <p style="margin-left:63px;">
+                            <input type="checkbox" id="terms" name="conditions" required/>
+                            check the <a href="">terms and conditions</a>
+                        </p>
                     </div>
+                    <button type="submit" class="btnRegister" onclick="javascript:myFunction()" style="width:200px;margin-bottom: 15px;margin-top:3px;">Register</button>
                     </form>
                 </div>
             </div>
             </div>
+<script type="text/javascript">
+
+    function checkForm(form)
+    {
+
+        if(!form.conditions.checked) {
+            alert("Please accept the Terms and Conditions before you Sign Up!");
+            form.conditions.focus();
+            return false;
+        }
+        return true;
+    }
+  
+</script>
+<script type="text/javascript">
+    window.onload = function () {
+        //Reference the DropDownList.
+        var ddlYears = document.getElementById("ddlYears");
+ 
+        //Determine the Current Year.
+        var currentYear = (new Date()).getFullYear();
+ 
+        //Loop and add the Year values to DropDownList.
+        for (var i = currentYear; i >= 2017; i--) {
+            var option = document.createElement("OPTION");
+            option.innerHTML = i;
+            option.value = i;
+            ddlYears.appendChild(option);
+        }
+    };
+</script>
+
+
 <script>
     function CheckId() {
         $.get('/register/', {username: $('#id').val()},

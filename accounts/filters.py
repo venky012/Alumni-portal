@@ -8,4 +8,4 @@ class UserFilter(django_filters.FilterSet):
     last_name = CharFilter(field_name="last_name", lookup_expr='icontains')
     class Meta:
         model = User
-        fields= [ 'email' ]
+        fields= [ 'email','passout_year','company' ]

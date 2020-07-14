@@ -5595,7 +5595,8 @@ section.sih-theme.SIH2020Page {
     min-height: .01%;
     overflow-x: auto;
     overflow-y: scroll;
-    height: 700px;
+    max-height: 600px;
+    min-height: 300px;
 }
 
 .introSoftResult {
