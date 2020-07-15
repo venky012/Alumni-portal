@@ -483,9 +483,10 @@ window.onclick = function(event) {
                         {% endif %}
                         {% if request.user.username == get_user.username %}
                             <p>Account settings</p>
-                            <a href="{% url 'change_password' %}">Change Password</a><br><br><br>
+                            <a href="{% url 'change_password' %}">Change Password</a><br>
                             {% if user.is_superuser %}
                                 <a href="{% url 'queries_list' %}">Queries</a><br>
+                                <a href="{% url 'searchpage' %}">Search Alumni</a><br>
                             {% endif %}
                             {% if not user.is_superuser %}
                                 <p class="btn btn-danger" style="color:white;" onclick="document.getElementById('id01').style.display='block'">Delete account</p><br>

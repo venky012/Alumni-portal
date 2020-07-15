@@ -13,6 +13,8 @@ urlpatterns = [
     path('activate/<slug:uidb64>/<slug:token>)/', views.activate, name='activate'),
     path('delete/<slug:uidb64>/<slug:token>)/', views.delete, name='delete'),
     path('profile_page/userinfo/<str:username>/',views.user_profile,name='profile_page'),
+    path('search/',views.SearchPage,name='searchpage'),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

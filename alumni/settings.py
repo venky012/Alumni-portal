@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'jobs',
     'django_cleanup.apps.CleanupConfig',        # to clean the user profile photo and update new photo
     'django_cron',
+    'django_filters',               # for search operation
 ]
 
 ALLOW_PARALLEL_RUNS = True
