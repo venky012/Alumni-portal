@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 {% block title %}Email verify invalid!{% endblock title %}
-  <h2>The confirmation link was invalid, possibly because it has already been used.</h2>
-{% endblock %}
 
+{% load static %}
+    <div class="container jumbotron thank_you" style="margin-top:4%;margin-bottom:4%;text-align:center;background-color: coral">
+        <h4>The confirmation link was invalid, possibly because it has already been used</h4>
+        <hr>
+        <p>Having trouble? <a href="{% url 'contactform' %}">Contact us</a></p>
+    </div>
+{% endblock %}

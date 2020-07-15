@@ -2,7 +2,18 @@ from django import forms
 from accounts.models import User
 
 class ImageUploadForm(forms.Form):
-    profile_photo = forms.ImageField()
+    avatar = forms.ImageField()
+
+class UpdateProfileForm(forms.Form):
+    first_name = forms.CharField(required=False)
+    last_name = forms.CharField(required=False)
+    phone_number = forms.CharField(required=False)
+    linkedin_url = forms.CharField(required=False)
+    github_url = forms.CharField(required=False)
+    webpage_url = forms.CharField(required=False)
+    company = forms.CharField(required=False)
+    summary = forms.CharField(required=False)
+    place = forms.CharField(required=False)
 
 class RegistrationForm(forms.ModelForm):
     username = forms.CharField(max_length=50,required=True)

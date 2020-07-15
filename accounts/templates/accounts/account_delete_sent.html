@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}check your email{% endblock title %}
+{% block content %}
+  {% load static %}
+    <div class="container jumbotron thank_you" style="margin-top:4%;margin-bottom:4%;text-align:center;background-color: coral;">
+        <h1>Sorry for the inconvenience :(</h1>
+        <p><strong>Please check your email</strong> for further instructions on how to delete your account.</p>
+        <hr>
+        <p>Having trouble? <a href="{% url 'contactform' %}">Contact us</a></p>
+    </div>
+{% endblock content %}

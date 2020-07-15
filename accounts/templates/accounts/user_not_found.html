@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}User not found{% endblock title %}
+{% block content %}
+  {% load static %}
+    <div class="container jumbotron thank_you" style="margin-top:4%;margin-bottom:4%;text-align:center;background-color: #bbf0a3;">
+        <h1>User not found.</h1>
+        <hr>
+        <p>Having trouble? <a href="{% url 'contactform' %}">Contact us</a></p>
+    </div>
+{% endblock content %}

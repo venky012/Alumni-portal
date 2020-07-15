@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Update profile{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+  {% load static %}
+        <div class="row" style="margin-top:4%;">
+            <!-- left column -->
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="text-center">
+                    {% if request.user.avatar %}
+                        <img src="{{ request.user.avatar.url }}" alt="Avatar" class="avatar img-circle img-thumbnail"  style="height:218px;width:247px;border-radius:50%;">
+                    {% else %}
+                        <img src="{% static 'profile/default_symbol.png' %}" alt="Avatar" class="avatar img-circle img-thumbnail"  style="height:218px;width:247px;border-radius:50%;">
+                    {% endif %}
+                </div>
+                </div>
+                <!-- edit form column -->
+                <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+                <h3>Personal info</h3>
+                <form class="form-horizontal" action="." method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                    <label class="col-lg-3 control-label">First name:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" name="first_name" type="text">
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Last name:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="last_name" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Phone number:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" placeholder="please enter in '+999999' format" name="phone_number" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Linkedin Profile URL:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="linkedin_url" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Github Profile URL:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="github_url" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Portfolio URL:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="webpage_url" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-lg-3 control-label">Company:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" name="company" type="text">
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Summary:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="summary" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Place:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="summary" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-8">
+                        <input class="btn btn-primary" value="Save Changes" type="submit">
+                    </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+{% endblock content %}

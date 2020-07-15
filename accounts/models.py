@@ -12,7 +12,6 @@ def update_filename(instance, filename):
         filename = '{}.{}'.format(instance.username, ext)
     return os.path.join(upload_to, filename)
 
-
 # Create your models here.
 class User(AbstractUser):
     """
@@ -43,3 +42,14 @@ class User(AbstractUser):
     company = models.CharField(max_length=100,blank = True)
     summary = models.CharField(max_length=100,blank = True)
     place = models.CharField(max_length = 100,blank = True)
+
+
+class linkedin_model(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    skills = models.TextField(blank=True)
+    education = models.TextField(blank=True)
+    experience = models.TextField(blank=True)
+    currentLocation = models.TextField(blank=True)
+    
+    def __str__(self):
+        return self.user.username

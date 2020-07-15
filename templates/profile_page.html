@@ -8,9 +8,8 @@
 
     body{
         background: #F0F2F0;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #000C40, #F0F2F0);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+        background: -webkit-linear-gradient(to top, #000C40, #F0F2F0);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to top, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
     .jobcard{
             max-width: 400px;
@@ -175,6 +174,7 @@ background: linear-gradient(to top, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Fir
     @media (max-width: 768px) {
         .emp-profile{
             margin-top:9%;
+            width:309px;
         }
     }
     .profile-img{
@@ -271,160 +271,199 @@ background: linear-gradient(to top, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Fir
         top: 0px;
         z-index:1;
     }
+    .profile-img img:hover{
+        background: black;
+        opacity: 0.5;
+        border-radius:50%;
+    }
     </style>
-    <script>
-        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js", function(){
-            particlesJS('particles-js',
-            {
-                "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                    "enable": true,
-                    "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#ffffff"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                    "width": 0,
-                    "color": "#000000"
-                    },
-                    "polygon": {
-                    "nb_sides": 5
-                    },
-                    "image": {
-                    "width": 100,
-                    "height": 100
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false,
-                    "anim": {
-                    "enable": false,
-                    "speed": 1,
-                    "opacity_min": 0.1,
-                    "sync": false
-                    }
-                },
-                "size": {
-                    "value": 5,
-                    "random": true,
-                    "anim": {
-                    "enable": false,
-                    "speed": 40,
-                    "size_min": 0.1,
-                    "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#ffffff",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 6,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "attract": {
-                    "enable": false,
-                    "rotateX": 600,
-                    "rotateY": 1200
-                    }
-                }
-                },
-                "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                    "enable": true,
-                    "mode": "repulse"
-                    },
-                    "onclick": {
-                    "enable": true,
-                    "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                    "distance": 400,
-                    "line_linked": {
-                        "opacity": 1
-                    }
-                    },
-                    "bubble": {
-                    "distance": 400,
-                    "size": 40,
-                    "duration": 2,
-                    "opacity": 8,
-                    "speed": 3
-                    },
-                    "repulse": {
-                    "distance": 200
-                    },
-                    "push": {
-                    "particles_nb": 4
-                    },
-                    "remove": {
-                    "particles_nb": 2
-                    }
-                }
-                },
-                "retina_detect": true,
-                "config_demo": {
-                "hide_card": false,
-                "background_color": "#b61924",
-                "background_image": "",
-                "background_position": "50% 50%",
-                "background_repeat": "no-repeat",
-                "background_size": "cover"
-                }
-            }
-            );
+    <style>
+    .container1 {
+        position: relative;
+        width: 150px;
+        height:150px;
+    }
 
-        });
-    </script>
+    .image {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 75%;
+        left: 75%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .container1:hover .image {
+        opacity: 0.3;
+    }
+
+    .container1:hover .middle {
+        opacity: 1;
+    }
+
+    .text {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        padding: 16px 32px;
+    }
+    .profile-head .nav-tabs .nav-link {
+        font-size:11px;
+    }
+    </style>
+<style>
+
+
+/* Extra styles for the cancel button */
+.cancelbtn11 {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn11, .signupbtn11 {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container11 {
+  padding: 16px;
+}
+
+/* The Modal (background) */
+.modal11 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content11 {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+ 
+/* The Close Button (x) */
+.close11 {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close11:hover,
+.close11:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix11::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn11, .signupbtn11 {
+     width: 100%;
+  }
+}
+</style>
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
     <div class="container emp-profile">
         <form method="post">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="profile-img">
-                        {% if get_user.avatar %}
-                            <img src="{{ get_user.avatar.url }}" style="height:150px;width:150px;border-radius:50%;">
-                        {% else %}
-                            <img src="{% static 'profile/default_symbol.png' %}" style="height:150px;width:150px;border-radius:50%;">
-                        {% endif %}
-                    </div>
+                        <div class="profile-img" style="height:218px;width:247px;border-radius:50%;">
+                            {% if get_user.avatar %}
+                                <div class="container1">
+                                    <img src="{{ get_user.avatar.url }}" alt="Avatar" class="image"  style="height:218px;width:247px;border-radius:50%;">
+                                    {% if request.user.username == get_user.username %}
+                                        <a href="{% url 'upload_photo' %}">
+                                            <div class="middle">
+                                                <div class="text btn btn-primary" style="border-radius:50%;"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                                            </div>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            {% else %}
+                                <div class="container1">
+                                    <img src="{% static 'profile/default_symbol.png' %}" alt="Avatar" class="image"  style="height:218px;width:247px;border-radius:50%;">
+                                    {% if request.user.username == get_user.username %}
+                                        <a href="{% url 'upload_photo' %}">
+                                            <div class="middle">
+                                                <div class="text btn btn-primary" style="border-radius:50%;"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                                            </div>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
                 </div>
                 <div class="col-md-6">
                     <div class="profile-head">
-                        <h3>
+                        <h4>
                             {{ get_user.summary }}
-                        </h3>
+                        </h4>
                         <h6>@{{ get_user.username }}</h6>
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top:20%;width:299px;">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
                             </li>
-                            <div class="nav-item">
-                                <a href="#" class="btn btn-primary" style="border-radius:50%"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            </div>
+                            <li class="nav-item">
+                                <a class="nav-link" id="linkedin-tab" data-toggle="tab" href="#linkedin" role="tab" aria-controls="linkedin" aria-selected="false">Linkedin</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="projects-tab" data-toggle="tab" href="#projects" role="tab" aria-controls="projects" aria-selected="false">Projects</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
+
+                {% if request.user.username == get_user.username %}
+                    <div class="col-sm-2">
+                        <a href="{% url 'update_profile' %}" class="btn btn-primary" style="border-radius:50%"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    </div>
+                {% endif %}
             </div>
             <div class="row">
                 <div class="col-md-4">
@@ -435,18 +474,24 @@ background: linear-gradient(to top, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Fir
                         {% else %}
                         {% endif %}
                         {% if get_user.github_url %}
-                            <a href="{{ get_user.github_url }}"><i class="fa fa-github" style="font-size:24px"></i></a><br/>
+                            <a href="{{ get_user.github_url }}" target="blank"><i class="fa fa-github" style="font-size:24px"></i></a><br/>
                         {% else %}
                         {% endif %}
                         {% if get_user.webpage_url %}
-                            <a href="{{ get_user.webpage_url }}">Portfolio</a><br/>
+                            <a href="{{ get_user.webpage_url }}" target="blank">Portfolio</a><br/>
                         {% else %}
                         {% endif %}
-                        <p>Features</p>
-                        <a href="{% url 'change_password' %}">change password</a><br>
-                        {% if user.is_superuser %}
-                            <a href="{% url 'queries_list' %}">queries</a><br>
+                        {% if request.user.username == get_user.username %}
+                            <p>Account settings</p>
+                            <a href="{% url 'change_password' %}">Change Password</a><br><br><br>
+                            {% if user.is_superuser %}
+                                <a href="{% url 'queries_list' %}">Queries</a><br>
+                            {% endif %}
+                            {% if not user.is_superuser %}
+                                <p class="btn btn-danger" style="color:white;" onclick="document.getElementById('id01').style.display='block'">Delete account</p><br>
+                            {% endif %}
                         {% endif %}
+                        
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -542,12 +587,155 @@ background: linear-gradient(to top, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Fir
                                     </div>
                                 </div>
                             </div>
-                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="linkedin" role="tabpanel" aria-labelledby="linkedin-tab">
+                        {% if experience or education or skills or location %}
+                                {% if location %}
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Place </label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <p>{{ location }}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if experience %}
+                                    <h4>Experience</h4>
+                                    {% for lst in experience %}
+                                        {% if lst|length_is:4 %}
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Company </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p>{{ lst.companyName }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Title</label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p>{{ lst.title }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Duration</label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p>{{ lst.startMonth }}/{{ lst.startYear }} - Present</p>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        {% elif lst|length_is:6 %}
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Company </label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p>{{ lst.companyName }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Title</label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p>{{ lst.title }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Duration</label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <p>{{ lst.startMonth }}/{{ lst.startYear }} - {{ lst.endMonth }}/{{ lst.endYear }}</p>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                                {% if skills %}
+                                    <h4>Skills</h4>
+                                    {% for i in skills %}
+                                        <p class="btn" style="cursor:default;">{{ i }}</p>
+                                    {% endfor %}     
+                                    <hr>
+                                {% endif %}
+                                {% if education %}
+                                    <h4>Education</h4>
+                                    {% for lst in education %}
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>College Name </label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>{{ lst.schoolName }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Degree</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>{{ lst.degreeName }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Field of Study</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>{{ lst.fieldOfStudy }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Duration</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>{{ lst.startYear }} - {{ lst.endYear }}</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    {% endfor %}
+                                {% endif %}
+                            {% else %}
+                                <div class="container jumbotron thank_you" style="margin-top:4%;margin-bottom:4%;text-align:center;background-color: #bbf0a3;">
+                                    <p><strong>Have a tea</strong> and visit again :)</p>
+                                    <p>We are updating your profile</p>
+                                    <hr>
+                                    <p>Having trouble? <a href="{% url 'contactform' %}">Contact us</a></p>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="projects-tab">
+                            <h4>Projects</h4>
+                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </form>           
     </div>
+
+<div id="id01" class="modal11" style="top:5%;">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close11" title="Close Modal">&times;</span>
+  <div class="modal-content11">
+    <div class="container11">
+      <h5>Are you sure you want to delete your account?</h5>
+
+      <p>By deleting your account you will lost all the information on this website and you can never getback.</p>
+
+      <div class="clearfix11">
+        <a onclick="document.getElementById('id01').style.display='none'" class="btn btn-classic">Cancel</a>
+        <a href="{% url 'delete_user' %}" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+    </div>
+</div>
 
 {% endblock content %}

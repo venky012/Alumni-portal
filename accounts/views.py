@@ -6,11 +6,11 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.conf import settings
 from django.contrib.auth import login
-from accounts.models import User
+from accounts.models import User,linkedin_model
 from jobs.models import Jobs_details
 
 from django.views.generic import TemplateView
-from .forms import RegistrationForm
+from .forms import RegistrationForm, ImageUploadForm, UpdateProfileForm
 from .tokens import account_activation_token
 import re
 import time
@@ -19,6 +19,8 @@ import requests
 from django.contrib.auth.decorators import login_required
 from accounts.decorators import email_confirmation_required
 from django.views.decorators.cache import cache_control
+import ast
+
 
 EMAIL_REGEX = re.compile(r'([A-Za-z])\w+.([a-z0-9])\w+@iiits.in')
 
@@ -108,16 +110,123 @@ def activate(request, uidb64, token):
     else:
         return render(request, 'accounts/account_activation_invalid.html')
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
+@email_confirmation_required
+def delete_user(request):
+    obj = User.objects.get(username = request.user.username)
+    # get current site
+    current_site = get_current_site(request)
+    subject = str(current_site)+' account deletion'
+    # create Message
+    message = render_to_string('accounts/account_delete_email.html', {
+        'user': request.user,
+        'domain': current_site.domain,
+        'uid': urlsafe_base64_encode(force_bytes(request.user.pk)),
+        'token': account_activation_token.make_token(request.user),
+    })
+    # send activation link to the user
+    request.user.email_user(subject=subject, message=message)
+    return render(request, 'accounts/account_delete_sent.html')
+
+def delete(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        user.delete()
+        return redirect('home')
+    else:
+        return render(request, 'accounts/account_activation_invalid.html')
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required
 @email_confirmation_required
 def user_profile(request, username):
-    get_user = User.objects.get(username=username)
-    jobslist = Jobs_details.objects.filter(user__username=username)
-    context = {
-        "get_user": get_user,
-        "jobslist": jobslist
-    }
+    try:
+        get_user = User.objects.get(username=username)
+    except:
+        get_user = None
+    
+    if get_user:
+        jobslist = Jobs_details.objects.filter(user__username=username)
+        try:
+            modellist = linkedin_model.objects.get(user__username=username)
+            experience = ast.literal_eval(modellist.experience)
+            skills = ast.literal_eval(modellist.skills)
+            education = ast.literal_eval(modellist.education)
+            location = modellist.currentLocation
+        except:
+            experience = []
+            education = []
+            skills = []
+            location =""
+        context = {
+            "get_user": get_user,
+            "jobslist": jobslist,
+            "education" : education,
+            "experience" : experience,
+            "skills" : skills,
+            "location" : location
+        }
 
-    return render(request, 'profile_page.html', context)
+        return render(request, 'profile_page.html', context)
+    else:
+        return render(request,'accounts/user_not_found.html')
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
+@email_confirmation_required
+def upload_image(request):
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST , request.FILES)
+        if form.is_valid():
+            username = request.user.username
+            user = User.objects.get(username=username)
+            user.avatar = form.cleaned_data['avatar']
+            user.save()
+
+            return redirect('/profile_page/userinfo/'+str(username)+'/') 
+            
+    else:
+        form = ImageUploadForm()
+    return render(request, 'accounts/upload_form.html', {'form': form})
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
+@email_confirmation_required
+def update_profile(request):
+    if request.method == 'POST':
+        form = UpdateProfileForm(request.POST , request.FILES)
+        if form.is_valid():
+            username = request.user.username
+            user = User.objects.get(username=username)
+            if form.cleaned_data['first_name']:
+                user.first_name = form.cleaned_data['first_name']
+            if form.cleaned_data['last_name']:
+                user.last_name = form.cleaned_data['last_name']
+            if form.cleaned_data['phone_number']:
+                user.phone_number = form.cleaned_data['phone_number']
+            if form.cleaned_data['linkedin_url']:
+                user.linkedin_url = form.cleaned_data['linkedin_url']
+            if form.cleaned_data['github_url']:
+                user.github_url = form.cleaned_data['github_url']
+            if form.cleaned_data['webpage_url']:
+                user.webpage_url = form.cleaned_data['webpage_url']
+            if form.cleaned_data['company']:
+                user.company = form.cleaned_data['company']
+            if form.cleaned_data['place']:
+                user.place = form.cleaned_data['place']
+            if form.cleaned_data['summary']:
+                user.summary = form.cleaned_data['summary']
+            # Save the User object
+            user.save()
+            return redirect('/profile_page/userinfo/'+str(username)+'/') 
+            
+    else:
+        form = UpdateProfileForm()
+    return render(request, 'accounts/update_profile.html', {'form': form})

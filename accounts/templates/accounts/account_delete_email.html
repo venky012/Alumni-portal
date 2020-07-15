@@ -1,0 +1,7 @@
+{% autoescape off %}
+Hi {{ user.username }},
+
+Please click the below link to delete your account. By deleting your account you will lost all the information on this website and you can never getback.
+
+http://{{ domain }}{% url 'delete' uidb64=uid token=token %}
+{% endautoescape %}
