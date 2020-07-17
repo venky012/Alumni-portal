@@ -27,6 +27,7 @@
 - CSS3
 - Bootstrap4 
 - Jquery3
+- Python3
 - Django2
 - sqlite3 (database)
 
