@@ -175,7 +175,7 @@ Jobs
                         <img class="img-fluid" src="{% static jobs.imgSrc %}" style="max-width: 100%; height:auto; padding-bottom: 3%;" alt="#">
                     </div>    
                     <div class="deadline">
-                        <p class="deadline text-right"><span style="font-size: 0.8rem;color:#2184ed; font-style: italic;font-weight: bold;">Apply before </span><span>{{jobs.last_date}}</span></p>
+                        <p class="deadline text-right"><span style="font-size: 0.8rem;color:#2184ed; font-style: italic;font-weight: bold;">Apply before </span><span>{{jobs.last_date|date:"M d, Y"}}</span></p>
                     </div>   
                           
                     <p class="jobtitle">{{jobs.job_title}}</p>

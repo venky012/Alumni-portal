@@ -4,6 +4,7 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 import requests
 from django.contrib.auth.decorators import login_required
+from accounts.decorators import email_confirmation_required
 from .forms import PostJobForm
 from accounts.models import User
 from .models import Jobs_details
@@ -12,6 +13,7 @@ import random
 
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@email_confirmation_required
 @login_required
 def PostJobView(request):
     if request.method == 'GET':
@@ -39,3 +41,12 @@ def PostJobView(request):
 def JobsView(request):
     jobslist=Jobs_details.objects.all()
     return render(request,'jobs.html',{"jobslist":jobslist})
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@email_confirmation_required
+@login_required
+def DeleteJob(request,id):
+    obj = Jobs_details.objects.get(id=id)
+    if obj:
+        obj.delete()
+    return redirect('/profile_page/userinfo/'+str(request.user.username)+'/')

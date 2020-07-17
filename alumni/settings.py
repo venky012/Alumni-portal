@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'contactform',
     'crispy_forms',
     'jobs',
+    'donations',
     'django_cleanup.apps.CleanupConfig',        # to clean the user profile photo and update new photo
     'django_cron',
     'django_filters',               # for search operation
@@ -183,6 +184,8 @@ STATICFILES_DIR = [os.path.join(BASE_DIR,'static')]
 MEDIA_DIR = os.path.join(BASE_DIR,'media')
 
 MEDIA_ROOT = MEDIA_DIR
+
+STATIC_ROOT = STATICFILES_DIR
 
 MEDIA_URL = '/media/'
 

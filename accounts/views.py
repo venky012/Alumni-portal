@@ -254,3 +254,4 @@ def SearchPage(request):
         email.send()
 
     return render(request, 'search_mail.html', context)
+

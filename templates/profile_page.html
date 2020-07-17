@@ -319,7 +319,7 @@
         padding: 16px 32px;
     }
     .profile-head .nav-tabs .nav-link {
-        font-size:11px;
+        font-size:18px;
     }
     </style>
 <style>
@@ -452,9 +452,6 @@ window.onclick = function(event) {
                             <li class="nav-item">
                                 <a class="nav-link" id="linkedin-tab" data-toggle="tab" href="#linkedin" role="tab" aria-controls="linkedin" aria-selected="false">Linkedin</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="projects-tab" data-toggle="tab" href="#projects" role="tab" aria-controls="projects" aria-selected="false">Projects</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -549,8 +546,15 @@ window.onclick = function(event) {
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <label>Jobs Posted</label>
+                            <div class="float-right">
+                                {% if request.user.username == get_user.username %}
+                                    <a class="btn btn-primary" href="{% url 'post_job' %}">Post job</a>
+                                {% endif %}
+                            </div>
                             <div id="joblistid" class="jobslist">
                                 <div class="container">
+                                    
+                                    
                                     <div class="row ">
                                     {% if jobslist %}
                                         {% for jobs in jobslist %}
@@ -560,7 +564,7 @@ window.onclick = function(event) {
                                                     <img class="img-fluid" src="{% static jobs.imgSrc %}" style="max-width: 100%; height:auto; padding-bottom: 3%;" alt="#">
                                                 </div>    
                                                 <div class="deadline">
-                                                    <p class="deadline text-right"><span style="font-size: 0.8rem;color:#2184ed; font-style: italic;font-weight: bold;">Apply before </span><span>{{jobs.last_date}}</span></p>
+                                                    <p class="deadline text-right"><span style="font-size: 0.8rem;color:#2184ed; font-style: italic;font-weight: bold;">Apply before </span><span>{{jobs.last_date|date:"M d, Y"}}</span></p>
                                                 </div>   
                                                     
                                                 <p class="jobtitle">{{jobs.job_title}}</p>
@@ -572,7 +576,7 @@ window.onclick = function(event) {
                                                 
                                                 <div class="bottom">
                                                 <p class="company text-right"><span class="highlight">{{jobs.company}}</span>, <span>{{jobs.place}}</span></p>
-                                                <p class="Postedby">Posted by:<a href="{% url 'profile_page' username=jobs.user.username %}" style="color:blue">{{jobs.user.username}}</a></p>
+                                                <a class="btn btn-danger float-right" href="{% url 'delete_job' id=jobs.id  %}">Delete</a>
                                                 </div>
                                         </div>
                                         </div>
@@ -712,9 +716,6 @@ window.onclick = function(event) {
                                     <p>Having trouble? <a href="{% url 'contactform' %}">Contact us</a></p>
                                 </div>
                             {% endif %}
-                        </div>
-                        <div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="projects-tab">
-                            <h4>Projects</h4>
                         </div>
                         </div>
                     </div>
