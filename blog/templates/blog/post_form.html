@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% extends "blog/blog_base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+    <style>
+       @media screen and (max-width:560px){
+        #hi{
+      width:300px;
+      background:rgba(0, 2, 8, 0.72);
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+        h1{
+      padding:40px;
+      font-size:80px;
+    }
+        #hi2{
+    width:250px;
+   height:30px; 
+   }
+    #hi3{
+    width:280px;
+    height:150px;
+   }
+    }
+
+    @media screen and (min-width:768px){
+      #hi{
+      width:800px;
+      background:rgba(0, 2, 8, 0.72);
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+    h1{
+      padding:40px;
+      font-size:80px;
+    }
+    #hi2{
+    width:500px;
+   height:40px; 
+   }
+    #hi3{
+    width:500px;
+    height:300px;
+   }
+   }
+
+   .submit{
+			border: 0;
+			background: none;
+			display: block; 
+			margin: auto;
+			text-align: center;
+			border: 2px solid rgb(62, 128, 62);
+			padding: 14px 40px;
+			width: 130px;
+			outline: none;
+			color: white;
+			border-radius: 24px;
+			transition: 0.25s;
+			cursor: pointer;
+		}
+		.submit:hover{
+			background: rgb(62, 128, 62);
+
+		}
+   #hi2,#hi3{
+    border-radius:8px;
+   }
+   .main{
+    background-image:url("{% static 'img/blog/post_form.jpg' %}");
+    background-size:cover; 
+    color:white;
+    background-attachment:fixed;
+   }
+    </style>
+     
+        <div class="main" style="text-align:center;">
+         <form method="POST" >
+            {% csrf_token %}
+          <div id="hi" class="container">
+            <h1>Blog Post</h1>
+            <input id="hi2" type="text" name="title" placeholder=" Title"><br><br>
+            <textarea id="hi3" name="content" placeholder=" Content"></textarea><br><br>
+            <button type="submit" class='submit'>Post</button><br><br>
+          </div>
+         
+        </form>
+    </div>
+    
+{% endblock content %}

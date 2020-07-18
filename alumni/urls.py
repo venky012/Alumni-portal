@@ -26,6 +26,7 @@ urlpatterns = [
     path('',include('jobs.urls')),
     path('', include('django.contrib.auth.urls')),
     path('',include('donations.urls')),
+    path('',include('blog.urls')),
 
 
 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% extends 'blog/blog_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block head %}
+    <title>Edit Comment</title>
+{% endblock %}
+{% block content %}
+
+<style>
+     @media screen and (max-width:560px){
+        #hi{
+    width:300px;
+    height:250px;
+    background:rgba(0, 2, 8, 0.72);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-top: 7%;
+    margin-bottom: 5%;
+ }
+ .edit{
+     text-align: center;
+ }
+    }
+    @media screen and (min-width:768px){
+        #hi{
+    width: 800px;
+    height:250px;
+    background:rgba(0, 2, 8, 0.72);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-top: 7%;
+    margin-bottom: 5%;
+ }
+ .edit{
+     text-align: center;
+ }
+ .form{
+     padding-left: 33%;
+ }
+ .submit{
+     margin-left: 20%;
+ }
+    }
+ #hi3{
+    width:500px;
+    height:100px;
+    border-radius:8px;
+   }
+ body{
+   background-image:url('https://images.pexels.com/photos/255377/pexels-photo-255377.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+   background-size:cover; 
+   color:white;
+   background-attachment:fixed;
+}
+</style>
+<body><br>
+    <div class="container" id='hi'>
+    <h2 class="edit" style="padding-top: 7%;">Edit Comment</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="container form" style="margin-top: 5%;">
+        {{ form.as_p }}
+        <button class="submit" type="submit">Submit</button>
+    </div>
+    </form>
+    </div>
+</body>
+   
+    
+{% endblock %}
+
+

@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'contactform',
     'crispy_forms',
     'jobs',
+    'blog',
     'donations',
     'django_cleanup.apps.CleanupConfig',        # to clean the user profile photo and update new photo
     'django_cron',

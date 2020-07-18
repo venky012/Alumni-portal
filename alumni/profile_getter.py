@@ -1,17 +1,9 @@
-from alumni import api
 from pickle import loads, dumps
 from accounts.models import User, linkedin_model
 
 
-def getProfile(username,profile_link):
+def getProfile(username,profile):
     # skills
-
-    # GET a profile
-    profile = ''
-    try:
-        profile = api.get_profile(profile_link)
-    except:
-        profile = ''
     
     skill_li = []
     for i in profile['skills']:
