@@ -7,7 +7,7 @@ from accounts.models import User
 class Jobs_details(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     job_title = models.CharField(max_length=50)
-    last_date = models.DateField()
+    last_date = models.DateTimeField(max_length=10)
     company = models.CharField(max_length=50)
     place = models.CharField(max_length= 50)
     experience = models.CharField(max_length = 50)

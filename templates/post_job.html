@@ -1,15 +1,79 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% block title %}Post a job{% endblock title %}
 {% load crispy_forms_tags %}
-{% block title %}Post a Job{% endblock %}
 {% block content %}
+  {% load static %}
+        <div class="row" style="margin-top:4%;">
+            <!-- left column -->
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="text-center">
+                    {% if request.user.avatar %}
+                        <img src="{{ request.user.avatar.url }}" alt="Avatar" class="avatar img-circle img-thumbnail"  style="height:218px;width:247px;border-radius:50%;">
+                    {% else %}
+                        <img src="{% static 'profile/default_symbol.png' %}" alt="Avatar" class="avatar img-circle img-thumbnail"  style="height:218px;width:247px;border-radius:50%;">
+                    {% endif %}
+                </div>
+                </div>
+                <!-- edit form column -->
+                <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+                <h3>Personal info</h3>
+                <form class="form-horizontal" action="." method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                    <label class="col-lg-3 control-label">Company:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" name="company" type="text">
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Place:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="place" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Job Title:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="job_title" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Category:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="category" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Last Date:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="last_date" type="date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Salary:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" name="salary" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-lg-3 control-label">Experience:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" name="experience" type="text">
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-8">
+                        <input class="btn btn-primary" value="Save Changes" type="submit">
+                    </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+{% endblock content %}
 
-<div class="container jumbotron" style="margin-top:1%;padding:1%">
-   <form action="." method="post">{% csrf_token %}
-        {{ form|crispy }} 
-        <button type="submit" class="btn btn-primary"> post -> </button>
-    </form>
-</div>
-{% endblock %}
 
 
 

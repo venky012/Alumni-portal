@@ -9,6 +9,7 @@ from django.conf import settings
 from django.contrib.auth import login
 from accounts.models import User,linkedin_model
 from jobs.models import Jobs_details
+from blog.models import Post
 
 from django.views.generic import TemplateView
 from .forms import RegistrationForm, ImageUploadForm, UpdateProfileForm
@@ -155,6 +156,7 @@ def user_profile(request, username):
     
     if get_user:
         jobslist = Jobs_details.objects.filter(user__username=username)
+        posts = Post.objects.filter(author__username=username)
         try:
             modellist = linkedin_model.objects.get(user__username=username)
             experience = ast.literal_eval(modellist.experience)
@@ -172,7 +174,8 @@ def user_profile(request, username):
             "education" : education,
             "experience" : experience,
             "skills" : skills,
-            "location" : location
+            "location" : location,
+            'posts': posts
         }
 
         return render(request, 'profile_page.html', context)
@@ -255,6 +258,7 @@ def SearchPage(request):
 
     return render(request, 'search_mail.html', context)
 
+<<<<<<< HEAD
 
 def SearchAlumni(request):
     get_user = User.objects.filter(is_staff=False)
@@ -267,3 +271,5 @@ def SearchAlumni(request):
     
 
     return render(request, 'search_alumni.html', context)
+=======
+>>>>>>> 32fc18b48c0dfc58b39e5a76da8de38ffdd10119

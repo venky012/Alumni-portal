@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+{% extends 'blog/blog_base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<style>
+    @media screen and (min-width:768px){
+        .pagination{
+          margin-left: 42%;
+        }
+       }
+</style>
+<div class="container title" style="text-align:center;margin-top:60px">
+  <h2><i><b>Welcome to the blog </b></i></h2>
+</div>
+<br>
+<br>
+<br>
+<div class="container title1">
+<a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'post-create' %}">Create Post</a><br><br>
+</div>
+
+    <style>
+    @media screen and (max-width:560px){
+      .post {
+        width:300px;
+        height:350px;
+        background:rgba(0, 2, 8, 0.72);
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      }
+    
+      .pagination a {
+    border-radius: 50%;
+    background-color: black;
+    color:white;
+    }
+    }
+    @media screen and (min-width:768px){
+      .post {
+        width:800px;
+        height:300px;
+        background:rgba(0, 2, 8, 0.72);
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      }
+      .pagination a {
+    border-radius: 50%;
+    background-color: black;
+    color:white;
+    align-content: center;
+    }
+    }
+    body{
+        background-image:url("{% static 'img/blog/user_post.webp' %}");
+        background-size:cover; 
+        color:white;
+        background-attachment:fixed;
+      }
+    
+    .btn-primary{
+			border: 0;
+			background: rgb(209, 45, 86);
+			display: block;
+			margin: auto;
+			text-align: center;
+      font-size: medium ;
+			border: 2px solid rgb(3, 19, 3);
+			padding: 14px 40px;
+			width: 250px;
+			outline: none;
+			color: white;
+			border-radius: 24px;
+			transition: 0.25s;
+			cursor: pointer;
+		}
+		.btn-primary:hover{
+			background: rgb(199, 34, 61);
+      }
+      </style>
+
+<body><br><br>
+    {% if posts %}
+      {% for post in posts %}
+      <div class="container post">
+        {% if post.author.avatar %}
+              <img src="{{ post.author.avatar.url }}" alt="Avatar" class="image"  style="height:50px;width:50px;float:left;border-radius:50%;">
+        {% else %}
+              <img src="{% static 'profile/default_symbol.png' %}" alt="Avatar" class="image"  style="height:50px;width:50px;float:left;border-radius:50%;">
+        {% endif %}
+            <div style="padding:15px;"><br>
+                <h5><a class="mr-2" href="{% url 'profile_page' post.author.username %}" >Author: {{ post.author }}</a></h5>
+                <small><i>{{ post.date_posted|date:"F d, Y" }}</i></small>
+                <h2><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+              <p style="text-align: center;">{{ post.content }}</p>
+              <br>
+              </div> 
+          </div><br><br>
+      {% endfor %}
+    {% else %}
+        <br><br><br><br>
+    {% endif %}
+    <div class = "container pagination">
+    {% if is_paginated %}
+    
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1"><<</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}"><</a>
+      {% endif %}
+    
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+    
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">></a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">>></a>
+      {% endif %}
+    
+    {% endif %}
+  </div>
+{% endblock content %}
+
+
+

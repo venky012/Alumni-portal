@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% extends 'blog/blog_base.html' %}
+{% block content %}
+{% load static %}
+    
+    <div class='container title' style="margin-top: 3%;">
+    <h1 class=mb-3>Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
+    </div>
+    <style>
+       @media screen and (min-width:768px){
+        .pagination{
+          margin-left: 44%;
+        }
+       }
+    </style>
+    {% for post in posts %}
+  <style>
+    @media screen and (max-width:560px){
+      .title{
+      text-align: center;
+    }
+     .new {
+    width:300px;
+    height:400px;
+    background:rgba(0, 2, 8, 0.72);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .pagination a {
+    border-radius: 50%;
+    background-color: black;
+    color:white;
+    
+  }
+  body{
+    background-image:url("{% static 'img/blog/user_post.webp' %}");
+    background-size:cover; 
+    color:white;
+    background-attachment:fixed;
+  }
+    }
+    @media screen and (min-width:768px){
+      .title{
+      text-align: center;
+    }
+     .new {
+    width:800px;
+    height:300px;
+    background:rgba(0, 2, 8, 0.72);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .pagination a {
+    border-radius: 50%;
+    background-color: black;
+    color:white;
+    align-content: center;
+    
+  }
+  body{
+    background-image:url('https://images.pexels.com/photos/163235/hot-air-balloon-balloon-sky-hot-air-balloon-ride-163235.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+    background-size:cover; 
+    color:white;
+    background-attachment:fixed;
+  }
+    }
+  </style>
+
+<body><br><br>
+      <div class="container new">
+        {% if post.author.avatar %}
+        <img src="{{ post.author.avatar.url }}" alt="Avatar" class="image"  style="height:50px;width:50px;float:left;border-radius:50%;">
+        {% else %}
+        <img src="{% static 'profile/default_symbol.png' %}" alt="Avatar" class="image"  style="height:50px;width:50px;float:left;border-radius:50%;">
+        {% endif %}
+          <div style="padding:15px;"><br>
+          <h2><a href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a></h2>
+          <small><i>{{ post.date_posted|date:"F d, Y" }}</i></small>
+          <h2><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+          <p style="text-align: center;">{{ post.content }}</p><br>
+          </div>
+      </div><br><br>
+        </body>
+    {% endfor %}
+    <div class = "container pagination">
+    {% if is_paginated %}
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1"><<</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}"><</a>
+      {% endif %}
+    
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+    
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">></a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">>></a>
+      {% endif %}
+    
+    {% endif %}
+  </div>
+      </br>
+    </br>
+  </br>
+{% endblock content %}
+
+
+

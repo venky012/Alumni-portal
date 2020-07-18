@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<!-- Meta, title, CSS, favicons, etc. -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Donate | IIITS </title>
+
+	<!-- Styles -->
+	<link rel='stylesheet' href="{% static 'assets/css/bootstrap.min.css' %}"/>
+	<link rel='stylesheet' href="{% static 'assets/css/animate.min.css' %}"/>
+	<link rel='stylesheet' href="{% static 'assets/css/font-awesome.min.css' %}"/>
+	<link rel='stylesheet' href="{% static 'assets/css/style.css' %}"/>
+
+	<!-- Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="#">
+</head>
+<body>
+<!-- Begin Hero Bg -->
+<div id="parallax">
+</div>
+<!-- End Hero Bg
+	================================================== -->
+
+<!-- Intro
+	================================================== -->
+<section id="hero" class="section">
+<div class="container">
+	<div class="row">
+		<div class="col-md-5">
+			<div class="herotext">
+				<h1 class="wow bounceInDown" data-wow-duration="1s" data-wow-delay="0.1s">CHIP IN <span class="lighter">NOW</span></h1>
+				<p class="lead wow zoomIn" data-wow-duration="2s" data-wow-delay="0.5s">
+					When we give cheerfully and accept gratefully, everyone is blessed
+				</p>
+				<p>
+					<a href="{% url 'home' %}" class="btn btn-default btn-lg wow fadeInLeft" role="button"> Go To Home </a> &nbsp; <a href="{% url 'index' %}" class="btn btn-default btn-lg wow fadeInRight" role="button">Donate us</a>
+				</p>
+			</div>
+		</div>
+		<div class="col-md-7">
+		</div>
+	</div>
+</div>
+</section>
+<!-- About
+	================================================== -->
+<section id="about" class="parallax section" style="background-image: url(http://themepush.com/demo/runcharity/assets/img/1.jpg);">
+<div class="wrapsection">
+	<div class="parallax-overlay" style="background-color: #01b0d1;opacity:0.9;"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Title -->
+				<div class="maintitle">
+					<h3 class="section-title"><strong>FIND <span class="lighter">CAUSE</span></strong> to support on our run</h3>
+					<p class="lead">
+						Giving to this fund enables the IIITS Alumni Association to connect with alumni, support students and strengthen the university. Today we number more than 327,000 graduates worldwide. And your support strengthens the herd!
+					</p>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="service-box wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.1s">
+					<img src="{% static './assets/img/conference-1-2000x822.jpg' %}" alt="">
+					<h3>January 7, 2021 <br/>Alumni Meet<br>@Square Garden</h3>
+					<div class="text-left">
+						<p>
+							Hear alumni who are interested in sharing their expertise on a wide variety of topics with students and/or fellow alumni.
+						</p>
+						<p>
+							If not enough room, you can also join through our online platform.
+						</p>
+						<p>
+							Yep. Really looking goody awesome!
+						</p>
+						<!-- <p class="text-center">
+							<button type="button" class="btn btn-info btn-md"><a href="#">Learn More</a></button>
+						</p> -->
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="service-box wow flipInY" data-wow-duration="1.5s" data-wow-delay="0.1s">
+					<span class="glyphicon glyphicon-stats"></span>
+					<h3>1,386 Participants</h3>
+					<p>
+						Thanks to all our participants we are close to achieve you goal.
+					</p>
+					<!-- <button type="button" class="btn btn-info btn-md"><a href="#">Learn More</a></button> -->
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="service-box wow flipInY" data-wow-duration="1.5s" data-wow-delay="0.2s">
+					<span class="glyphicon glyphicon-tree-deciduous"></span>
+					<h3>195 Concerts</h3>
+					<p>
+						Our concerts and meetings help people all over the world.
+					</p>
+					<!-- <button type="button" class="btn btn-info btn-md"><a href="#">Learn More</a></button> -->
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="service-box wow flipInY" data-wow-duration="1.5s" data-wow-delay="0.3s">
+					<span class="glyphicon glyphicon-heart"></span>
+					<h3>268 Sponsors</h3>
+					<p>
+						Thanks to all our organisations/people for sponsoring our event.
+					</p>
+					<!-- <button type="button" class="btn btn-info btn-md"><a href="#">Learn More</a></button> -->
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="service-box wow flipInY" data-wow-duration="1.5s" data-wow-delay="0.4s">
+					<span class="glyphicon glyphicon-usd"></span>
+					<h3>&#36;{{amount_raised}} Donated</h3>
+					<p>
+						We are greatful to all our donators to donate to our cause.
+					</p>
+					<button type="button" class="btn btn-info btn-md"><a href="{% url 'index' %}">Donate Now</a></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<!-- Random
+	================================================== -->
+<section class="parallax section" style="background-image: url(http://themepush.com/demo/runcharity/assets/img/3.jpg);">
+	<div class="wrapsection">
+	<div class="parallax-overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 sol-sm-12">
+				<div class="maintitle">
+					<h3 class="section-title justtitle">Participation is everything</h3>
+					<p class="lead bottom0 wow bounceInUp">
+						Alone, we can do so little; together we can do so much.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</section>
+<!-- Gallery
+	================================================== -->
+<section id="gallery" class="parallax section" style="background-image: url(http://themepush.com/demo/runcharity/assets/img/2.jpg);">
+<div class="wrapsection">
+	<div class="parallax-overlay" style="background-color:#00c1c1;opacity:0.9;"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 sol-sm-12">
+				<div class="maintitle">
+					<h3 class="section-title">Events Gallery</h3>
+					<p class="lead wow flipInX">
+						Have a look at your past events gallery, see how much fun we have while helping people all over the world.
+					</p>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<a href="{% static './assets/img/8.jpg' %}" title="Social wall of university">
+					<img src="{% static './assets/img/8.jpg' %}" alt="" class="image-responsive">
+					<div class="description">
+						<span class="caption"><b>Social wall</b> of University</span>
+						<span class="camera"><i class="fa fa-camera"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="{% static './assets/img/6.jpg' %}" title="Peek of Library">
+				<img src="{% static './assets/img/6.jpg' %}" alt="" class="image-responsive">
+					<div class="description">
+						<span class="caption"><b>Intelect </b>Playground</span>
+						<span class="camera"><i class="fa fa-camera"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="{% static './assets/img/11.jpg' %}"Cultural Event">
+				<img src="{% static './assets/img/11.jpg' %}" alt="" class="image-responsive">
+					<div class="description">
+						<span class="caption">Cultural <b>Event</b></span>
+						<span class="camera"><i class="fa fa-heart"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="{% static './assets/img/3.jpg' %}" title="Professional Seminar">
+				<img src="{% static './assets/img/3.jpg' %}" alt="" class="image-responsive">
+					<div class="description">
+						<span class="caption">Sky Lantern <b>Event</b></span>
+						<span class="camera"><i class="fa fa-heart"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="{% static './assets/img/4.jpg' %}" title="Career Devolepment Seminar">
+				<img src="{% static './assets/img/4.jpg' %}" alt="" class="image-responsive">
+					<div class="description">
+						<span class="caption">Career Devolepment <b>Seminar</b></span>
+						<span class="camera"><i class="fa fa-microphone"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="{% static './assets/img/1.jpg' %}" title="Walk of Fame">
+				<img src="{% static './assets/img/1.jpg' %}" alt="" class="image-responsive">
+					<div class="description">
+						<span class="caption">Walk of  <b>Fame</b></span>
+						<span class="camera"><i class="fa fa-tachometer"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<!-- Text Carousel
+	================================================== -->
+<section id="slider" class="parallax section" style="background-image: url(http://themepush.com/demo/runcharity/assets/img/4.jpg);">
+<div class="wrapsection">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 sol-sm-12">
+				<div class="maintitle">
+					<h3 class="section-title">Recents <span class="wow bounceInRight">Gifts</span> To IIITS</h3>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div id="Carousel" class="carousel slide">
+					<ol class="carousel-indicators">
+						<li data-target="#Carousel" data-slide-to="0" class="active"></li>
+						<li data-target="#Carousel" data-slide-to="1"></li>
+						<li data-target="#Carousel" data-slide-to="2"></li>
+						{% for donator in donators %}
+							<li data-target="#Carousel" data-slide-to="{{ forloop.counter0|add:3 }}"></li>
+						{% endfor %}
+					</ol>
+					<div class="carousel-inner">
+						<div class="item active">
+							<blockquote>
+								<p class="lead">
+									You have not lived today until you have done something for someone who can never repay you.
+								</p>
+								<small>John Bunyan</small>
+								<small>$ 50</small>
+							</blockquote>
+						</div>
+						<div class="item">
+							<blockquote>
+								<p class="lead">
+									The simplest acts of kindness are by far more powerful then a thousand heads bowing in prayer.
+								</p>
+								<small>Madonna Fenlon</small>
+								<small>$ 75</small>
+							</blockquote>
+						</div>
+						<div class="item">
+							<blockquote>
+								<p class="lead">
+									There is no exercise better for the heart than reaching down and lifting people up.
+								</p>
+								<small>John Holmes</small>
+								<small>$ 100</small>
+							</blockquote>
+						</div>
+
+						{% for donator in donators %}
+							<div class="item">
+								<blockquote>
+									<p class="lead">
+										{{  donator.description }}
+									</p>
+									<small>{{ donator.donator_name }}</small>
+									<small>$ {{  donator.amount }}</small>
+								</blockquote>
+							</div>
+						{% endfor %}
+
+					</div>
+					<a class="left carousel-control" href="#Carousel" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					</a>
+					<a class="right carousel-control" href="#Carousel" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<!-- FAQ
+	================================================== -->
+<section id="faq" class="section">
+<div class="wrapsection">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 sol-sm-12">
+				<div class="maintitle">
+					<h3 class="section-title">Conditions of <span class="wow bounceInRight">Participation</span></h3>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-sm-12">
+				<div class="faq-block wow bounceInDown" data-wow-duration="1.5s" data-wow-delay="0s">
+					<div class="panel-group">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+								Can we donate clothes/other items ? </a>
+								</h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse">
+								<div class="panel-body">
+									Well you can donate and items you'd like to. Mention them in the description, and we'll contact you.
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+								What is your organization’s mission ? </a>
+								</h4>
+							</div>
+							<div id="collapseTwo" class="panel-collapse collapse">
+								<div class="panel-body">
+									 Our mission is raise $1 Million.
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+								Whoops! I didn’t mean to donate that amount ? </a>
+								</h4>
+							</div>
+							<div id="collapseThree" class="panel-collapse collapse">
+								<div class="panel-body">
+									 So you made a wrong donation, no problem. Contact us through our contact form and we'll get back to you.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-12">
+				<div class="faq-block wow bounceInDown" data-wow-duration="1.5s" data-wow-delay="0.1s">
+					<div class="panel-group">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+								How can I donate to honor or remember someone ? </a>
+								</h4>
+							</div>
+							<div id="collapseFour" class="panel-collapse collapse">
+								<div class="panel-body">
+									 You can mention his/her name in the description.
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+								What do you do with my donor information ? </a>
+								</h4>
+							</div>
+							<div id="collapseFive" class="panel-collapse collapse">
+								<div class="panel-body">
+									 We save your name and conctact information so if needed we can can contact you later.
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+								Do I have to pay a tax ? </a>
+								</h4>
+							</div>
+							<div id="collapseSix" class="panel-collapse collapse">
+								<div class="panel-body">
+									 No you are not paying any tax through this donation. 100% of your donation is going for cause.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-12">
+				<div class="faq-block wow bounceInDown" data-wow-duration="1.5s" data-wow-delay="0.2s">
+					<div class="panel-group">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+								How can I make an in-kind donation ? </a>
+								</h4>
+							</div>
+							<div id="collapseSeven" class="panel-collapse collapse">
+								<div class="panel-body">
+									 We have provided a designation dropdown in our form. Through that you can donate to a specific cause.
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
+								What routes should one follow? </a>
+								</h4>
+							</div>
+							<div id="collapseEight" class="panel-collapse collapse">
+								<div class="panel-body">
+									 Go to the top of this page and press the "Donate Now" link, fill the form and yay you have donated.
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseNine">
+								What percentage of my donation goes to the cause ? </a>
+								</h4>
+							</div>
+							<div id="collapseNine" class="panel-collapse collapse">
+								<div class="panel-body">
+									 Whatever cause you mention in your designation, we are forwarding 100% of it to the designated cause.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<!-- Random
+	================================================== -->
+<section class="whitecolor parallax section" style="background-image: url(http://themepush.com/demo/runcharity/assets/img/5.jpg);">
+<div class="wrapsection">
+	<div class="container">
+	<div class="row">
+		<div class="col-md-12 sol-sm-12">
+			<div class="maintitle">
+				<h3 class="section-title justtitle"><span class="wow flipInX">Generosity and Serendipity</span> - Hand-in-Hand During a Time of Crisis</h3>
+				<p class="lead bottom0">
+					 Resources for our Students during the COVID-19 crisis continue to be available virtually, but one resource provided support in a way that had a vast impact on many students.</p>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+</section>
+
+<!-- Bootstrap core JavaScript
+	================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.scrollTo.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.localScroll.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'assets/js/validate.js' %}"></script>
+<script src="{% static 'assets/js/common.js' %}"></script>
+</body>
+</html>

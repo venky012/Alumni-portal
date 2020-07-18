@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends "blog/blog_base.html" %}
+{% load static %}
+{% block content %}
+<style>
+     @media screen and (max-width:560px){
+        #hi{
+    width:300px;
+    height:300px;
+    background:rgba(0, 2, 8, 0.72);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-top: 7%;
+    margin-bottom: 7%;
+ }
+      }
+    @media screen and (min-width:768px){
+        #hi{
+    width:600px;
+    height:250px;
+    background:rgba(0, 2, 8, 0.72);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-top: 7%;
+    margin-bottom: 7%;
+ }   
+    }
+ body{
+   background-image:url("{% static 'img/blog/post_detail.webp' %}");
+   background-size:cover; 
+   color:white;
+   background-attachment:fixed;
+}
+</style>
+<body>
+    <div class="content-section container" id='hi'>
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" style="padding-top: 4%;">Delete Post</legend>
+                <h2>Are you sure you want to delete the post "{{ object.title }}"</h2>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" style="border-radius: 5%;background-color: red;color:white;" type="submit">Yes,Delete</button>
+                <a class="btn btn-outline-secondary" style="border-radius: 5%;background-color:grey;color:white;border-radius: 5%;" href="{% url 'post-detail' object.id %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+    
+{% endblock content %}
