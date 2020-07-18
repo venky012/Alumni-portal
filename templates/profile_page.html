@@ -394,6 +394,7 @@
      width: 100%;
   }
 }
+
 </style>
 <script>
 // Get the modal
@@ -559,7 +560,7 @@ window.onclick = function(event) {
                                     {% if jobslist %}
                                         {% for jobs in jobslist %}
                                         <div class="col-md-6 col-sm-6 col-xs-8 col-lg-4">
-                                        <div class="jobcard mb-4 box-shadow">         
+                                            <div class="jobcard mb-4 box-shadow">         
                                                 <div class="job_img_cont">
                                                     <img class="img-fluid" src="{% static jobs.imgSrc %}" style="max-width: 100%; height:auto; padding-bottom: 3%;" alt="#">
                                                 </div>    
@@ -578,7 +579,7 @@ window.onclick = function(event) {
                                                 <p class="company text-right"><span class="highlight">{{jobs.company}}</span>, <span>{{jobs.place}}</span></p>
                                                 <a class="btn btn-danger float-right" href="{% url 'delete_job' id=jobs.id  %}">Delete</a>
                                                 </div>
-                                        </div>
+                                            </div>
                                         </div>
                                         {% endfor %}
                                     {% else %}
@@ -592,6 +593,38 @@ window.onclick = function(event) {
                                     </div>
                                 </div>
                             </div>
+                            <br><br>
+                            <label>Blog Posts</label>
+                            <div class="float-right">
+                                {% if request.user.username == get_user.username %}
+                                    <a class="btn btn-primary" href="{% url 'post-create' %}">Create blog post</a>
+                                {% endif %}
+                            </div>
+                            {% if posts %}
+                                {% for post in posts %}
+                                <div class="container" style="background-color:rgba(0, 2, 8, 0.72)">
+                                    {% if post.author.avatar %}
+                                        <img src="{{ post.author.avatar.url }}" alt="Avatar" class="image"  style="height:50px;width:50px;float:left;border-radius:50%;">
+                                    {% else %}
+                                        <img src="{% static 'profile/default_symbol.png' %}" alt="Avatar" class="image"  style="height:50px;width:50px;float:left;border-radius:50%;">
+                                    {% endif %}
+                                        <div style="padding:15px;"><br>
+                                            <h5><a class="mr-2" href="{% url 'profile_page' post.author.username %}" >Author: {{ post.author }}</a></h5>
+                                            <small><i style="color:white">{{ post.date_posted|date:"F d, Y" }}</i></small>
+                                            <h2><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+                                        <p style="text-align: center;">{{ post.content }}</p>
+                                        <br>
+                                        </div> 
+                                    </div><br>
+                                {% endfor %}
+                            {% else %}
+                                <div class="container jumbotron thank_you" style="margin-top:4%;margin-bottom:4%;text-align:center;background-color: #bbf0a3;">
+                                    <h1>No posts are posted by alumni.</h1>
+                                    <p><strong>Have a tea</strong> and visit again :)</p>
+                                    <hr>
+                                    <p>Having trouble? <a href="{% url 'contactform' %}">Contact us</a></p>
+                                </div>
+                            {% endif %}
                         </div>
                         <div class="tab-pane fade" id="linkedin" role="tabpanel" aria-labelledby="linkedin-tab">
                         {% if experience or education or skills or location %}

@@ -57,7 +57,7 @@
             {% else %}
               <img src="{% static 'profile/default_symbol.png' %}" alt="Avatar" class="image"  style="height:50px;width:50px;float:left;border-radius:50%;">
             {% endif %}
-            <b style="font-size:40px;color:rgb(106, 90, 230)"><a href="{% url 'user-posts' post.author %}">{{ post.author }}</a></b>
+            <b style="font-size:40px;color:rgb(106, 90, 230)"><a href="{% url 'profile_page' post.author.username %}">{{ post.author }}</a></b>
             <i> posted on {{ post.date_posted|date:"F d, Y" }}</i>
             <h2 style="font-size:40px;color:rgb(106, 90, 230)">{{ post.title }}</h2>
             <p style="text-align: center;">{{ post.content }}</p>
@@ -73,7 +73,7 @@
                   <div class="form-group">
                     <textarea class="form-control" name="body" rows="1"></textarea>
                   </div>
-                  <button type='submit' class='from-control'>Submit</button><br><br>
+                  <button type='submit' class='btn btn-primary'>Submit</button><br><br>
                 </form>
               </div>
 
@@ -87,7 +87,7 @@
                     {% else %}
                       <img src="{% static 'profile/default_symbol.png' %}" alt="Avatar" class="image"  style="height:50px;width:50px;float:left;border-radius:50%;">
                     {% endif %}
-                    <h5 style="color: black;">{{ comment.author }} <small class="text" style="font-style: italic;color: black;font-size: small;font-weight: bold;">{{ comment.create_date }}</small><h5>
+                    <h5 style="color: black;"><a style="color: darkblue;" href="{% url 'profile_page' comment.author.username %}">{{ comment.author }}</a> <small class="text" style="font-style: italic;color: black;font-size: small;font-weight: bold;">{{ comment.create_date }}</small><h5>
                       <h6>{{ comment.text }}</h6>
                     {% if user == comment.author %} 
                       <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'edit-comment' pid=post.id cid=comment.id %}">Edit</a>
@@ -100,7 +100,7 @@
                     {% else %}
                       <img src="{% static 'profile/default_symbol.png' %}" alt="Avatar" class="image"  style="height:50px;width:50px;float:left;border-radius:50%;">
                     {% endif %}
-                        <h5 style="color: black;" class="info">{{ reply.author }}  <small class="text" style="font-style: italic;color: black;font-size: small;font-weight: bold;">{{ reply.create_date }}</small> </h5>
+                        <h5 style="color: black;" class="info"><a style="color: darkblue;" href="{% url 'profile_page' reply.author.username %}">{{ reply.author }}</a><small class="text" style="font-style: italic;color: black;font-size: small;font-weight: bold;">{{ reply.create_date }}</small> </h5>
                         <h6>{{ reply.text }}</h6>
                         {% if user == reply.author %} 
                           <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'edit-comment' pid=post.id cid=reply.id %}">Edit</a>

@@ -87,7 +87,7 @@
               <img src="{% static 'profile/default_symbol.png' %}" alt="Avatar" class="image"  style="height:50px;width:50px;float:left;border-radius:50%;">
         {% endif %}
             <div style="padding:15px;"><br>
-                <h5><a class="mr-2" href="{% url 'user-posts' post.author.username %}" >Author: {{ post.author }}</a></h5>
+                <h5><a class="mr-2" href="{% url 'profile_page' post.author.username %}" >Author: {{ post.author }}</a></h5>
                 <small><i>{{ post.date_posted|date:"F d, Y" }}</i></small>
                 <h2><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
               <p style="text-align: center;">{{ post.content }}</p>
@@ -121,9 +121,6 @@
     
     {% endif %}
   </div>
-      </br>
-    </br>
-  </br>
 {% endblock content %}
 
 
