@@ -71,12 +71,9 @@ INSTALLED_APPS = [
     'contactform',
     'crispy_forms',
     'jobs',
-<<<<<<< HEAD
     'django_private_chat',
-=======
     'blog',
     'donations',
->>>>>>> 32fc18b48c0dfc58b39e5a76da8de38ffdd10119
     'django_cleanup.apps.CleanupConfig',        # to clean the user profile photo and update new photo
     'django_cron',
     'django_filters',               # for search operation

@@ -258,7 +258,6 @@ def SearchPage(request):
 
     return render(request, 'search_mail.html', context)
 
-<<<<<<< HEAD
 
 def SearchAlumni(request):
     get_user = User.objects.filter(is_staff=False)
@@ -271,5 +270,3 @@ def SearchAlumni(request):
     
 
     return render(request, 'search_alumni.html', context)
-=======
->>>>>>> 32fc18b48c0dfc58b39e5a76da8de38ffdd10119
