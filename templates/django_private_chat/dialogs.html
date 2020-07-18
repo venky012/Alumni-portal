@@ -1,0 +1,379 @@
+{# This template is here just to demonstrate how to customize the default one. #}
+{# It has none to very few changes #}
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block css %}
+
+{% endblock css %}
+
+{% block content %}
+    <input id="owner_username" type="hidden" value="{{ request.user.username }}">
+    <div class="" style="margin-top: 5em; border: 1px solid grey; padding-top: ;">
+        <div class="row jumbotron">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{% trans "Chat list" %}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="user-list-div">
+                        <ul style="list-style-type: none;">
+                            <table style="border: 2px solid black; width: 100%;">
+                            {% for dialog in object_list %}
+                                <tr style="border: 2px solid black;padding: 15px; "><th style="border: 2px solid black; padding: 15px; "><li>
+                                    {% if dialog.owner == request.user %}
+                                            {% with dialog.opponent.username as username %}
+                                                <div class="container"><a href="{% url 'dialogs_detail' username %}" id="user-{{ username }}">{{ username }}</a></div>
+                                            {% endwith %}
+                                    {% else %}
+                                            {% with dialog.owner.username as username %}
+                                            <div class="container"><a href="{% url 'dialogs_detail' username %}" id="user-{{ username }}" > {{ username }}</a></div>
+                                            {% endwith %}
+                                    {% endif %}
+                                </li></th></tr>
+                            {% endfor %}
+                            </table>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="well well-lg">
+                <div class="row">
+                    <span class="pull-right" hidden id="typing-text">
+                        <strong>{{ opponent_username }} {% trans "is typing..." %}</strong>
+                    </span>
+                    <!-- <p>
+                        {{ opponent_username }}
+                    </p>
+                    <p class="text-success" id="online-status" style="display: none">{% trans "Online" %}</p>
+                    <p class="text-danger" id="offline-status" style="display: none">{% trans "Offline" %}</p> -->
+                    <div class="messages-container">
+                        <div style="padding: 10px;">
+                        <p style="display:inline;">
+                            {{ opponent_username }}
+                        </p>
+                        <p style="display:inline;" class="text-success" id="online-status" style="display: none">{% trans "Online" %}</p>
+                        <p style="display:inline;" class="text-danger" id="offline-status" style="display: none">{% trans "Offline" %}</p>
+                        </div>
+                        <div id="messages" class="messages">
+                            {% for msg in active_dialog.messages.all %}
+                                {% if msg.sender != request.user %}
+                                    <div style="justify-content: flex-start; background-color: #32465a; color: white; margin-right: 100px; width: auto;margin-top: 10px;" class="container row  {% if msg.read %}msg-read{% else %}msg-unread{% endif %} {% if msg.sender != request.user %}opponent{% endif %}"
+                                        data-id="{{ msg.id }}">
+                                        <p class="pull-left">
+                                            <span class="username">{{ msg.sender.username }}:</span>
+                                            {{ msg.text }}<br>
+                                            <span class="timestamp">&ndash; <span
+                                                    data-livestamp="{{ msg.get_formatted_create_datetime }}">{{ msg.get_formatted_create_datetime }}</span></span>
+                                        </p>
+                                        <br>
+                                    </div> 
+                                {% else %}
+                                    <div style="justify-content: flex-end; margin-left: 100px; width: auto; margin-top: 10px;" class="container row  {% if msg.read %}msg-read{% else %}msg-unread{% endif %} opponent"
+                                        data-id="{{ msg.id }}">
+                                        <p class="pull-right">
+                                            <span class="username">You:</span>
+                                            {{ msg.text }}<br>
+                                            <span class="timestamp">&ndash; <span
+                                                    data-livestamp="{{ msg.get_formatted_create_datetime }}">{{ msg.get_formatted_create_datetime }}</span></span>
+                                        </p>
+                                    </div> 
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+               
+
+                <div class="col-md-8" style="justify-content: flex-end;">
+                    <div class="add-message">
+                        <div class="form-group">
+                        <textarea id="chat-message" class="form-control message"
+                                  placeholder="{% trans 'Write a message' %}"></textarea>
+                        </div>
+
+                        <div class="form-group clearfix">
+                            <input id="btn-send-message" type="submit" class="btn btn-primary pull-right send-message"
+                                   style="margin-left: 10px;" value="{% trans 'Send' %}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmonitor/1.2.0/scrollMonitor.js"
+            integrity="sha256-BseZlDlA+yL4qu+Voi82iFa5aaifralQEXIjOjaXgeo=" crossorigin="anonymous"></script>
+    <script>
+        var base_ws_server_path = "{{ ws_server_path }}";
+        $(document).ready(function () {
+            var websocket = null;
+            var monitor = null;
+
+            function initReadMessageHandler(containerMonitor, elem) {
+                var id = $(elem).data('id');
+                var elementWatcher = containerMonitor.create(elem);
+                elementWatcher.enterViewport(function () {
+                    var opponent_username = getOpponnentUsername();
+                    var packet = JSON.stringify({
+                        type: 'read_message',
+                        session_key: '{{ request.session.session_key }}',
+                        username: opponent_username,
+                        message_id: id
+                    });
+                    $(elem).removeClass('msg-unread').addClass('msg-read');
+                    websocket.send(packet);
+                });
+            }
+
+            function initScrollMonitor() {
+                var containerElement = $("#messages");
+                var containerMonitor = scrollMonitor.createContainer(containerElement);
+                $('.msg-unread').each(function (i, elem) {
+                    if ($(elem).hasClass('opponent')){
+                        initReadMessageHandler(containerMonitor, elem);
+                    }
+
+                });
+                return containerMonitor
+            }
+
+            function getOpponnentUsername() {
+                return "{{ opponent_username }}";
+            }
+
+            // TODO: Use for adding new dialog
+            function addNewUser(packet) {
+                $('#user-list').html('');
+                packet.value.forEach(function (userInfo) {
+                    if (userInfo.username == getUsername()) return;
+                    var tmpl = Handlebars.compile($('#user-list-item-template').html());
+                    $('#user-list').append(tmpl(userInfo))
+                });
+            }
+
+            function addNewMessage(packet) {
+                var msg_class = "";
+                if (packet['sender_name'] == $("#owner_username").val()) {
+                    msg_class = "pull-right";
+                    var msgElem =
+                        $('<div class="row msg-unread" style="justify-content: flex-end; margin-left: 100px; width: auto;margin-top: 10px;" data-id="' + packet.message_id + '">' +
+                            '<p class="' + msg_class + '">' +
+                            '<span class="" style="color:orange;font-weight:bold">' + 'You' + ': </span>' +
+                            packet['message'] +'<br>'+
+                            ' <span class="timestamp">&ndash; <span data-livestamp="' + packet['created'] + '"> ' + packet['created'] + '</span></span> ' +
+                            '</p> ' +
+                            '</div>');
+                    $('#messages').append(msgElem);
+                } else {
+                    msg_class = "pull-left";
+                    var msgElem =
+                        $('<div class="row msg-unread" style="justify-content: flex-start; background-color: #32465a;margin-top: 10px; color: white; margin-right: 100px; width: auto;" data-id="' + packet.message_id + '">' +
+                            '<p class="' + msg_class + '">' +
+                            '<span class="username">' + packet['sender_name'] + ': </span>' +
+                            packet['message'] +'<br>'+
+                            ' <span class="timestamp">&ndash; <span data-livestamp="' + packet['created'] + '"> ' + packet['created'] + '</span></span> ' +
+                            '</p> ' +
+                            '</div>');
+                    $('#messages').append(msgElem);
+                }
+                scrollToLastMessage()
+            }
+
+            function scrollToLastMessage() {
+                var $msgs = $('#messages');
+                $msgs.animate({"scrollTop": $msgs.prop('scrollHeight')})
+            }
+
+            function generateMessage(context) {
+                var tmpl = Handlebars.compile($('#chat-message-template').html());
+                return tmpl({msg: context})
+            }
+
+            function setUserOnlineOffline(username, online) {
+                var elem = $("#user-" + username);
+                if (online) {
+                    elem.attr("class", "online");
+                } else {
+                    elem.attr("class", "offline");
+                }
+            }
+
+            function gone_online() {
+                $("#offline-status").hide();
+                $("#online-status").show();
+            }
+
+            function gone_offline() {
+                $("#online-status").hide();
+                $("#offline-status").show();
+            }
+
+            function flash_user_button(username) {
+                var btn = $("#user-" + username);
+                btn.fadeTo(700, 0.1, function () {
+                    $(this).fadeTo(800, 1.0);
+                });
+            }
+
+            function setupChatWebSocket() {
+                var opponent_username = getOpponnentUsername();
+                websocket = new WebSocket(base_ws_server_path + '{{ request.session.session_key }}/' + opponent_username);
+
+                websocket.onopen = function (event) {
+                    var opponent_username = getOpponnentUsername();
+
+                    var onOnlineCheckPacket = JSON.stringify({
+                        type: "check-online",
+                        session_key: '{{ request.session.session_key }}',
+                        username: opponent_username
+                        {#                      Sending username because the user needs to know if his opponent is online #}
+                    });
+                    var onConnectPacket = JSON.stringify({
+                        type: "online",
+                        session_key: '{{ request.session.session_key }}'
+
+                    });
+
+                    console.log('connected, sending:', onConnectPacket);
+                    websocket.send(onConnectPacket);
+                    console.log('checking online opponents with:', onOnlineCheckPacket);
+                    websocket.send(onOnlineCheckPacket);
+                    monitor = initScrollMonitor();
+                };
+
+
+                window.onbeforeunload = function () {
+
+                    var onClosePacket = JSON.stringify({
+                        type: "offline",
+                        session_key: '{{ request.session.session_key }}',
+                        username: opponent_username,
+                        {# Sending username because to let opponnent know that the user went offline #}
+                    });
+                    console.log('unloading, sending:', onClosePacket);
+                    websocket.send(onClosePacket);
+                    websocket.close();
+                };
+
+
+                websocket.onmessage = function (event) {
+                    var packet;
+
+                    try {
+                        packet = JSON.parse(event.data);
+                        console.log(packet)
+                    } catch (e) {
+                        console.log(e);
+                    }
+
+                    switch (packet.type) {
+                        case "new-dialog":
+                            // TODO: add new dialog to dialog_list
+                            break;
+                        case "user-not-found":
+                            // TODO: dispay some kind of an error that the user is not found
+                            break;
+                        case "gone-online":
+                            if (packet.usernames.indexOf(opponent_username) != -1) {
+                                gone_online();
+                            } else {
+                                gone_offline();
+                            }
+                            for (var i = 0; i < packet.usernames.length; ++i) {
+                                setUserOnlineOffline(packet.usernames[i], true);
+                            }
+                            break;
+                        case "gone-offline":
+                            if (packet.username == opponent_username) {
+                                gone_offline();
+                            }
+                            setUserOnlineOffline(packet.username, false);
+                            break;
+                        case "new-message":
+                            var username = packet['sender_name'];
+                           if (username == opponent_username || username == $("#owner_username").val()){
+                                addNewMessage(packet);
+                                if (username == opponent_username) {
+                                    initReadMessageHandler(monitor, $("div[data-id='" + packet['message_id'] + "']"));
+                                }
+                            } else {
+                                if ($("#user-"+username).length == 0){
+                                    var new_button = $(''+
+                                        '<div class="container"><a href="/'+ username + '"' +
+                                        'id="user-'+username+'" >'+username+'</a></div>');
+                                    $("#user-list-div").find("ul").append()
+                                }
+                                flash_user_button(username);
+
+                            }
+                            break;
+                        case "opponent-typing":
+                            var typing_elem = $('#typing-text');
+                            if (!typing_elem.is(":visible")) {
+                                typing_elem.fadeIn(500);
+                            } else {
+                                typing_elem.stop(true);
+                                typing_elem.fadeIn(0);
+                            }
+                            typing_elem.fadeOut(3000);
+                            break;
+                        case "opponent-read-message":
+                            if (packet['username'] == opponent_username) {
+                                $("div[data-id='" + packet['message_id'] + "']").removeClass('msg-unread').addClass('msg-read');
+                            }
+                            break;
+
+                        default:
+                            console.log('error: ', event)
+                    }
+                }
+            }
+
+            function sendMessage(message) {
+                var opponent_username = getOpponnentUsername();
+                var newMessagePacket = JSON.stringify({
+                    type: 'new-message',
+                    session_key: '{{ request.session.session_key }}',
+                    username: opponent_username,
+                    message: message
+                });
+                websocket.send(newMessagePacket)
+            }
+
+            $('#chat-message').keypress(function (e) {
+                if (e.which == 13 && this.value) {
+                    sendMessage(this.value);
+                    this.value = "";
+                    return false
+                } else {
+                    var opponent_username = getOpponnentUsername();
+                    var packet = JSON.stringify({
+                        type: 'is-typing',
+                        session_key: '{{ request.session.session_key }}',
+                        username: opponent_username,
+                        typing: true
+                    });
+                    websocket.send(packet);
+                }
+            });
+
+            $('#btn-send-message').click(function (e) {
+                var $chatInput = $('#chat-message');
+                var msg = $chatInput.val();
+                if (!msg) return;
+                sendMessage($chatInput.val());
+                $chatInput.val('')
+            });
+
+            setupChatWebSocket();
+            scrollToLastMessage();
+        });
+
+    </script>
+{% endblock %}

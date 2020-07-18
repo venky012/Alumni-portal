@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Search
+{% endblock title %}
+{% block content %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'searchpage/css/style_new12.css' %}" rel="stylesheet" type="text/css">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'searchpage/css/util.css' %}"> -->
+	<link rel="stylesheet" type="text/css" href="{% static 'searchpage/css/main1.css' %}">
+	<!-- <link rel="stylesheet" type="text/css" href="{% static 'searchpage/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}"> -->
+
+<body>
+    <!-- <section class="prob-statement-panel"> -->
+        <div class="container" style="margin-top: 30px;">
+            
+                <form method="GET" class="search">
+                    <div class="row catBox">
+                    <div class="col-md-3">
+                        <div class="labelBox">
+                            <label>First Name</label>
+                        </div>
+                        <div class="short-by-box">
+                                {{myFilter.form.first_name}}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="labelBox">
+                            <label>Last Name</label>
+                        </div>
+                        <div class="short-by-box">
+                                {{myFilter.form.last_name}}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="labelBox">
+                            <label>Pass Out Year</label>
+                        </div>
+                        <div class="short-by-box">
+                                {{myFilter.form.passout_year}}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="labelBox">
+                            <label>Company</label>
+                        </div>
+                        <div class="short-by-box">
+                                {{myFilter.form.company}}
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="text-align: center;">
+                    <button value="Submit" name="search" style="background-color: #4CAF50;position: relative  ; border: none; color: white; padding: 5px 75px; border-radius: 2px; text-decoration: none; margin-left: 15px; margin-top: 30px; cursor: pointer;"  type="submit">Search</button>
+                    </div>
+                    </div>
+                </form>
+                
+        </div>
+
+
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+<div class="mailclass">
+    <form method="GET" class=" validate-form">
+    <div class="container" style="margin: auto;">
+	<div class="row">
+        <div class="col-md-12">
+        <div class="table-responsive">
+
+              <table id="mytable" class="table table-bordred table-striped">
+                   
+                    <thead>
+                   
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Company</th>
+                    <th>Pass Out Year</th>
+                    <th>Profile link</th>
+                    </thead>
+    <tbody>
+    {% for myuser in myFilter.qs %}
+    <tr>
+    <td>{{myuser.first_name}}</td>
+    <td>{{myuser.last_name}}</td>
+    <td>{{myuser.company}}</td>
+    <td>{{myuser.passout_year}}</td>
+    <td><a style="color: blue;" href="{% url 'profile_page' username=myuser.username %}">click here view profile</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+                
+            </div>
+        </div>
+        </div>
+    </div>
+</form>    
+</div>
+
+
+
+</body>
+{% endblock content %}

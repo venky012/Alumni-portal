@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="{% static '/css/contactform.css' %}" />
     <link rel="stylesheet" href="{% static '/css/contact.css' %}" />
     --->
+    <link href="{% static 'chat/css/style3.css' %}" rel="stylesheet" type="text/css" media="all">
+    <script src="{% static 'chat/js/handlebars-v1.3.0.js' %}" type="text/javascript"></script>
+
 
 
     <!-- attach the webstyle sheets ---->
@@ -312,6 +315,7 @@
             duration: 1300,
         })
     </script>
+    {% block extra_js %}{% endblock %}
 </body>
 
 </html>

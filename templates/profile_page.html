@@ -489,6 +489,7 @@ window.onclick = function(event) {
                                 <a href="{% url 'searchpage' %}">Search Alumni</a><br>
                             {% endif %}
                             {% if not user.is_superuser %}
+                                <a href="{% url 'searchalumni' %}">Search Alumni</a><br>
                                 <p class="btn btn-danger" style="color:white;" onclick="document.getElementById('id01').style.display='block'">Delete account</p><br>
                             {% endif %}
                         {% endif %}

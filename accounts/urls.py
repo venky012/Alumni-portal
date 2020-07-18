@@ -14,6 +14,7 @@ urlpatterns = [
     path('delete/<slug:uidb64>/<slug:token>)/', views.delete, name='delete'),
     path('profile_page/userinfo/<str:username>/',views.user_profile,name='profile_page'),
     path('search/',views.SearchPage,name='searchpage'),
+    path('searchAlumni/',views.SearchAlumni,name='searchalumni'),
 
 ]
 if settings.DEBUG:

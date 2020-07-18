@@ -55,6 +55,10 @@ CRON_CLASSES = [
 
 # Application definition
 
+CHAT_WS_SERVER_HOST = 'localhost'
+CHAT_WS_SERVER_PORT = 5002
+CHAT_WS_SERVER_PROTOCOL = 'ws'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -67,6 +71,7 @@ INSTALLED_APPS = [
     'contactform',
     'crispy_forms',
     'jobs',
+    'django_private_chat',
     'django_cleanup.apps.CleanupConfig',        # to clean the user profile photo and update new photo
     'django_cron',
     'django_filters',               # for search operation
@@ -187,5 +192,54 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 LOGIN_URL = 'login'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'verbose': {
+            'format':
+                '%(levelname)s %(asctime)s %(module)s'
+                ' %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'django_private_chat': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'custom_app': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        }
+    }
+}
+INTERNAL_IPS = ['127.0.0.1', 'localhost']
+SESSION_COOKIE_AGE = 12096000
+
 
 # LOGOUT_REDIRECT_URL = 'home'

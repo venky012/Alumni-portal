@@ -254,3 +254,16 @@ def SearchPage(request):
         email.send()
 
     return render(request, 'search_mail.html', context)
+
+
+def SearchAlumni(request):
+    get_user = User.objects.filter(is_staff=False)
+    myFilter = UserFilter(request.GET,queryset=get_user)
+    context = {
+       "get_user": get_user,
+       "myFilter": myFilter,
+        "user" : request.user
+    }
+    
+
+    return render(request, 'search_alumni.html', context)

@@ -25,6 +25,8 @@ urlpatterns = [
     path('',include('contactform.urls')),
     path('',include('jobs.urls')),
     path('', include('django.contrib.auth.urls')),
+    path('', include('django_private_chat.urls')),
+
 
 
 
