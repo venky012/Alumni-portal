@@ -491,6 +491,9 @@ window.onclick = function(event) {
                                 <p class="btn btn-danger" style="color:white;" onclick="document.getElementById('id01').style.display='block'">Delete account</p><br>
                             {% endif %}
                         {% endif %}
+                        {% if request.user.username != get_user.username  %}
+                            <a href="{% url 'dialogs_detail' username=get_user.username %}"><img src="{% static 'profile/message.png' %}" alt="Avatar" class="image"  style="height:30px;width:30px;display: inline;padding-right: 2px;">Message</a><br>
+                        {% endif %}
                         
                     </div>
                 </div>
