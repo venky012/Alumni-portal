@@ -30,7 +30,6 @@ class MyCronJob(CronJobBase):
             if i.linkedin_url:
                 username = i.username
                 profile_link = i.linkedin_url
-                profile_link = 'https://www.linkedin.com/in/venkatesh-poojari-984007181/'
                 profile_link = profile_link.replace('https://www.linkedin.com/in/','').replace('/','')
                 try:
                     profile = api.get_profile(profile_link)
