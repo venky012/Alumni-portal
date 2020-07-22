@@ -185,6 +185,9 @@
                 margin-top:2%;
             }
         }
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255,255,255,0.7);
+        }
     </style>
 </head>
 
@@ -226,7 +229,7 @@
                 {% if user.is_superuser %}
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'searchalumni' %}">Know our Alumni</a>
+                    <a class="nav-link" href="{% url 'searchalumni' %}">Visit our Alumni</a>
                 </li>
                 {% endif %}
             </ul>

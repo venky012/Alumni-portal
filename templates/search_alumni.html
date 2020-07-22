@@ -78,6 +78,7 @@ Search
                     <th>Last Name</th>
                     <th>Company</th>
                     <th>Pass Out Year</th>
+                    <th>Email</th>
                     <th>Profile link</th>
                     </thead>
     <tbody>
@@ -87,6 +88,7 @@ Search
     <td>{{myuser.last_name}}</td>
     <td>{{myuser.company}}</td>
     <td>{{myuser.passout_year}}</td>
+    <td>{{myuser.email}}</td>
     <td><a style="color: blue;" href="{% url 'profile_page' username=myuser.username %}">click here view profile</a></td>
     </tr>
     {% endfor %}
