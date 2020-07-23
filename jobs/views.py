@@ -12,9 +12,9 @@ from django.views.decorators.cache import cache_control
 import random
 
 
+@login_required
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @email_confirmation_required
-@login_required
 def PostJobView(request):
     if request.method == 'GET':
         form = PostJobForm()
@@ -42,9 +42,9 @@ def JobsView(request):
     jobslist=Jobs_details.objects.all()
     return render(request,'jobs.html',{"jobslist":jobslist})
 
+@login_required
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @email_confirmation_required
-@login_required
 def DeleteJob(request,id):
     obj = Jobs_details.objects.get(id=id)
     if obj:

@@ -7,8 +7,7 @@ class ContactForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea, required=True)
 
 class ReplyForm(forms.Form):
-    email = forms.EmailField(required = True)
-    subject = forms.CharField(required=True)
+    pid = forms.CharField(required=True)
     reply_message = forms.CharField(widget = forms.Textarea, max_length = 150,required = True)
 
 class Deletequery(forms.Form):

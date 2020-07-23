@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm, ReplyForm
 import requests
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # for contact form queries
 from contactform.models import ContactForm_queries, ReplyForm_queries
@@ -62,14 +63,14 @@ def queriesList(request):
         form = ReplyForm(request.POST)
         if form.is_valid():
             
-            query = ContactForm_queries.objects.get(email = form.cleaned_data['email'],subject = form.cleaned_data['subject'])
+            query = ContactForm_queries.objects.get(id = form.cleaned_data['pid'])
     
             replymessage = form.cleaned_data['reply_message']
 
             try:
                 replyformqueries = ReplyForm_queries.objects.get_or_create(query_user = query,reply_message = replymessage)
                 send_mail('Reg : '+query.subject,'Dear Sir/Madam,\nThanks for your query.\n'+replymessage, 'poojariv53@gmail.com', [query.email])
-                print("message sent------------------------------------------------")
+                messages.success(request,'Message sent to user')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
     

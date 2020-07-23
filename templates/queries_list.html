@@ -9,7 +9,7 @@
         {% if user.is_superuser %}
         <h1 style="padding:5px;text-align:center;">List of Queries</h1>
         <div>
-            {% if queries_list %}
+        {% if queries_list %}
                 <table class="table table-hover" style="text-align:center;">
                     <thead>
                         <tr>
@@ -30,8 +30,7 @@
                                 <td>    
                                     <form method="post">
                                     {% csrf_token %}
-                                        <input type="hidden" name="email" value="{{ query.email }}">
-                                        <input type="hidden" name="subject" value="{{ query.subject }}">
+                                        <input type="hidden" name="pid" value="{{ query.id }}">
                                         <div class="wrap-input100 validate-input" data-validate = "Message is required">
                                             <span class="label-input100">Message</span>
                                             <textarea class="input100" name="reply_message" placeholder="Your message here..."></textarea>

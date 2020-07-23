@@ -248,8 +248,8 @@
             </ul>
         </div>
     </nav>
-    {% comment %} {% if messages %}
-    <ul class="messages">
+    {% if messages %}
+    <ul class="messages" style="box-sizing: border-box;margin-top: 60px;overflow: auto;">
         {% for message in messages %}
         <div {% if message.tags %} class="alert alert-{{ message.tags }} mx-auto alert-dismissible" {% endif %} style="width: 40%;margin-top: 1%;">
             <button type="button" class="close" data-dismiss="alert">&times;</button> {%if message.tags %}
@@ -257,7 +257,7 @@
         </div>
         {% endfor %}
     </ul>
-    {% endif %}  {% endcomment %}
+    {% endif %} 
     <div class="container-fluid py-4"></div>
     {% block content %} 
     

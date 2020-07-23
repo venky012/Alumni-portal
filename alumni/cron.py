@@ -22,7 +22,8 @@ class MyCronJob(CronJobBase):
         # pass
         obj = User.objects.all()
         try:
-            api = Linkedin('xerito4377@invql.com', 'marvm123')
+            api = Linkedin('poojariv53@gmail.com', 'marvm123')
+            # api = ''
         except:
             print("Unable to handle linkedin api check for network connections...")
             api = ''
@@ -33,10 +34,7 @@ class MyCronJob(CronJobBase):
                 profile_link = profile_link.replace('https://www.linkedin.com/in/','').replace('/','')
                 try:
                     profile = api.get_profile(profile_link)
+                    getProfile(username,profile)
+                    time.sleep(2)
                 except:
                     profile = ""  
-                getProfile(username,profile)
-                time.sleep(2)
-
-
-  
