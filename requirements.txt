@@ -20,7 +20,7 @@ django-cron==0.5.1
 django-filter==2.3.0
 django-model-utils==4.0.0
 django-private-chat==0.2.2
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 httplib2==0.18.1
 idna==2.7
 idna-ssl==1.1.0
